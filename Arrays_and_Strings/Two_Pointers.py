@@ -1,8 +1,8 @@
 """
 Two Pointers is a technique used to iterate through arrays or strings efficiently by using two indices instead of nested loops
-In this example two pointers will move from left and right ends
 Use when an array/string is sorted or problem depends on sum/distance
 Two pointers (left & right) will be placed on opposite sides and move based on a condition
+In this example two pointers will move from the left and right ends
 """
 
 class Solution():
