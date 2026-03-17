@@ -26,4 +26,4 @@ class Solution:
 
 
 sol = Solution()
-print(sol.binary_search(arr=[-3, -2, -1, 0, 1, 2, 3], target = 1))
+print(sol.binary_search(arr=[-3, -2, -1, 0, 1, 2, 3], target = 2))
