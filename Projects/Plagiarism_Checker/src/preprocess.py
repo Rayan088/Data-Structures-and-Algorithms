@@ -20,7 +20,7 @@ def tokenisation(cleaned_text):
 
 #Function that returns list of indivisual words as tokens
 
-def stop_words(tokens):
+def remove_stop_words(tokens):
     stop_words = {"a","an","the","and","or","but","if","while","is","are","was","were","be","been","being",
     "of","in","to","from","on","for","with","about","as","at","by","this","that","these","those",
     "he","she","it","they","his","her","its","their","them","we","you","i","me","my","mine","your","yours",
