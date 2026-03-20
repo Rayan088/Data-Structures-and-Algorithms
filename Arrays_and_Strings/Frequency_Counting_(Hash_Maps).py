@@ -40,3 +40,19 @@ class Solution2:
     
 sol2 = Solution2()
 print(sol2.frequency_counting2([1, 2, 3, 4, 3, 2, 2, 5]))
+
+"""
+Counter is a dictionary subclass that counts how many times items appear in a collection (list, string etc)
+Counts can be accessedm subtracted and updated like a dictionary
+"""
+
+from collections import Counter #Importing Library
+
+class Solution3:
+    def frequency_counting3(self, fruit):
+        counts = Counter(fruit) #Counts number of unique indexes in the array
+
+        return counts
+    
+sol3 = Solution3()
+print(sol3.frequency_counting3(['apple', 'banana', 'apple', 'orange', 'banana', 'apple']))
