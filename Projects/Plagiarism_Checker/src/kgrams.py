@@ -1,4 +1,4 @@
-class kgrams:
+class Kgrams:
     def generate_kgrams(self, tokens, k):
         k_grams = []
 
