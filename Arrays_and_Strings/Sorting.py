@@ -23,22 +23,20 @@ class Solution:
 
         return arr
 
-    def selection_sort(self, arr):
-        n = len(arr) #Length of array
+    def selection_sort(self, arr2):
+        n = len(arr2) #Length of array
 
         for i in range(n):
             min_index = i #Assume first unsorted element is the minimum
 
             for j in range(i+1, n):
-                if arr[j] < arr[min_index]: #Find the true minimum
+                if arr2[j] < arr2[min_index]: #Find the true minimum
                     min_index = j
 
-        arr[i], arr[min_index] = arr[min_index], arr[i] #Swap found minimum with unsorted element
-
-        return arr
+            arr2[i], arr2[min_index] = arr2[min_index], arr2[i] #Swap found minimum with unsorted element
+        return arr2
     
-arr = [5, 2, 9, 1, 5, 6]
 sol1 = Solution()
 
-print(f"Bubble Sort: {sol1.bubble_sort(arr)}")
-print(f"Selection Sort: {sol1.selection_sort(arr)}")
+print(f"Bubble Sort: {sol1.bubble_sort([5, 2, 9, 1, 5, 6])}")
+print(f"Selection Sort: {sol1.selection_sort([3, 6, 4, 1, 8, 2])}")
