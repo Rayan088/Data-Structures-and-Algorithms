@@ -19,15 +19,23 @@ class Analysis:
     #Method which finds longest phrase of length k of k_grams
         
     def top_matching_phrase(self, k_grams1, k_grams2):
+        counter1 = Counter(k_grams1)
+        counter2 = Counter(k_grams2)
+
         common_words = []
 
-        for i in k_grams1:
-            for j in k_grams2:
-                if i == j:
-                    common_words.append(i)
-        #Finding common words in both passages
+        for word in counter1:
+            if word in counter2:
+                common_words.extend([word] * min(counter1[word], counter2[word]))
+        #Finds common words in both passages
 
-        frequency_count = Counter(common_words)
+        frequency_count = {}
+
+        for element in common_words:
+            if element in frequency_count:
+                frequency_count[element] += 1
+            else:
+                frequency_count[element] = 1
         #Counting frequency of common words
 
         most_common_word = None
