@@ -1,6 +1,7 @@
 from preprocess import clean_text, tokenisation, remove_stop_words
 from kgrams import Kgrams
 from similarity import Similarity
+from analysis import Analysis
 
 def read_file(file):
     try:
@@ -32,3 +33,7 @@ kgrams1 = kgram.generate_kgrams(tokens1, 3)
 kgrams2 = kgram.generate_kgrams(tokens2, 3)
 
 #Generates 3 grams for each document
+
+analysis = Analysis()
+
+longest_phrase_
