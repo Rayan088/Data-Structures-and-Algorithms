@@ -26,6 +26,8 @@ tokens2 = remove_stop_words(tokenisation(clean_text(doc2)))
 sim = Similarity()
 score = sim.jaccard_similarity(tokens1, tokens2)
 
+print(score)
+
 #Calculates similarity through Jaccard Similarity
 
 kgram = Kgrams()
@@ -36,4 +38,8 @@ kgrams2 = kgram.generate_kgrams(tokens2, 3)
 
 analysis = Analysis()
 
-longest_phrase_
+longest_phrase = analysis.longest_copied_phrase(kgrams1, kgrams2)
+most_common_word = analysis.top_matching_phrase(kgrams1, kgrams2)
+
+print(longest_phrase)
+print(most_common_word)
