@@ -5,12 +5,13 @@ from analysis import Analysis
 
 def read_file(file):
     try:
-        with open(file, "r") as rfile:
+        with open(file, "r", encoding="utf8") as rfile:
             return rfile.read()
     except FileNotFoundError:
         print(f"Error: {file} not found.")
         return ""
 
+print("------------------Plagiarism Checker---------------------")
 #Funtion that reads files into strings
     
 doc1 = read_file("Projects/Plagiarism_Checker/data/sample1.txt")
