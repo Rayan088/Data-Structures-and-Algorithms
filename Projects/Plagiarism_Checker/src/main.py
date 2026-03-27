@@ -39,7 +39,9 @@ kgrams2 = kgram.generate_kgrams(tokens2, 3)
 analysis = Analysis()
 
 longest_phrase = analysis.longest_copied_phrase(kgrams1, kgrams2)
-most_common_word = analysis.top_matching_phrase(kgrams1, kgrams2)
+most_common_word = analysis.top_matching_phrase(tokens1, tokens2)
 
 print(longest_phrase)
 print(most_common_word)
+
+#Calculates longest phrase of k gram and the most common word

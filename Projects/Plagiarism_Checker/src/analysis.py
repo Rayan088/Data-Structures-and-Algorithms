@@ -24,7 +24,7 @@ class Analysis:
         for i in k_grams1:
             for j in k_grams2:
                 if i == j:
-                    common_words.extend(i)
+                    common_words.append(i)
 
         frequency_count = Counter(common_words)
 
