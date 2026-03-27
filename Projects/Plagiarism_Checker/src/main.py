@@ -31,8 +31,8 @@ print(score)
 #Calculates similarity through Jaccard Similarity
 
 kgram = Kgrams()
-kgrams1 = kgram.generate_kgrams(tokens1, 3)
-kgrams2 = kgram.generate_kgrams(tokens2, 3)
+kgrams1 = kgram.generate_kgrams(tokens1, 6)
+kgrams2 = kgram.generate_kgrams(tokens2, 6)
 
 #Generates 3 grams for each document
 

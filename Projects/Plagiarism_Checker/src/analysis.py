@@ -25,8 +25,10 @@ class Analysis:
             for j in k_grams2:
                 if i == j:
                     common_words.append(i)
+        #Finding common words in both passages
 
         frequency_count = Counter(common_words)
+        #Counting frequency of common words
 
         most_common_word = None
         max_frequency = 0
@@ -35,6 +37,7 @@ class Analysis:
             if frequency > max_frequency:
                 max_frequency = frequency
                 most_common_word = word
+        #Finding the maximum frequency of the most common word
 
         if most_common_word != None:
             return f"Most common word: {most_common_word} (appears {max_frequency} times)"
