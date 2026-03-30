@@ -24,7 +24,7 @@ class SinglyNode:
     def __str__(self):
         return str(self.val)
    
-    #Method which directly prints node and not its memory location
+    #Method which directly returns node and not its memory location
     
     @staticmethod
     def display(head):
@@ -64,3 +64,61 @@ B.next = C
 Head.display(Head)
 print(Head.search(Head, 3))
 print(Head.search(Head, 6))
+
+print("\n")
+
+"""
+Doubly Linked Lists:
+Each node points to the next and previous node in the list
+You can traverse the list in both directions (head <-> Node <-> None)
+Inserting at beginning and end is constant time
+"""
+
+class DoublyNode:
+    def __init__(self, val, next=None, prev=None):
+        self.val = val
+        self.next = next
+        self.prev = prev
+
+    #Method which creates a node with next and previous pointers
+
+    def __str__(self):
+        return str(self.val)
+    
+    #Method which returns node 
+    
+    @staticmethod
+    def display(head):
+        curr = head
+        elements = []
+
+        while curr: #While current node is pointed to next
+            elements.append(str(curr.val))
+            curr = curr.next
+        print(" <-> ".join(elements))
+    
+    #Method which traverses the list
+
+    @staticmethod
+    def insert_at_beginning(head, tail, val):
+         new_node = DoublyNode(val, next=head) #Node created with its value and next pointer set to current head
+         head.prev = new_node #Updating heads previous node to new node
+
+         return new_node, tail #Returning new head and unchanged tail
+    
+    #Method which inserts node at beginning of linked list
+    
+    @staticmethod
+    def insert_at_end(head, tail, val):
+        new_node = DoublyNode(val, prev=head) #Node created with its value and previous pointer set to head of current last element
+        tail.next = new_node #Updating tails next node to new node
+
+        return head, new_node #Returning unchanged head (None) and new tail
+    
+    #Method which inserts node at end of linked list
+        
+head = tail = DoublyNode(1)
+DoublyNode.display(head) #Displaying current linked list
+head, tail = DoublyNode.insert_at_beginning(head, tail, 3)
+head, new_node = DoublyNode.insert_at_end(head, tail, 7)
+DoublyNode.display(head) #Displaying upadted linked list
