@@ -1,6 +1,6 @@
 """
 Linked lists are a data structure where nodes are stored in a sequence with each node having a link(s)
-Each node in a linked lists contains 2 parts, (Sometimes, Prev):
+Each node in a linked lists contains 2 parts, (Sometimes Prev):
 - Data: Data the node holds
 - Next: A reference to the next node in the list
 - Prev: A reference to the previous node in the list
@@ -28,7 +28,7 @@ class SinglyNode:
     
     @staticmethod
     def display(head):
-        curr = Head #Current node is the head (first element)
+        curr = head #Current node is the head (first element)
         elements = []
 
         while curr: #While current node is pointed to next (stop at None)
@@ -110,7 +110,7 @@ class DoublyNode:
     
     @staticmethod
     def insert_at_end(head, tail, val):
-        new_node = DoublyNode(val, prev=head) #Node created with its value and previous pointer set to head of current last element
+        new_node = DoublyNode(val, prev=tail) #Node created with its value and previous pointer set to head of current last element
         tail.next = new_node #Updating tails next node to new node
 
         return head, new_node #Returning unchanged head (None) and new tail
@@ -122,3 +122,110 @@ DoublyNode.display(head) #Displaying current linked list
 head, tail = DoublyNode.insert_at_beginning(head, tail, 3)
 head, new_node = DoublyNode.insert_at_end(head, tail, 7)
 DoublyNode.display(head) #Displaying upadted linked list
+
+print("\n")
+
+"""
+Circular Linked Lists:
+The linked list doesnt end at None
+Instead, the last node points back to the head, forming a loop
+"""
+
+class CircularNode:
+    def __init__(self, val, next=None):
+        self.val = val
+        self.next = next
+
+    #Method which creates a node with next pointer
+
+    def __str__(self):
+        return str(self.val)
+    
+    #Method which returns Node
+    
+    @staticmethod
+    def display(head):
+        elements = []
+        curr = head
+
+        while True:
+            elements.append(str(curr.val))
+            curr = curr.next
+            if curr == head: #Stops once looped back to start 
+                break
+        
+        print(" -> ".join(elements) + " -> (back to head)")
+
+    #Method which displays full list
+
+    @staticmethod
+    def search(head, val):
+        curr = head
+
+        while True:
+            if curr.val == val:
+                return True
+            curr = curr.next
+            if curr == head:
+                break
+
+        return False
+    
+    #Method which searches for specific node
+
+    @staticmethod
+    def insert_at_beginning(head, val):
+        new_node = CircularNode(val) #Create new_node
+
+        curr = head #Set current to head
+        while curr.next != head:
+            curr = curr.next
+        #Move current to next element until tail has been found
+
+        new_node.next = head #new_node points to old head
+        curr.next = new_node #Curr (Last element)s points to new_node (full circle)
+
+        return new_node
+    
+    #Method which inserts new node at beginning
+
+    @staticmethod
+    def insert_at_end(head, val):
+        new_node = CircularNode(val)
+
+        curr = head
+        while curr.next != head:
+            curr = curr.next
+        #Move currnt to next element until tail has been found
+        
+        curr.next = new_node #Tails next element is the new node
+        new_node.next = head #new node points to head (full circle)
+
+        return new_node
+
+    #Method which inserts new node at end
+
+Head = CircularNode(1)
+A = CircularNode(2)
+B = CircularNode(3)
+C = CircularNode(4)
+#Initialising linked list
+
+Head.next = A
+A.next = B
+B.next = C
+C.next = Head #Last element points back to beginning
+#Initialising next pointers
+
+CircularNode.display(Head)
+
+print(CircularNode.search(Head, 3))
+print(CircularNode.search(Head, 6))
+
+Head = CircularNode.insert_at_beginning(Head, 0)
+CircularNode.display(Head)
+#Inserts 0 at beginning
+
+Tail = CircularNode.insert_at_end(Head, 5)
+CircularNode.display(Head)
+#inserts 5 at end
