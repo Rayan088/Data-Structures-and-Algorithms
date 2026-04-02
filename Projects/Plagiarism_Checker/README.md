@@ -9,7 +9,7 @@ Cleans text by converting to lower case letters, removing punctuation and excess
 Tokenises texts into words  
 Removes stop words (e.g. a, the, then, is)
 
-**Generates k grams (kgrams.py)**
+**Generates k grams (kgrams.py)**  
 Converts cleaned tokens into kgrams of length k (length of k=6 used)
 
 **Similarity Calculation (similarity.py)**  
@@ -22,7 +22,7 @@ Returns a labelled similarity score:
 - High
 - Very High
 
-**Analysis (analysis.py)**
+**Analysis (analysis.py)**  
 Finds longest copied phrase utilising sets for fast lookup (O(n))  
 Finds most common phrase by using Counter to track frequency and identify most repeated shared phrase
 
