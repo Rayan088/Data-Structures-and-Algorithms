@@ -2,16 +2,15 @@ from collections import Counter
 
 class Analysis:
     def longest_copied_phrase(self, k_grams1, k_grams2):
+        set_kgram2 = set(k_grams2)
         longest_phrase = None
 
-        for i in k_grams1:
-            for j in k_grams2:
-                if i == j:
-                    longest_phrase = i
-                    break
+        for phrase in k_grams1:
+            if phrase in set_kgram2:
+                longest_phrase = phrase
         #Checking for longest a matching phrase
 
-        if longest_phrase == None:
+        if longest_phrase is None:
             return "No matching phrase found"
         else:
             return f"Longest phrase: {longest_phrase}"
