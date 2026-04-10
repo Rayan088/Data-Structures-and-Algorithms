@@ -15,12 +15,12 @@ class Playlist:
 
         if self.head is None:
             self.head = self.tail = self.curr = new_node
-            return f"Now playing {self.curr}"
+            return f"Now playing {self.curr}\n"
 
         self.tail.next = new_node
         new_node.prev = self.tail
         self.tail = new_node
-        return f"New song added to end of list (Title: {new_node.title}, Artist: {new_node.artist}, Duration {new_node.duration} seconds, Genre: {new_node.genre})"
+        return f"New song added to end of list (Title: {new_node.title}, Artist: {new_node.artist}, Duration {new_node.duration} seconds, Genre: {new_node.genre})\n"
 
     #Method which adds song to end of linked list
 
@@ -32,16 +32,16 @@ class Playlist:
     def prev_song(self):
         if self.curr and self.curr.prev:
             self.curr = self.curr.prev
-            return f"Now playing {self.curr}"
-        return f"Already at the start of the playlist"
+            return f"Now playing {self.curr}\n"
+        return f"Already at the start of the playlist\n"
 
     #Method which moves to previous song
 
     def next_song(self):
         if self.curr and self.curr.next:
             self.curr = self.curr.next
-            return f"Now playing {self.curr}"
-        return f"Already at the end of the playlist"
+            return f"Now playing {self.curr}\n"
+        return f"Already at the end of the playlist\n"
         
     #Method which moves to next song
 
@@ -49,7 +49,7 @@ class Playlist:
         curr = self.head
 
         if curr is None:
-            return "Platlist is empty"
+            return "Platlist is empty\n"
         
         nodes = []
         while curr:
@@ -69,16 +69,6 @@ class Playlist:
         self.tail.next = None
         
         self.curr = self.head
-        return f"Playlist has been shuffled! Now playing {self.curr}"
+        return f"Playlist has been shuffled! Now playing {self.curr}\n"
 
     #Method which shuffles songs
-
-
-pl = Playlist()
-
-print(pl.add_song("Blinding Lights", "The Weeknd", 200, "Pop"))
-print(pl.add_song("Bohemian Rhapsody", "Queen", 354, "Rock"))
-print(pl.add_song("Shape of You", "Ed Sheeran", 240, "Pop"))
-print(pl.add_song("Lose Yourself", "Eminem", 326, "Hip-Hop"))
-print(pl.shuffle())
-print(pl.next_song())
