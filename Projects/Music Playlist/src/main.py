@@ -41,7 +41,8 @@ def main():
                    "4. Previous Song\n"
                    "5. Shuffle\n"
                    "6. Stats\n"
-                   "7. Exit\n")
+                   "7. Import Songs from CSV"
+                   "8. Exit\n")
         
         if choice == "1":
             title = input("Title: ")
@@ -67,6 +68,10 @@ def main():
             stats_menu(pl)
 
         elif choice == "7":
+            csv_file = input("Enter the CSV filename: ")
+            print(pl.import_songs(csv_file))
+
+        elif choice == "8":
             print("Exited playlist\n")
             break
 
