@@ -1,4 +1,5 @@
 from song_node import SongNode
+from stats import Stats
 
 import random
 
@@ -7,6 +8,7 @@ class Playlist:
         self.head = head
         self.tail = tail
         self.curr = curr
+        self.stats = Stats()
 
     #Initaliser method
 
@@ -15,11 +17,20 @@ class Playlist:
 
         if self.head is None:
             self.head = self.tail = self.curr = new_node
+            self.stats.update_total_duration(new_node)
+            self.stats.update_genre_counts(new_node)
+            self.stats.update_total_play_counts()
+            
             return f"Now playing {self.curr}\n"
 
         self.tail.next = new_node
         new_node.prev = self.tail
         self.tail = new_node
+
+        self.stats.update_total_duration(new_node)
+        self.stats.update_genre_counts(new_node)
+        self.stats.update_total_play_counts(new_node)
+
         return f"New song added to end of list (Title: {new_node.title}, Artist: {new_node.artist}, Duration {new_node.duration} seconds, Genre: {new_node.genre})\n"
 
     #Method which adds song to end of linked list

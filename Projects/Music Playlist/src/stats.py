@@ -28,5 +28,5 @@ class Stats:
     def genre_counts_(self):
         genre_summary = "Genre Breakdown: \n"
         for genre, count in self.genre_counts.items():
-            genre_summary += (f"{genre}: {count} tracks\n")
+            genre_summary += (f"{genre}: {count} tracks")
         return genre_summary
