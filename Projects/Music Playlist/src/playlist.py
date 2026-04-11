@@ -83,3 +83,15 @@ class Playlist:
         return f"Playlist has been shuffled! Now playing {self.curr}\n"
 
     #Method which shuffles songs
+
+    def import_songs(self, csv_file):
+        songs = SongNode.import_songs(csv_file)
+        if not songs:
+            return "No songs were imported due to an error"
+        
+        for song in songs:
+            self.add_song(song.title, song.artist, song.duration, song.genre)
+
+        return f"Successfully imported {len(songs)} from CSV file"
+    
+    #Method which adds songs from csv file
