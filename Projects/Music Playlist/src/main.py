@@ -1,4 +1,32 @@
 from playlist import Playlist
+from stats import Stats
+
+def stats_menu():
+    st = Stats()
+
+    while True:
+
+        choice = input("--- Stats Menu --- \n"
+                       "1. Total Duration\n"
+                       "2. Total Play Counts\n"
+                       "3. Genre Counts\n"
+                       "4. Exist\n")
+        
+        if choice == "1":
+            print(st.total_duration_())
+
+        elif choice == "2":
+            print(st.total_play_counts_())
+        
+        elif choice == "3":
+            print(st.genre_counts_())
+
+        elif choice == "4":
+            print("Exited stats")
+            break
+        
+        else:
+            print("Invalid input entered")
 
 def main():
     pl = Playlist()
@@ -10,7 +38,8 @@ def main():
                    "3. Next Song\n"
                    "4. Previous Song\n"
                    "5. Shuffle\n"
-                   "6. Exit\n")
+                   "6. Stats\n"
+                   "7. Exit\n")
         
         if choice == "1":
             title = input("Title: ")
@@ -33,6 +62,9 @@ def main():
             print(pl.shuffle())
 
         elif choice == "6":
+            stats_menu()
+
+        elif choice == "7":
             print("Exited playlist\n")
             break
 
