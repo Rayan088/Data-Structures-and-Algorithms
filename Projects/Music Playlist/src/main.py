@@ -1,8 +1,8 @@
 from playlist import Playlist
 from stats import Stats
 
-def stats_menu():
-    st = Stats()
+def stats_menu(pl):
+    st = pl.stats
 
     while True:
 
@@ -10,7 +10,7 @@ def stats_menu():
                        "1. Total Duration\n"
                        "2. Total Play Counts\n"
                        "3. Genre Counts\n"
-                       "4. Exist\n")
+                       "4. Exit\n")
         
         if choice == "1":
             print(st.total_duration_())
@@ -27,6 +27,8 @@ def stats_menu():
         
         else:
             print("Invalid input entered")
+
+#Method which displays user menu for stats
 
 def main():
     pl = Playlist()
@@ -62,7 +64,7 @@ def main():
             print(pl.shuffle())
 
         elif choice == "6":
-            stats_menu()
+            stats_menu(pl)
 
         elif choice == "7":
             print("Exited playlist\n")

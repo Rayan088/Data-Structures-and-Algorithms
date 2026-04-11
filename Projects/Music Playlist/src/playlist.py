@@ -13,7 +13,7 @@ class Playlist:
     #Initaliser method
 
     def add_song(self, title, artist, duration, genre):
-        new_node = SongNode(title, artist, duration, genre)
+        new_node = SongNode(title, artist, int(duration), genre)
 
         if self.head is None:
             self.head = self.tail = self.curr = new_node
@@ -29,7 +29,7 @@ class Playlist:
 
         self.stats.update_total_duration(new_node)
         self.stats.update_genre_counts(new_node)
-        self.stats.update_total_play_counts(new_node)
+        self.stats.update_total_play_counts()
 
         return f"New song added to end of list (Title: {new_node.title}, Artist: {new_node.artist}, Duration {new_node.duration} seconds, Genre: {new_node.genre})\n"
 
