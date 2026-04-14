@@ -25,7 +25,7 @@ class Stats:
     #Method which calculates no of songs per genre
 
     def total_duration_(self):
-        return f"Total duration: {self.total_duration}"
+        return f"Total duration: {self.total_duration} seconds"
     
     #Method which displays total duration
     
