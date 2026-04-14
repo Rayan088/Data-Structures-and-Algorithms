@@ -1,5 +1,3 @@
-import csv
-
 class SongNode:
     def __init__(self, title, artist, duration, genre, next=None, prev=None):
         self.title = title
@@ -15,9 +13,3 @@ class SongNode:
         return f"{self.title} - {self.artist} ({self.duration})"
     
     #Str method for user friendly representation
-
-    @classmethod
-    def import_songs():
-        pass
-
-    #Method to import songs from csv file

@@ -2,6 +2,7 @@ from song_node import SongNode
 from stats import Stats
 
 import random
+import csv
 
 class Playlist:
     def __init__(self, head=None, tail=None, curr=None):
@@ -29,7 +30,6 @@ class Playlist:
 
         self.stats.update_total_duration(new_node)
         self.stats.update_genre_counts(new_node)
-        self.stats.update_total_play_counts()
 
         return f"New song added to end of list (Title: {new_node.title}, Artist: {new_node.artist}, Duration {new_node.duration} seconds, Genre: {new_node.genre})\n"
 
@@ -51,6 +51,7 @@ class Playlist:
     def next_song(self):
         if self.curr and self.curr.next:
             self.curr = self.curr.next
+            self.stats.update_total_play_counts()
             return f"Now playing {self.curr}\n"
         return f"Already at the end of the playlist\n"
         
@@ -85,6 +86,28 @@ class Playlist:
     #Method which shuffles songs
 
     def import_songs(self, csv_file):
-        pass
-    
+        try:
+            with open(csv_file, newline='', encoding='utf-8-sig') as file:
+                reader = csv.reader(file)
+
+                next(reader)  # skip header row
+
+                count = 0
+                for row in reader:
+                    title = row[0]
+                    artist = row[1]
+                    duration = int(row[2])
+                    genre = row[3]
+
+                    self.add_song(title, artist, duration, genre)
+                    count += 1
+
+                return f"{count} songs imported successfully!\n"
+
+        except FileNotFoundError:
+            return "File not found.\n"
+
+        except Exception as e:
+            return f"An error occurred: {e}\n"
+            
     #Method which adds songs from csv file

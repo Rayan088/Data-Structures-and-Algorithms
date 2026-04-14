@@ -68,8 +68,8 @@ def main():
             stats_menu(pl)
 
         elif choice == "7":
-            csv_file = "songs.csv"
-            print(pl.import_songs(csv_file))
+            file_name = "Projects/Music_Playlist/data/songs.csv"
+            print(pl.import_songs(file_name))
 
         elif choice == "8":
             print("Exited playlist\n")
