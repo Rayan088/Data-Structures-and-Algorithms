@@ -57,14 +57,15 @@ class Graphs:
     def common_title_words(self):
         songs = self.get_all_songs()
 
+        stop_words =  ["the", "a", "and", "of", "to", "in"]
+
         most_common_words = {}
         for song in songs:
-            words = song.title.split()
-
-            for word in words:
-                word = word.lower()
-
-                if word in songs:
+            for word in song.title.lower().split():
+                if word in stop_words:
+                    continue
+                
+                if word in most_common_words:
                     most_common_words[word] += 1
                 else:
                     most_common_words[word] = 1
