@@ -1,4 +1,4 @@
-from playlist import Playlist
+from src.playlist import Playlist
 from visualisations.graphs import Graphs
 
 def stats_menu(pl):
@@ -101,7 +101,7 @@ def main():
             graphs_menu(pl)
 
         elif choice == "8":
-            file_name = "Projects/Music_Playlist/data/songs.csv"
+            file_name = "data/songs.csv"
             print(pl.import_songs(file_name))
 
         elif choice == "9":

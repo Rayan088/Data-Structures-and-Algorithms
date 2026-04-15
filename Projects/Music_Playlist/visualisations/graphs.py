@@ -43,6 +43,23 @@ class Graphs:
             else:
                 bins["240+"] += 1
 
+        labels = list(bins.keys())
+        counts = list(bins.values())
+        
+        sns.set_style("whitegrid")
+
+        plt.figure(figsize=(8,5))
+        sns.barplot(x=labels, y=counts)
+
+        plt.title("Song Duration Distribution")
+        plt.xlabel("Duration Range")
+        plt.ylabel("Number of songs")
+
+        plt.show(block=False)
+        plt.pause(0.1)
+
+    #Method which generates bar graph of song durations
+        
     def songs_per_genre(self):
         songs = self.get_all_songs()
 
@@ -53,6 +70,23 @@ class Graphs:
                 all_genres[song.genre] += 1
             else:
                 all_genres[song.genre] = 1
+
+        labels = list(all_genres.keys())
+        counts = list(all_genres.values())
+
+        sns.set_style("whitegrid")
+
+        plt.figure(figsize=(8, 5))
+        sns.barplot(x=labels, y=counts)
+
+        plt.title("Songs Genre Distribution")
+        plt.xlabel("Genre")
+        plt.ylabel("Number of songs")
+
+        plt.show(block=False)
+        plt.pause(0.1)
+
+    #Method which generates bar graph of song genre quantities
 
     def common_title_words(self):
         songs = self.get_all_songs()
@@ -69,3 +103,23 @@ class Graphs:
                     most_common_words[word] += 1
                 else:
                     most_common_words[word] = 1
+
+        top_words = dict(sorted(most_common_words.items(), key=lambda x:x[1], reverse=True)[:5])
+        #Sorting the list to find top 5 most mentioned words
+
+        labels = list(top_words.keys())
+        counts = list(top_words.values())
+
+        sns.set_style("whitegrid")
+
+        plt.figure(figsize=(8, 5))
+        sns.barplot(x=labels, y=counts)
+
+        plt.title("Most Common Title Words")
+        plt.xlabel("Frequency")
+        plt.ylabel("Title Words")
+
+        plt.show(block=False)
+        plt.pause(0.1)
+
+    #Method which generates bar graph of most common title words

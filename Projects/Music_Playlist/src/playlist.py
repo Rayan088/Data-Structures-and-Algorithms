@@ -1,5 +1,5 @@
-from song_node import SongNode
-from stats import Stats
+from src.song_node import SongNode
+from src.stats import Stats
 
 import random
 import csv
