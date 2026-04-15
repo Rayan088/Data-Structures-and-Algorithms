@@ -1,5 +1,5 @@
 from playlist import Playlist
-from stats import Stats
+from visualisations.graphs import Graphs
 
 def stats_menu(pl):
     st = pl.stats
@@ -30,6 +30,35 @@ def stats_menu(pl):
 
 #Method which displays user menu for stats
 
+def graphs_menu(pl):
+    graphs_ = Graphs(pl)
+
+    while True:
+        
+        choice = input("---Visualisations--- \n"
+                       "1. Songs per Duration \n"
+                       "2. Songs per Genre \n"
+                       "3. Most common title words \n"
+                       "4. Exit \n")
+        
+        if choice == "1":
+            graphs_.song_durations()
+
+        elif choice == "2":
+            graphs_.songs_per_genre()
+
+        elif choice == "3":
+            graphs_.common_title_words()
+
+        elif choice == "4":
+            print("Exited visualisations")
+            break
+
+        else:
+            print("Invalid input entered")
+
+#Method which displays user menu for visualisations
+
 def main():
     pl = Playlist()
     
@@ -41,8 +70,9 @@ def main():
                    "4. Previous Song\n"
                    "5. Shuffle\n"
                    "6. Stats\n"
-                   "7. Import Songs from CSV\n"
-                   "8. Exit\n")
+                   "7. Visualisations\n"
+                   "8. Import Songs from CSV\n"
+                   "9. Exit\n")
         
         if choice == "1":
             title = input("Title: ")
@@ -68,10 +98,13 @@ def main():
             stats_menu(pl)
 
         elif choice == "7":
+            graphs_menu(pl)
+
+        elif choice == "8":
             file_name = "Projects/Music_Playlist/data/songs.csv"
             print(pl.import_songs(file_name))
 
-        elif choice == "8":
+        elif choice == "9":
             print("Exited playlist\n")
             break
 
