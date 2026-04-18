@@ -6,21 +6,34 @@ class Stats:
 
     #Initialiser method
 
-    def update_total_duration(self, song):
-        self.total_duration += song.duration
+    def update_total_duration(self, song, remove=False):
+        if remove:
+            self.total_duration -= song.duration
+        else:
+            self.total_duration += song.duration
     
     #Method which adds song duration
 
-    def update_total_play_counts(self):
-        self.total_play_count += 1
+    def update_total_play_counts(self, remove=False):
+        if remove:
+            self.total_play_count += 1
+        else:
+            self.total_play_count -= 1
 
     #Method which appends play count by 1
 
-    def update_genre_counts(self, song):
-        if song.genre in self.genre_counts:
-            self.genre_counts[song.genre] += 1
+    def update_genre_counts(self, song, remove=False):
+        if remove:
+            if song.genre in self.genre_counts:
+                self.genre_counts[song.genre] -= 1
+                if self.genre_counts[song.genre] == 0:
+                    del self.genre_counts[song.genre]
+
         else:
-            self.genre_counts[song.genre] = 1
+            if song.genre in self.genre_counts:
+                self.genre_counts[song.genre] += 1
+            else:
+                self.genre_counts[song.genre] = 1
 
     #Method which calculates no of songs per genre
 
