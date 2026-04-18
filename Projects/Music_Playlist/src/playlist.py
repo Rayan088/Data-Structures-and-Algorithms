@@ -35,8 +35,43 @@ class Playlist:
 
     #Method which adds song to end of linked list
 
-    def remove_song(self):
-        pass
+    def remove_song(self, title):
+        if self.head is None:
+            return "Playlist is empty. No song to remove.\n"
+        
+        curr = self.head
+
+        while curr:
+            if curr.title == title:
+                self.stats.update_genre_counts(curr, remove=True)
+                self.stats.update_genre_counts(curr, remove=True)
+                self.stats.update_total_play_counts()
+
+                if curr == self.head:
+                    self.head = curr.next
+                    if self.head:
+                        self.head.prev = None
+
+                elif curr == self.tail:
+                    self.tail == curr.prev
+                    if self.tail:
+                        self.tail.next = None
+
+                else:
+                    curr.prev.next = curr.next
+                    curr.next.prev = curr.prev
+
+                if curr == self.curr:
+                    if curr.next:
+                        self.curr = curr.next
+                    else:
+                        curr.prev
+
+                return f"Song '{title}' has been removed \n"
+
+            curr = curr.next
+
+        return f"Song '{title}' not found in the playlist \n"   
 
     #Method which removes song
 
