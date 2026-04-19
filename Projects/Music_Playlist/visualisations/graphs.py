@@ -46,13 +46,13 @@ class Graphs:
         labels = list(bins.keys())
         counts = list(bins.values())
         
-        sns.set_style("whitegrid")
+        sns.set_style("whitegrid", {"axes.facecolor": "#dde6f0"})
 
-        plt.figure(figsize=(8,5))
-        sns.barplot(x=labels, y=counts)
+        plt.figure(figsize=(8, 5))
+        sns.barplot(x=labels, y=counts, color="#326da8")
 
         plt.title("Song Duration Distribution")
-        plt.xlabel("Duration Range")
+        plt.xlabel("Duration Range (seconds)")
         plt.ylabel("Number of songs")
 
         plt.show(block=False)
@@ -74,10 +74,10 @@ class Graphs:
         labels = list(all_genres.keys())
         counts = list(all_genres.values())
 
-        sns.set_style("whitegrid")
+        sns.set_style("whitegrid", {"axes.facecolor": "#dde6f0"})
 
         plt.figure(figsize=(8, 5))
-        sns.barplot(x=labels, y=counts)
+        sns.barplot(x=labels, y=counts, color="#326da8")
 
         plt.title("Songs Genre Distribution")
         plt.xlabel("Genre")
@@ -110,13 +110,13 @@ class Graphs:
         labels = list(top_words.keys())
         counts = list(top_words.values())
 
-        sns.set_style("whitegrid")
+        sns.set_style("whitegrid", {"axes.facecolor": "#dde6f0"})
 
         plt.figure(figsize=(8, 5))
-        sns.barplot(x=labels, y=counts)
+        sns.barplot(x=labels, y=counts, color="#326da8")
 
         plt.title("Most Common Title Words")
-        plt.xlabel("Frequency")
+        plt.xlabel("Frequency (words)")
         plt.ylabel("Title Words")
 
         plt.show(block=False)
