@@ -16,7 +16,7 @@ class Queue:
         self.queue = []
 
     def enqueue(self, item):
-        return self.queue.append(item)
+        self.queue.append(item)
     
     def dequeue(self):
         if not self.is_empty():
