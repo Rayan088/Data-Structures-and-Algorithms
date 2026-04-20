@@ -33,7 +33,7 @@ Data/songs.csv
 
 ### Menu System
 
-**Playlist Menu**
+**Playlist Menu**  
 --- Playlist Menu ---
 
 1. Add Song
@@ -46,7 +46,7 @@ Data/songs.csv
 8. Import Songs from CSV
 9. Exit
 
-**Stats Menu**
+**Stats Menu**  
 --- Stats Menu ---
 
 1. Total Duration
@@ -54,7 +54,7 @@ Data/songs.csv
 3. Genre Counts
 4. Exit
 
-**Visualisations Menu**
+**Visualisations Menu**  
 --- Visualisations ---
 
 1. Songs per Duration
@@ -64,7 +64,7 @@ Data/songs.csv
 
 ### Key Components
 
-**SongNode**
+**SongNode (song_node.py)**  
 Represents each song with:
 
 - Title
@@ -72,18 +72,18 @@ Represents each song with:
 - Duration
 - Genre
 
-**Playlist**
+**Playlist (playlist.py)**  
 Manages songs using a doubly linked list  
 Handles navigation, shuffles, and imports
 
-**Stats**
+**Stats (stats.py)**  
 Tracks:
 
 - Total duration
 - Play counts
 - Genre distribution
 
-**Graphs**
+**Graphs (graphs.py)**  
 Generates visual insights using charts
 
 ### Limitations
