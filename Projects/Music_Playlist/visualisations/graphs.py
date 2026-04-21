@@ -116,8 +116,8 @@ class Graphs:
         sns.barplot(x=labels, y=counts, color="#326da8")
 
         plt.title("Most Common Title Words")
-        plt.xlabel("Frequency (words)")
-        plt.ylabel("Title Words")
+        plt.xlabel("Title Words")
+        plt.ylabel("Frequency")
 
         plt.show(block=False)
         plt.pause(0.1)

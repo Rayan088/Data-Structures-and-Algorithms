@@ -77,13 +77,20 @@ def main():
         if choice == "1":
             title = input("Title: ")
             artist = input("Artist: ")
-            duration = input("Duration (in seconds): ")
+            
+            try:
+                duration = int(input("Duration (in seconds): "))
+            except:
+                print("Invalid duration")
+                continue
+
             genre = input("Genre: ")
 
             print(pl.add_song(title, artist, duration, genre))
         
         elif choice == "2":
-            print(pl.remove_song())
+            title = input("Enter title to remove: ")
+            print(pl.remove_song(title))
 
         elif choice == "3":
             print(pl.next_song())

@@ -16,9 +16,9 @@ class Stats:
 
     def update_total_play_counts(self, remove=False):
         if remove:
-            self.total_play_count += 1
-        else:
             self.total_play_count -= 1
+        else:
+            self.total_play_count += 1
 
     #Method which appends play count by 1
 
