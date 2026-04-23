@@ -29,7 +29,15 @@ class App:
         frame.pack(fill="both", expand=True)
 
     def create_main_frame(self):
-        pass
+        tk.Button(self.main_frame, text="Add Song", command=self.add_song).pack()
+        tk.Button(self.main_frame, text="Remove Song", command=self.remove_song).pack()
+        tk.Button(self.main_frame, text="Next Song", command=self.next_song).pack()
+        tk.Button(self.main_frame, text="Previous Song", command=self.previous_song).pack()
+        tk.Button(self.main_frame, text="Shuffle", command=self.shuffle).pack()
+        tk.Button(self.main_frame, text="Import CSV", command=self.import_from_csv).pack()
+
+        tk.Button(self.main_frame, text="Stats", command=self.stats).pack()
+        tk.Button(self.main_frame, text="Visualisation", command=self.visualisations).pack()
 
     def create_stats_frame(self):
         pass
@@ -52,13 +60,13 @@ class App:
     def shuffle(self):
         pass
 
+    def import_from_csv(self):
+        pass
+
     def stats(self):
         pass
 
     def visualisations(self):
-        pass
-
-    def import_from_csv(self):
         pass
 
 root = tk.Tk()
