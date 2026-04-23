@@ -29,6 +29,26 @@ class App:
         frame.pack(fill="both", expand=True)
 
     def create_main_frame(self):
+        tk.Label(self.main_frame, text="Title").pack()
+        self.title_entry = tk.Entry(self.main_frame)
+        self.title_entry.pack()
+
+        tk.Label(self.main_frame, text="Artist").pack()
+        self.artist_entry = tk.Entry(self.main_frame)
+        self.artist_entry.pack()
+
+        tk.Label(self.main_frame, text="Duration").pack()
+        self.duration_entry = tk.Entry(self.main_frame)
+        self.duration_entry.pack()
+
+        tk.Label(self.main_frame, text="Genre").pack()
+        self.genre_entry = tk.Entry(self.main_frame)
+        self.genre_entry.pack()
+
+        tk.Label(self.main_frame, text="Remove Title").pack()
+        self.remove_entry = tk.Entry(self.main_frame)
+        self.remove_entry.pack()
+
         tk.Button(self.main_frame, text="Add Song", command=self.add_song).pack()
         tk.Button(self.main_frame, text="Remove Song", command=self.remove_song).pack()
         tk.Button(self.main_frame, text="Next Song", command=self.next_song).pack()
@@ -40,34 +60,45 @@ class App:
         tk.Button(self.main_frame, text="Visualisation", command=self.visualisations).pack()
 
     def create_stats_frame(self):
-        pass
+        tk.Label(self.stats_frame, text="Stats").pack()
 
     def create_graphs_frame(self):
-        pass
+        tk.Label(self.graph_frame, text="Visualisations").pack()
 
-    def add_song(self, song):
-        pass
+    def add_song(self):
+        title = self.title_entry.get()
+        artist = self.artist_entry.get()
 
-    def remove_song(self, song):
-        pass
+        try:
+            duration = int(self.duration_entry.get())
+        except:
+            return
+
+        genre = self.genre_entry.get()
+
+        self.pl.add_song(title, artist, duration, genre)
+
+    def remove_song(self):
+        remove_title = self.remove_entry.get()
+        self.pl.remove_song(remove_title)
 
     def next_song(self):
-        pass
+        self.pl.next_song()
 
     def previous_song(self):
-        pass
+        self.pl.prev_song()
 
     def shuffle(self):
-        pass
+        self.pl.shuffle()
 
     def import_from_csv(self):
-        pass
+        self.import_from_csv()
 
     def stats(self):
-        pass
+        self.show_frame(self.stats_frame)
 
     def visualisations(self):
-        pass
+        self.show_frame(self.graph_frame)
 
 root = tk.Tk()
 app = App(root)
