@@ -51,23 +51,23 @@ class App:
             self.popup.title("Add Song")
             self.popup.geometry("300x300")
 
-            tk.Label(self.popup, text="Title").pack()
+            tk.Label(self.popup, text="Title").grid(row=0, column=0, padx=5, pady=5)
             self.title_entry = tk.Entry(self.popup)
-            self.title_entry.pack()
+            self.title_entry.grid(row=0, column=1, padx=5, pady=5)
 
-            tk.Label(self.popup, text="Artist").pack()
+            tk.Label(self.popup, text="Artist").grid(row=1, column=0, padx=5, pady=5)
             self.artist_entry = tk.Entry(self.popup)
-            self.artist_entry.pack()
+            self.artist_entry.grid(row=1, column=1, padx=5, pady=5)
 
-            tk.Label(self.popup, text="Duration").pack()
+            tk.Label(self.popup, text="Duration").grid(row=2, column=0, padx=5, pady=5)
             self.duration_entry = tk.Entry(self.popup)
-            self.duration_entry.pack()
+            self.duration_entry.grid(row=2, column=1, padx=5, pady=5)
 
-            tk.Label(self.popup, text="Genre").pack()
+            tk.Label(self.popup, text="Genre").grid(row=3, column=0, padx=5, pady=5)
             self.genre_entry = tk.Entry(self.popup)
-            self.genre_entry.pack()
+            self.genre_entry.grid(row=3, column=1, padx=5, pady=5)
 
-            tk.Button(self.popup, text="Save Song", command=self.add_song).pack()
+            tk.Button(self.popup, text="Save Song", command=self.add_song).grid(row=4, column=0, columnspan=2, pady=10)
 
         else:
             title = self.title_entry.get()
