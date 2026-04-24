@@ -29,15 +29,21 @@ class App:
         frame.pack(fill="both", expand=True)
 
     def create_main_frame(self):
-        tk.Button(self.main_frame, text="Add Song", command=self.add_song).pack()
-        tk.Button(self.main_frame, text="Remove Song", command=self.remove_song).pack()
-        tk.Button(self.main_frame, text="Next Song", command=self.next_song).pack()
-        tk.Button(self.main_frame, text="Previous Song", command=self.previous_song).pack()
-        tk.Button(self.main_frame, text="Shuffle", command=self.shuffle).pack()
-        tk.Button(self.main_frame, text="Import CSV", command=self.import_from_csv).pack()
+        for i in range(8):
+            if i in (0, 7):
+                self.main_frame.columnconfigure(i, weight=1)
+            else:
+                self.main_frame.columnconfigure(i, weight=0)
 
-        tk.Button(self.main_frame, text="Stats", command=self.stats).pack()
-        tk.Button(self.main_frame, text="Visualisation", command=self.visualisations).pack()
+        tk.Button(self.main_frame, text="Add Song", command=self.add_song).grid(row=0, column=1, padx=15, pady=50)
+        tk.Button(self.main_frame, text="Remove Song", command=self.remove_song).grid(row=0, column=2, padx=15, pady=50)
+        tk.Button(self.main_frame, text="Next Song", command=self.next_song).grid(row=0, column=3, padx=15, pady=50)
+        tk.Button(self.main_frame, text="Previous Song", command=self.previous_song).grid(row=0, column=4, padx=15, pady=50)
+        tk.Button(self.main_frame, text="Shuffle", command=self.shuffle).grid(row=0, column=5, padx=15, pady=50)
+        tk.Button(self.main_frame, text="Import CSV", command=self.import_from_csv).grid(row=0, column=6, padx=15, pady=50)
+
+        tk.Button(self.main_frame, text="Stats", command=self.stats).grid(row=1, column=3, padx=15, pady=20)
+        tk.Button(self.main_frame, text="Visualisation", command=self.visualisations).grid(row=1, column=4, padx=15, pady=20)
 
     def create_stats_frame(self):
         tk.Label(self.stats_frame, text="Stats").pack()
