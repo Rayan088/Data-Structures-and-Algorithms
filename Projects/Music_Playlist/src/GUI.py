@@ -67,7 +67,7 @@ class App:
             self.genre_entry = tk.Entry(self.popup)
             self.genre_entry.grid(row=3, column=1, padx=5, pady=5)
 
-            tk.Button(self.popup, text="Save Song", command=self.add_song).grid(row=4, column=0, columnspan=2, pady=10)
+            tk.Button(self.popup, text="Add Song", command=self.add_song).grid(row=4, column=0, columnspan=2, pady=10)
 
         else:
             title = self.title_entry.get()
@@ -93,12 +93,12 @@ class App:
             self.remove_popup.title("Remove Song")
             self.remove_popup.geometry("300x300")
 
-            tk.Label(self.remove_popup, text="Enter song title").pack()
+            tk.Label(self.remove_popup, text="Enter song title").grid(row=0, column=0, padx=5, pady=5)
 
             self.remove_entry = tk.Entry(self.remove_popup)
-            self.remove_entry.pack()
+            self.remove_entry.grid(row=0, column=1, padx=5, pady=5)
 
-            tk.Button(self.remove_popup, text="Remove Song", command=self.remove_song).pack(pady=10)
+            tk.Button(self.remove_popup, text="Remove Song", command=self.remove_song).grid(row=1, column=1, sticky="w", columnspan=2, pady=0)
 
         else:
             remove_title = self.remove_entry.get()
