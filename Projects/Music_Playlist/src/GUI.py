@@ -29,26 +29,6 @@ class App:
         frame.pack(fill="both", expand=True)
 
     def create_main_frame(self):
-        tk.Label(self.main_frame, text="Title").pack()
-        self.title_entry = tk.Entry(self.main_frame)
-        self.title_entry.pack()
-
-        tk.Label(self.main_frame, text="Artist").pack()
-        self.artist_entry = tk.Entry(self.main_frame)
-        self.artist_entry.pack()
-
-        tk.Label(self.main_frame, text="Duration").pack()
-        self.duration_entry = tk.Entry(self.main_frame)
-        self.duration_entry.pack()
-
-        tk.Label(self.main_frame, text="Genre").pack()
-        self.genre_entry = tk.Entry(self.main_frame)
-        self.genre_entry.pack()
-
-        tk.Label(self.main_frame, text="Remove Title").pack()
-        self.remove_entry = tk.Entry(self.main_frame)
-        self.remove_entry.pack()
-
         tk.Button(self.main_frame, text="Add Song", command=self.add_song).pack()
         tk.Button(self.main_frame, text="Remove Song", command=self.remove_song).pack()
         tk.Button(self.main_frame, text="Next Song", command=self.next_song).pack()
@@ -66,21 +46,71 @@ class App:
         tk.Label(self.graph_frame, text="Visualisations").pack()
 
     def add_song(self):
-        title = self.title_entry.get()
-        artist = self.artist_entry.get()
+        if not hasattr(self, "popup"):
+            self.popup = tk.Toplevel(self.root)
+            self.popup.title("Add Song")
+            self.popup.geometry("300x300")
 
-        try:
-            duration = int(self.duration_entry.get())
-        except:
-            return
+            tk.Label(self.popup, text="Title").pack()
+            self.title_entry = tk.Entry(self.popup)
+            self.title_entry.pack()
 
-        genre = self.genre_entry.get()
+            tk.Label(self.popup, text="Artist").pack()
+            self.artist_entry = tk.Entry(self.popup)
+            self.artist_entry.pack()
 
-        self.pl.add_song(title, artist, duration, genre)
+            tk.Label(self.popup, text="Duration").pack()
+            self.duration_entry = tk.Entry(self.popup)
+            self.duration_entry.pack()
+
+            tk.Label(self.popup, text="Genre").pack()
+            self.genre_entry = tk.Entry(self.popup)
+            self.genre_entry.pack()
+
+            tk.Button(self.popup, text="Save Song", command=self.add_song).pack()
+
+        else:
+            title = self.title_entry.get()
+            artist = self.artist_entry.get()
+
+            try:
+                duration = int(self.duration_entry.get())
+            except:
+                messagebox.showerror("Error", "Duration must be a number")
+                return
+
+            genre = self.genre_entry.get()
+
+            self.pl.add_song(title, artist, duration, genre)
+            messagebox.showinfo("Success", "Song added")
+
+            self.popup.destroy()
+            del self.popup
 
     def remove_song(self):
-        remove_title = self.remove_entry.get()
-        self.pl.remove_song(remove_title)
+        if not hasattr(self, "remove_popup"):
+            self.remove_popup = tk.Toplevel(self.root)
+            self.remove_popup.title("Remove Song")
+            self.remove_popup.geometry("300x300")
+
+            tk.Label(self.remove_popup, text="Enter song title").pack()
+
+            self.remove_entry = tk.Entry(self.remove_popup)
+            self.remove_entry.pack()
+
+            tk.Button(self.remove_popup, text="Remove Song", command=self.remove_song).pack(pady=10)
+
+        else:
+            remove_title = self.remove_entry.get()
+            if remove_title == "":
+                messagebox.showerror("Error", "Enter a song title")
+                return
+            
+            self.pl.remove_song(remove_title)
+            messagebox.showinfo("Success", "Song removed")
+
+            self.remove_popup.destroy()
+            del self.remove_popup
 
     def next_song(self):
         self.pl.next_song()
@@ -92,7 +122,7 @@ class App:
         self.pl.shuffle()
 
     def import_from_csv(self):
-        self.import_from_csv()
+        self.pl.import_songs("data/songs.csv")
 
     def stats(self):
         self.show_frame(self.stats_frame)
