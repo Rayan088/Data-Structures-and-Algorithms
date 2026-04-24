@@ -88,12 +88,6 @@ class App:
         artist = self.artist_entry.get()
         duration = self.duration_entry.get()
 
-        try:
-            duration = int(self.duration_entry.get())
-        except:
-            messagebox.showerror("Error", "Duration must be a number")
-            return
-
         genre = self.genre_entry.get()
 
         if not (title and artist and duration and genre):
@@ -113,29 +107,29 @@ class App:
         del self.popup
 
     def remove_song(self):
-        if not hasattr(self, "remove_popup"):
-            self.remove_popup = tk.Toplevel(self.root)
-            self.remove_popup.title("Remove Song")
-            self.remove_popup.geometry("300x300")
+        self.remove_popup = tk.Toplevel(self.root)
+        self.remove_popup.title("Remove Song")
+        self.remove_popup.geometry("300x300")
 
-            tk.Label(self.remove_popup, text="Enter song title").grid(row=0, column=0, padx=5, pady=5)
+        tk.Label(self.remove_popup, text="Enter song title").grid(row=0, column=0, padx=5, pady=5)
 
-            self.remove_entry = tk.Entry(self.remove_popup)
-            self.remove_entry.grid(row=0, column=1, padx=5, pady=5)
+        self.remove_entry = tk.Entry(self.remove_popup)
+        self.remove_entry.grid(row=0, column=1, padx=5, pady=5)
 
-            tk.Button(self.remove_popup, text="Remove Song", command=self.remove_song).grid(row=1, column=1, sticky="w", columnspan=2, pady=0)
+        tk.Button(self.remove_popup, text="Remove Song", command=self.confirm_remove_song).grid(row=1, column=1, sticky="w", columnspan=2, pady=0)
 
-        else:
-            remove_title = self.remove_entry.get()
-            if remove_title == "":
-                messagebox.showerror("Error", "Enter a song title")
-                return
-            
-            self.pl.remove_song(remove_title)
-            messagebox.showinfo("Success", "Song removed")
+    def confirm_remove_song(self):
+        remove_title = self.remove_entry.get()
 
-            self.remove_popup.destroy()
-            del self.remove_popup
+        if remove_title == "":
+            messagebox.showerror("Error", "No song title entered")
+            return
+        
+        self.pl.remove_song(remove_title)
+        messagebox.showinfo("Success", "Song removed")
+
+        self.remove_popup.destroy()
+        del self.remove_popup
 
     def next_song(self):
         self.pl.next_song()
