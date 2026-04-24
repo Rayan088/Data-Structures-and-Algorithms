@@ -9,6 +9,7 @@ class App:
         self.root = root
         self.root.geometry("1000x700")
         self.root.title("Music Playlist")
+        self.root.configure(bg="lightblue")
 
         self.pl = Playlist()
         self.graphs = Graphs(self.pl)
@@ -29,6 +30,8 @@ class App:
         frame.pack(fill="both", expand=True)
 
     def create_main_frame(self):
+        self.main_frame = tk.Frame(self.root, bg="lightblue")
+
         for i in range(8):
             if i in (0, 7):
                 self.main_frame.columnconfigure(i, weight=1)
@@ -46,52 +49,68 @@ class App:
         tk.Button(self.main_frame, text="Visualisation", command=self.visualisations).grid(row=1, column=4, padx=15, pady=20)
 
     def create_stats_frame(self):
+        self.stats_frame = tk.Frame(self.root, bg="lightblue")
+
         tk.Label(self.stats_frame, text="Stats").pack()
+        tk.Button(self.stats_frame, text="Back", command=lambda: self.show_frame(self.main_frame)).pack(pady=50)
 
     def create_graphs_frame(self):
+        self.graph_frame = tk.Frame(self.root, bg="lightblue")
+
         tk.Label(self.graph_frame, text="Visualisations").pack()
+        tk.Button(self.graph_frame, text="Back", command=lambda: self.show_frame(self.main_frame)).pack(pady=50)
 
     def add_song(self):
-        if not hasattr(self, "popup"):
-            self.popup = tk.Toplevel(self.root)
-            self.popup.title("Add Song")
-            self.popup.geometry("300x300")
+        self.popup = tk.Toplevel(self.root)
+        self.popup.title("Add Song")
+        self.popup.geometry("300x300")
 
-            tk.Label(self.popup, text="Title").grid(row=0, column=0, padx=5, pady=5)
-            self.title_entry = tk.Entry(self.popup)
-            self.title_entry.grid(row=0, column=1, padx=5, pady=5)
+        tk.Label(self.popup, text="Title").grid(row=0, column=0, padx=5, pady=5)
+        self.title_entry = tk.Entry(self.popup)
+        self.title_entry.grid(row=0, column=1, padx=5, pady=5)
 
-            tk.Label(self.popup, text="Artist").grid(row=1, column=0, padx=5, pady=5)
-            self.artist_entry = tk.Entry(self.popup)
-            self.artist_entry.grid(row=1, column=1, padx=5, pady=5)
+        tk.Label(self.popup, text="Artist").grid(row=1, column=0, padx=5, pady=5)
+        self.artist_entry = tk.Entry(self.popup)
+        self.artist_entry.grid(row=1, column=1, padx=5, pady=5)
 
-            tk.Label(self.popup, text="Duration").grid(row=2, column=0, padx=5, pady=5)
-            self.duration_entry = tk.Entry(self.popup)
-            self.duration_entry.grid(row=2, column=1, padx=5, pady=5)
+        tk.Label(self.popup, text="Duration").grid(row=2, column=0, padx=5, pady=5)
+        self.duration_entry = tk.Entry(self.popup)
+        self.duration_entry.grid(row=2, column=1, padx=5, pady=5)
 
-            tk.Label(self.popup, text="Genre").grid(row=3, column=0, padx=5, pady=5)
-            self.genre_entry = tk.Entry(self.popup)
-            self.genre_entry.grid(row=3, column=1, padx=5, pady=5)
+        tk.Label(self.popup, text="Genre").grid(row=3, column=0, padx=5, pady=5)
+        self.genre_entry = tk.Entry(self.popup)
+        self.genre_entry.grid(row=3, column=1, padx=5, pady=5)
 
-            tk.Button(self.popup, text="Add Song", command=self.add_song).grid(row=4, column=0, columnspan=2, pady=10)
+        tk.Button(self.popup, text="Add Song", command=self.confirm_add_song).grid(row=4, column=0, columnspan=2, pady=10)
 
-        else:
-            title = self.title_entry.get()
-            artist = self.artist_entry.get()
+    def confirm_add_song(self):
+        title = self.title_entry.get()
+        artist = self.artist_entry.get()
+        duration = self.duration_entry.get()
 
-            try:
-                duration = int(self.duration_entry.get())
-            except:
-                messagebox.showerror("Error", "Duration must be a number")
-                return
+        try:
+            duration = int(self.duration_entry.get())
+        except:
+            messagebox.showerror("Error", "Duration must be a number")
+            return
 
-            genre = self.genre_entry.get()
+        genre = self.genre_entry.get()
 
-            self.pl.add_song(title, artist, duration, genre)
-            messagebox.showinfo("Success", "Song added")
+        if not (title and artist and duration and genre):
+            messagebox.showerror("Error", "Missing Field")
+            return
+        
+        try:
+            duration = int(duration)
+        except ValueError:
+            messagebox.showerror("Error", "Duration must be a number")
+            return
+        
+        self.pl.add_song(title, artist, duration, genre)
+        messagebox.showinfo("Success", "Song added")
 
-            self.popup.destroy()
-            del self.popup
+        self.popup.destroy()
+        del self.popup
 
     def remove_song(self):
         if not hasattr(self, "remove_popup"):
