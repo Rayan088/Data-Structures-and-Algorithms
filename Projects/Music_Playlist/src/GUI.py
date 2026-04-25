@@ -132,16 +132,20 @@ class App:
         del self.remove_popup
 
     def next_song(self):
-        self.pl.next_song()
+        message = self.pl.next_song()
+        messagebox.showinfo("Now playing", message)
 
     def previous_song(self):
-        self.pl.prev_song()
+        message = self.pl.prev_song()
+        messagebox.showinfo("Now playing", message)
 
     def shuffle(self):
-        self.pl.shuffle()
+        message = self.pl.shuffle()
+        messagebox.showinfo("Now playing", message)
 
     def import_from_csv(self):
-        self.pl.import_songs("data/songs.csv")
+        message = self.pl.import_songs("data/songs.csv")
+        messagebox.showinfo("Now playing", message)
 
     def stats(self):
         self.show_frame(self.stats_frame)
