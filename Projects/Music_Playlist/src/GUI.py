@@ -107,8 +107,9 @@ class App:
             messagebox.showerror("Error", "Duration must be a number")
             return
         
-        self.pl.add_song(title, artist, duration, genre)
-        messagebox.showinfo("Success", "Song added")
+        message = self.pl.add_song(title, artist, duration, genre)
+        self.result_label.config(text=message)
+        messagebox.showinfo("Success", message)
 
         self.popup.destroy()
         del self.popup
@@ -132,26 +133,31 @@ class App:
             messagebox.showerror("Error", "No song title entered")
             return
         
-        self.pl.remove_song(remove_title)
-        messagebox.showinfo("Success", "Song removed")
+        message = self.pl.remove_song(remove_title)
+        self.result_label.config(text=message)
+        messagebox.showinfo("Success", message)
 
         self.remove_popup.destroy()
         del self.remove_popup
 
     def next_song(self):
         message = self.pl.next_song()
+        self.result_label.config(text=message)
         messagebox.showinfo("Now playing", message)
 
     def previous_song(self):
         message = self.pl.prev_song()
+        self.result_label.config(text=message)
         messagebox.showinfo("Now playing", message)
 
     def shuffle(self):
         message = self.pl.shuffle()
+        self.result_label.config(text=message)
         messagebox.showinfo("Now playing", message)
 
     def import_from_csv(self):
         message = self.pl.import_songs("data/songs.csv")
+        self.result_label.config(text=message)
         messagebox.showinfo("Now playing", message)
 
     def stats(self):
