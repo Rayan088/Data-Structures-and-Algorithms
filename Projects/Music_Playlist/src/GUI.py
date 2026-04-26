@@ -61,14 +61,20 @@ class App:
     def create_stats_frame(self):
         self.stats_frame = tk.Frame(self.root, bg="#120A38")
 
-        tk.Label(self.stats_frame, text="Stats", font=("Arial", 28, "bold"), bg="#120A38", fg="#FFFFFF").grid(row=0, column=1, columnspan=6, pady=10)
-        tk.Button(self.stats_frame, text="Back", command=lambda: self.show_frame(self.main_frame), bg="#22145C", fg="#FFFFFF").grid(row=1, column=1, columnspan=6, pady=50)
+        for i in range(6):
+            self.stats_frame.grid_columnconfigure(i, weight=1)
+
+        tk.Label(self.stats_frame, text="Stats", font=("Arial", 28, "bold"), bg="#120A38", fg="#FFFFFF").grid(row=0, column=0, columnspan=6, pady=10, sticky="nsew")
+        tk.Button(self.stats_frame, text="Back", command=lambda: self.show_frame(self.main_frame), bg="#22145C", fg="#FFFFFF").grid(row=1, column=0, columnspan=6, pady=50)
 
     def create_graphs_frame(self):
         self.graph_frame = tk.Frame(self.root, bg="#120A38")
 
-        tk.Label(self.graph_frame, text="Visualisations", font=("Arial", 28, "bold"), bg="#120A38", fg="#FFFFFF").grid(row=0, column=1, columnspan=6, pady=10)
-        tk.Button(self.graph_frame, text="Back", command=lambda: self.show_frame(self.main_frame), bg="#22145C", fg="#FFFFFF").grid(row=1, column=1, columnspan=6, pady=50)
+        for i in range(6):
+            self.graph_frame.grid_columnconfigure(i, weight=1)
+
+        tk.Label(self.graph_frame, text="Visualisations", font=("Arial", 28, "bold"), bg="#120A38", fg="#FFFFFF").grid(row=0, column=0, columnspan=6, pady=10, sticky="snew")
+        tk.Button(self.graph_frame, text="Back", command=lambda: self.show_frame(self.main_frame), bg="#22145C", fg="#FFFFFF").grid(row=1, column=0, columnspan=6, pady=50)
 
     def add_song(self):
         self.popup = tk.Toplevel(self.root)
