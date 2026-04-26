@@ -39,7 +39,7 @@ class App:
                 self.main_frame.columnconfigure(i, weight=0)
 
         tk.Label(self.main_frame, text="Music Playlist", font=("Arial", 28, "bold"), bg="#120A38", fg="#FFFFFF").grid(row=0, column=1, columnspan=6, pady=10)
-        tk.Label(self.main_frame, text="Manage and enjoy your favourite songs", font=("Arial", 12), bg="#1A1248", fg="#FFFFFF").grid(row=1, column=1, columnspan=6)
+        tk.Label(self.main_frame, text="Manage and enjoy your favourite songs", font=("Arial", 12), bg="#120A38", fg="#FFFFFF").grid(row=1, column=1, columnspan=6)
 
         tk.Button(self.main_frame, text="Add Song", command=self.add_song, bg="#22145C", fg="#FFFFFF").grid(row=2, column=1, padx=15, pady=50)
         tk.Button(self.main_frame, text="Remove Song", command=self.remove_song, bg="#22145C", fg="#FFFFFF").grid(row=2, column=2, padx=15, pady=50)
