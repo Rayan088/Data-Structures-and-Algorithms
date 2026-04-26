@@ -74,18 +74,26 @@ class Playlist:
     #Method which removes song
 
     def prev_song(self):
+        if self.curr == None:
+            return "Playlist is empty"
+
         if self.curr and self.curr.prev:
             self.curr = self.curr.prev
             return f"Now playing {self.curr}\n"
+        
         return f"Already at the start of the playlist\n"
 
     #Method which moves to previous song
 
     def next_song(self):
+        if self.curr == None:
+            return "Playlist is empty"
+        
         if self.curr and self.curr.next:
             self.curr = self.curr.next
             self.stats.update_total_play_counts()
             return f"Now playing {self.curr}\n"
+
         return f"Already at the end of the playlist\n"
         
     #Method which moves to next song
