@@ -38,15 +38,22 @@ class App:
             else:
                 self.main_frame.columnconfigure(i, weight=0)
 
-        tk.Button(self.main_frame, text="Add Song", command=self.add_song).grid(row=0, column=1, padx=15, pady=50)
-        tk.Button(self.main_frame, text="Remove Song", command=self.remove_song).grid(row=0, column=2, padx=15, pady=50)
-        tk.Button(self.main_frame, text="Next Song", command=self.next_song).grid(row=0, column=3, padx=15, pady=50)
-        tk.Button(self.main_frame, text="Previous Song", command=self.previous_song).grid(row=0, column=4, padx=15, pady=50)
-        tk.Button(self.main_frame, text="Shuffle", command=self.shuffle).grid(row=0, column=5, padx=15, pady=50)
-        tk.Button(self.main_frame, text="Import CSV", command=self.import_from_csv).grid(row=0, column=6, padx=15, pady=50)
+        tk.Label(self.main_frame, text="Music Playlist", font=("Arial", 28, "bold"), bg="lightblue", fg="darkblue").grid(row=0, column=1, columnspan=6, pady=20)
 
-        tk.Button(self.main_frame, text="Stats", command=self.stats).grid(row=1, column=3, padx=15, pady=20)
-        tk.Button(self.main_frame, text="Visualisation", command=self.visualisations).grid(row=1, column=4, padx=15, pady=20)
+        tk.Button(self.main_frame, text="Add Song", command=self.add_song).grid(row=1, column=1, padx=15, pady=50)
+        tk.Button(self.main_frame, text="Remove Song", command=self.remove_song).grid(row=1, column=2, padx=15, pady=50)
+        tk.Button(self.main_frame, text="Next Song", command=self.next_song).grid(row=1, column=3, padx=15, pady=50)
+        tk.Button(self.main_frame, text="Previous Song", command=self.previous_song).grid(row=1, column=4, padx=15, pady=50)
+        tk.Button(self.main_frame, text="Shuffle", command=self.shuffle).grid(row=1, column=5, padx=15, pady=50)
+        tk.Button(self.main_frame, text="Import CSV", command=self.import_from_csv).grid(row=1, column=6, padx=15, pady=50)
+
+        tk.Button(self.main_frame, text="Stats", command=self.stats).grid(row=2, column=3, padx=15, pady=20)
+        tk.Button(self.main_frame, text="Visualisation", command=self.visualisations).grid(row=2, column=4, padx=15, pady=20)
+
+        self.result_label = tk.Label(self.main_frame, text="Welcome to the playlist manager!",
+                                     font=("Arial", 14), bg="white", fg="black", width=70, height=8,
+                                      wraplength=1000, justify="left", anchor="nw", relief="solid" )
+        self.result_label.grid(row=3, column=1, columnspan=6, pady=30)
 
     def create_stats_frame(self):
         self.stats_frame = tk.Frame(self.root, bg="lightblue")
