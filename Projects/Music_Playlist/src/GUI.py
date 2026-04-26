@@ -30,7 +30,7 @@ class App:
         frame.pack(fill="both", expand=True)
 
     def create_main_frame(self):
-        self.main_frame = tk.Frame(self.root, bg="lightblue")
+        self.main_frame = tk.Frame(self.root, bg="#120A38")
 
         for i in range(8):
             if i in (0, 7):
@@ -38,34 +38,37 @@ class App:
             else:
                 self.main_frame.columnconfigure(i, weight=0)
 
-        tk.Label(self.main_frame, text="Music Playlist", font=("Arial", 28, "bold"), bg="lightblue", fg="darkblue").grid(row=0, column=1, columnspan=6, pady=20)
+        tk.Label(self.main_frame, text="Music Playlist", font=("Arial", 28, "bold"), bg="#120A38", fg="#FFFFFF").grid(row=0, column=1, columnspan=6, pady=10)
+        tk.Label(self.main_frame, text="Manage and enjoy your favourite songs", font=("Arial", 12), bg="#1A1248", fg="#FFFFFF").grid(row=1, column=1, columnspan=6)
 
-        tk.Button(self.main_frame, text="Add Song", command=self.add_song).grid(row=1, column=1, padx=15, pady=50)
-        tk.Button(self.main_frame, text="Remove Song", command=self.remove_song).grid(row=1, column=2, padx=15, pady=50)
-        tk.Button(self.main_frame, text="Next Song", command=self.next_song).grid(row=1, column=3, padx=15, pady=50)
-        tk.Button(self.main_frame, text="Previous Song", command=self.previous_song).grid(row=1, column=4, padx=15, pady=50)
-        tk.Button(self.main_frame, text="Shuffle", command=self.shuffle).grid(row=1, column=5, padx=15, pady=50)
-        tk.Button(self.main_frame, text="Import CSV", command=self.import_from_csv).grid(row=1, column=6, padx=15, pady=50)
+        tk.Button(self.main_frame, text="Add Song", command=self.add_song, bg="#22145C", fg="#FFFFFF").grid(row=2, column=1, padx=15, pady=50)
+        tk.Button(self.main_frame, text="Remove Song", command=self.remove_song, bg="#22145C", fg="#FFFFFF").grid(row=2, column=2, padx=15, pady=50)
+        tk.Button(self.main_frame, text="Next Song", command=self.next_song, bg="#22145C", fg="#FFFFFF").grid(row=2, column=3, padx=15, pady=50)
+        tk.Button(self.main_frame, text="Previous Song", command=self.previous_song, bg="#22145C", fg="#FFFFFF").grid(row=2, column=4, padx=15, pady=50)
+        tk.Button(self.main_frame, text="Shuffle", command=self.shuffle, bg="#22145C", fg="#FFFFFF").grid(row=2, column=5, padx=15, pady=50)
+        tk.Button(self.main_frame, text="Import CSV", command=self.import_from_csv, bg="#22145C", fg="#FFFFFF").grid(row=2, column=6, padx=15, pady=50)
 
-        tk.Button(self.main_frame, text="Stats", command=self.stats).grid(row=2, column=3, padx=15, pady=20)
-        tk.Button(self.main_frame, text="Visualisation", command=self.visualisations).grid(row=2, column=4, padx=15, pady=20)
+        tk.Button(self.main_frame, text="Stats", command=self.stats, bg="#22145C", fg="#FFFFFF").grid(row=3, column=3, padx=15, pady=20)
+        tk.Button(self.main_frame, text="Visualisation", command=self.visualisations, bg="#22145C", fg="#FFFFFF").grid(row=3, column=4, padx=15, pady=20)
 
-        self.result_label = tk.Label(self.main_frame, text="Welcome to the playlist manager!",
-                                     font=("Arial", 14), bg="white", fg="black", width=70, height=8,
-                                      wraplength=1000, justify="left", anchor="nw", relief="solid" )
-        self.result_label.grid(row=3, column=1, columnspan=6, pady=30)
+        self.result_label = tk.Label(self.main_frame, text="Welcome to the playlist manager",
+                                     font=("Arial", 14), bg="#1A1248", fg="#FFFFFF", width=70, height=8,
+                                      wraplength=1000, justify="left", anchor="nw", relief="solid",
+                                      bd=2, highlightbackground="#6D28D9", highlightthickness=2)
+        
+        self.result_label.grid(row=4, column=1, columnspan=6, pady=30)
 
     def create_stats_frame(self):
-        self.stats_frame = tk.Frame(self.root, bg="lightblue")
+        self.stats_frame = tk.Frame(self.root, bg="#120A38")
 
-        tk.Label(self.stats_frame, text="Stats").pack()
-        tk.Button(self.stats_frame, text="Back", command=lambda: self.show_frame(self.main_frame)).pack(pady=50)
+        tk.Label(self.stats_frame, text="Stats", font=("Arial", 28, "bold"), bg="#120A38", fg="#FFFFFF").grid(row=0, column=1, columnspan=6, pady=10)
+        tk.Button(self.stats_frame, text="Back", command=lambda: self.show_frame(self.main_frame), bg="#22145C", fg="#FFFFFF").grid(row=1, column=1, columnspan=6, pady=50)
 
     def create_graphs_frame(self):
-        self.graph_frame = tk.Frame(self.root, bg="lightblue")
+        self.graph_frame = tk.Frame(self.root, bg="#120A38")
 
-        tk.Label(self.graph_frame, text="Visualisations").pack()
-        tk.Button(self.graph_frame, text="Back", command=lambda: self.show_frame(self.main_frame)).pack(pady=50)
+        tk.Label(self.graph_frame, text="Visualisations", font=("Arial", 28, "bold"), bg="#120A38", fg="#FFFFFF").grid(row=0, column=1, columnspan=6, pady=10)
+        tk.Button(self.graph_frame, text="Back", command=lambda: self.show_frame(self.main_frame), bg="#22145C", fg="#FFFFFF").grid(row=1, column=1, columnspan=6, pady=50)
 
     def add_song(self):
         self.popup = tk.Toplevel(self.root)
