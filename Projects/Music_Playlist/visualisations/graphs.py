@@ -48,15 +48,14 @@ class Graphs:
         
         sns.set_style("whitegrid", {"axes.facecolor": "#dde6f0"})
 
-        plt.figure(figsize=(8, 5))
-        sns.barplot(x=labels, y=counts, color="#326da8")
+        fig, ax = plt.subplots(figsize=(8, 5))
+        sns.barplot(x=labels, y=counts, ax=ax, color="#326da8")
 
         plt.title("Song Duration Distribution")
         plt.xlabel("Duration Range (seconds)")
         plt.ylabel("Number of songs")
 
-        plt.show(block=False)
-        plt.pause(0.1)
+        return fig
 
     #Method which generates bar graph of song durations
         
@@ -76,15 +75,14 @@ class Graphs:
 
         sns.set_style("whitegrid", {"axes.facecolor": "#dde6f0"})
 
-        plt.figure(figsize=(8, 5))
-        sns.barplot(x=labels, y=counts, color="#326da8")
+        fig, ax = plt.subplots(figsize=(8, 5))
+        sns.barplot(x=labels, y=counts, ax=ax, color="#326da8")
 
         plt.title("Songs Genre Distribution")
         plt.xlabel("Genre")
         plt.ylabel("Number of songs")
 
-        plt.show(block=False)
-        plt.pause(0.1)
+        return fig
 
     #Method which generates bar graph of song genre quantities
 
@@ -112,14 +110,13 @@ class Graphs:
 
         sns.set_style("whitegrid", {"axes.facecolor": "#dde6f0"})
 
-        plt.figure(figsize=(8, 5))
-        sns.barplot(x=labels, y=counts, color="#326da8")
+        fig, ax = plt.subplots(figsize=(8, 5))
+        sns.barplot(x=labels, y=counts, ax=ax, color="#326da8")
 
         plt.title("Most Common Title Words")
         plt.xlabel("Title Words")
         plt.ylabel("Frequency")
 
-        plt.show(block=False)
-        plt.pause(0.1)
+        return fig
 
     #Method which generates bar graph of most common title words
