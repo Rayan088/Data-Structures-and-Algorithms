@@ -46,14 +46,21 @@ class Graphs:
         labels = list(bins.keys())
         counts = list(bins.values())
         
-        sns.set_style("whitegrid", {"axes.facecolor": "#dde6f0"})
+        sns.set_style("whitegrid")
 
         fig, ax = plt.subplots(figsize=(8, 5))
-        sns.barplot(x=labels, y=counts, ax=ax, color="#326da8")
 
-        plt.title("Song Duration Distribution")
-        plt.xlabel("Duration Range (seconds)")
-        plt.ylabel("Number of songs")
+        fig.patch.set_facecolor("#120A38")
+        ax.set_facecolor("#120A38")
+
+        sns.barplot(x=labels, y=counts, ax=ax, color="#6D28D9", saturation=1)
+
+        plt.title("Song Duration Distribution", color="#6D28D9")
+        plt.xlabel("Duration Range (seconds)", color="white")
+        plt.ylabel("Number of songs", color="white")
+
+        ax.tick_params(axis='x', colors='white')
+        ax.tick_params(axis='y', colors='white')
 
         return fig
 
@@ -73,14 +80,21 @@ class Graphs:
         labels = list(all_genres.keys())
         counts = list(all_genres.values())
 
-        sns.set_style("whitegrid", {"axes.facecolor": "#dde6f0"})
+        sns.set_style("whitegrid")
 
         fig, ax = plt.subplots(figsize=(8, 5))
-        sns.barplot(x=labels, y=counts, ax=ax, color="#326da8")
 
-        plt.title("Songs Genre Distribution")
-        plt.xlabel("Genre")
-        plt.ylabel("Number of songs")
+        fig.patch.set_facecolor("#120A38")
+        ax.set_facecolor("#120A38")
+
+        sns.barplot(x=labels, y=counts, ax=ax, color="#6D28D9", saturation=1)
+
+        plt.title("Songs Genre Distribution", color="#6D28D9")
+        plt.xlabel("Genre", color="white")
+        plt.ylabel("Number of songs", color="white")
+
+        ax.tick_params(axis='x', colors='white')
+        ax.tick_params(axis='y', colors='white')
 
         return fig
 
@@ -108,15 +122,22 @@ class Graphs:
         labels = list(top_words.keys())
         counts = list(top_words.values())
 
-        sns.set_style("whitegrid", {"axes.facecolor": "#dde6f0"})
+        sns.set_style("whitegrid")
 
         fig, ax = plt.subplots(figsize=(8, 5))
-        sns.barplot(x=labels, y=counts, ax=ax, color="#326da8")
 
-        plt.title("Most Common Title Words")
-        plt.xlabel("Title Words")
-        plt.ylabel("Frequency")
+        fig.patch.set_facecolor("#120A38")
+        ax.set_facecolor("#120A38")
 
+        sns.barplot(x=labels, y=counts, ax=ax, color="#6D28D9", saturation=1)
+
+        plt.title("Most Common Title Words", color="#6D28D9")
+        plt.xlabel("Title Words", color="white")
+        plt.ylabel("Frequency", color="white")
+
+        ax.tick_params(axis='x', colors='white')
+        ax.tick_params(axis='y', colors='white')
+        
         return fig
 
     #Method which generates bar graph of most common title words
