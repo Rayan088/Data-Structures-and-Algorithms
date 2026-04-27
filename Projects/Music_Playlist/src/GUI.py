@@ -1,5 +1,6 @@
 import tkinter as tk
 import tkinter.messagebox as messagebox
+from tkinter import ttk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import matplotlib.pyplot as plt
 
@@ -82,40 +83,44 @@ class App:
         for i in range(6):
             self.graph_frame.grid_columnconfigure(i, weight=1)
 
+        self.graph_frame.grid_rowconfigure(2, weight=1)
+
         tk.Label(self.graph_frame, text="Visualisations", font=("Arial", 28, "bold"), bg="#120A38", fg="#FFFFFF").grid(row=0, column=0, columnspan=6, pady=10, sticky="snew")
-        
-        fig1 = self.graphs.song_durations()
-        fig2 = self.graphs.songs_per_genre()
-        fig3 = self.graphs.common_title_words()
+        tk.Label(self.graph_frame, text="Explore your playlist insights and trends", font=("Arial", 12), bg="#120A38", fg="#FFFFFF").grid(row=1, column=0, columnspan=6, pady=20)
 
-        canvas1 = FigureCanvasTkAgg(fig1, master=self.graph_frame)
-        canvas1.draw()
-        canvas1.get_tk_widget().grid(row=1, column=0, columnspan=6, pady=10)
+        notebook = ttk.Notebook(self.graph_frame)
+        notebook.grid(row=2, column=0, columnspan=6, padx=20, pady=10, sticky="nswe")
 
-        canvas2 = FigureCanvasTkAgg(fig2, master=self.graph_frame)
-        canvas2.draw()
-        canvas2.get_tk_widget().grid(row=2, column=0, columnspan=6, pady=10)
+        self.tab1 = tk.Frame(notebook, bg="#120A38")
+        self.tab2 = tk.Frame(notebook, bg="#120A38")
+        self.tab3 = tk.Frame(notebook, bg="#120A38")
 
-        canvas3 = FigureCanvasTkAgg(fig3, master=self.graph_frame)
-        canvas3.draw()
-        canvas3.get_tk_widget().grid(row=3, column=0, columnspan=6, pady=10)
+        notebook.add(self.tab1, text="Duration")
+        notebook.add(self.tab2, text="Genre")
+        notebook.add(self.tab3, text="Title Words")
 
-        tk.Button(self.graph_frame, text="Back", command=lambda: self.show_frame(self.main_frame), bg="#22145C", fg="#FFFFFF").grid(row=4, column=0, columnspan=6, pady=50)
+        tk.Button(self.graph_frame, text="Back", command=lambda: self.show_frame(self.main_frame), bg="#22145C", fg="#FFFFFF").grid(row=3, column=0, columnspan=6, pady=50)
 
     def load_graphs(self):
-        for widget in self.graph_frame.winfo_children():
-            if widget not in self.graph_frame.grid_slaves(row=0) + self.graph_frame.grid_slaves(row=5):
+        for tab in [self.tab1, self.tab2, self.tab3]:
+            for widget in tab.winfo_children():
                 widget.destroy()
 
         fig1 = self.graphs.song_durations()
         fig2 = self.graphs.songs_per_genre()
         fig3 = self.graphs.common_title_words()
 
-        for i, fig, in enumerate([fig1, fig2, fig3], start=1):
-            canvas = FigureCanvasTkAgg(fig, master=self.graph_frame)
-            canvas.draw()
-            canvas.get_tk_widget().grid(row=i, column=0, columnspan=6, pady=10)
+        canvas1 = FigureCanvasTkAgg(fig1, master=self.tab1)
+        canvas1.draw()
+        canvas1.get_tk_widget().grid(row=0, column=0)
 
+        canvas2 = FigureCanvasTkAgg(fig2, master=self.tab2)
+        canvas2.draw()
+        canvas2.get_tk_widget().grid(row=0, column=0)
+
+        canvas3 = FigureCanvasTkAgg(fig3, master=self.tab3)
+        canvas3.draw()
+        canvas3.get_tk_widget().grid(row=0, column=0)
 
     def add_song(self):
         self.popup = tk.Toplevel(self.root)

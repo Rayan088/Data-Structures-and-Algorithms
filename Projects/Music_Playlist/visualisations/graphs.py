@@ -20,6 +20,8 @@ class Graphs:
     #Method which extracts all songs
 
     def song_durations(self):
+        plt.close("all")
+
         songs = self.get_all_songs()
 
         durations = []
@@ -55,9 +57,9 @@ class Graphs:
 
         sns.barplot(x=labels, y=counts, ax=ax, color="#6D28D9", saturation=1)
 
-        plt.title("Song Duration Distribution", color="#6D28D9")
-        plt.xlabel("Duration Range (seconds)", color="white")
-        plt.ylabel("Number of songs", color="white")
+        ax.set_title("Song Duration Distribution", color="#6D28D9")
+        ax.set_xlabel("Duration Range (seconds)", color="white")
+        ax.set_ylabel("Number of songs", color="white")
 
         ax.tick_params(axis='x', colors='white')
         ax.tick_params(axis='y', colors='white')
@@ -67,6 +69,8 @@ class Graphs:
     #Method which generates bar graph of song durations
         
     def songs_per_genre(self):
+        plt.close("all")
+
         songs = self.get_all_songs()
 
         all_genres = {}
@@ -89,9 +93,9 @@ class Graphs:
 
         sns.barplot(x=labels, y=counts, ax=ax, color="#6D28D9", saturation=1)
 
-        plt.title("Songs Genre Distribution", color="#6D28D9")
-        plt.xlabel("Genre", color="white")
-        plt.ylabel("Number of songs", color="white")
+        ax.set_title("Songs Genre Distribution", color="#6D28D9")
+        ax.set_xlabel("Genre", color="white")
+        ax.set_ylabel("Number of songs", color="white")
 
         ax.tick_params(axis='x', colors='white')
         ax.tick_params(axis='y', colors='white')
@@ -101,6 +105,8 @@ class Graphs:
     #Method which generates bar graph of song genre quantities
 
     def common_title_words(self):
+        plt.close("all")
+        
         songs = self.get_all_songs()
 
         stop_words =  ["the", "a", "and", "of", "to", "in"]
@@ -131,9 +137,9 @@ class Graphs:
 
         sns.barplot(x=labels, y=counts, ax=ax, color="#6D28D9", saturation=1)
 
-        plt.title("Most Common Title Words", color="#6D28D9")
-        plt.xlabel("Title Words", color="white")
-        plt.ylabel("Frequency", color="white")
+        ax.set_title("Most Common Title Words", color="#6D28D9")
+        ax.set_xlabel("Title Words", color="white")
+        ax.set_ylabel("Frequency", color="white")
 
         ax.tick_params(axis='x', colors='white')
         ax.tick_params(axis='y', colors='white')
