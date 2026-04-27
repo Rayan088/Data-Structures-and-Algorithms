@@ -1,27 +1,113 @@
-title, artist, duration, genre
+title,artist,duration,genre
 Shape of You,Ed Sheeran,233,Pop
-Blinding Lights,The Weeknd,201,Pop
+Blinding Lights,The Weeknd,201,R&B
 Bohemian Rhapsody,Queen,354,Rock
 Hotel California,Eagles,391,Rock
 Havana,Camila Cabello,208,Pop
-Rolling in the Deep,Adele,228,Soul
-Someone Like You,Adele,285,Soul
+Rolling in the Deep,Adele,228,R&B
+Someone Like You,Adele,285,R&B
 Uptown Funk,Mark Ronson ft. Bruno Mars,270,Funk
-Take On Me,a-ha,213,Synthpop
+Take On Me,a-ha,213,Pop
 Stairway to Heaven,Led Zeppelin,482,Rock
 Imagine,John Lennon,183,Pop
 Stayin' Alive,Bee Gees,213,Disco
 Don't Stop Believin',Journey,250,Rock
 Dancing Queen,ABBA,210,Pop
-Smells Like Teen Spirit,Nirvana,301,Grunge
-Like a Rolling Stone,Bob Dylan,368,Folk
-Blowin' in the Wind,Bob Dylan,181,Folk
+Smells Like Teen Spirit,Nirvana,301,Alternative
+Like a Rolling Stone,Bob Dylan,368,Rock
+Blowin' in the Wind,Bob Dylan,181,Rock
 I Will Survive,Gloria Gaynor,233,Disco
 Billie Jean,Michael Jackson,294,Pop
 Thriller,Michael Jackson,357,Pop
-All of Me,John Legend,268,Pop
+All of Me,John Legend,268,R&B
 Let It Be,The Beatles,243,Rock
 Yesterday,The Beatles,125,Rock
-What's Going On,Marvin Gaye,240,Soul
+What's Going On,Marvin Gaye,240,R&B
 Superstition,Stevie Wonder,300,Funk
 Africa,Toto,269,Rock
+Sweet Child O' Mine,Guns N' Roses,356,Rock
+Wonderwall,Oasis,258,Alternative
+Hey Jude,The Beatles,431,Rock
+Purple Rain,Prince,512,R&B
+Lose Yourself,Eminem,326,Rap
+Thinking Out Loud,Ed Sheeran,281,Pop
+Firework,Katy Perry,228,Pop
+Roar,Katy Perry,222,Pop
+Bad Guy,Billie Eilish,194,Pop
+Shake It Off,Taylor Swift,242,Pop
+Blank Space,Taylor Swift,231,Pop
+Anti-Hero,Taylor Swift,200,Pop
+Watermelon Sugar,Harry Styles,174,Pop
+As It Was,Harry Styles,167,Pop
+Levitating,Dua Lipa,203,Pop
+New Rules,Dua Lipa,209,Pop
+Don't Start Now,Dua Lipa,183,Pop
+Circles,Post Malone,215,Pop
+Rockstar,Post Malone ft. 21 Savage,218,Hip-Hop
+Sunflower,Post Malone & Swae Lee,158,Hip-Hop
+God's Plan,Drake,198,Hip-Hop
+One Dance,Drake,173,Hip-Hop
+Hotline Bling,Drake,267,Hip-Hop
+Sicko Mode,Travis Scott,312,Hip-Hop
+Goosebumps,Travis Scott,243,Hip-Hop
+Old Town Road,Lil Nas X,157,Hip-Hop
+Industry Baby,Lil Nas X & Jack Harlow,212,Hip-Hop
+Stay,The Kid LAROI & Justin Bieber,141,Pop
+Peaches,Justin Bieber ft. Daniel Caesar & Giveon,198,R&B
+Sorry,Justin Bieber,200,Pop
+Love Yourself,Justin Bieber,233,Pop
+Counting Stars,OneRepublic,257,Pop
+Apologize,OneRepublic,185,Pop
+Radioactive,Imagine Dragons,186,Alternative
+Believer,Imagine Dragons,204,Alternative
+Demons,Imagine Dragons,177,Alternative
+Mr. Brightside,The Killers,222,Alternative
+Somebody Told Me,The Killers,197,Alternative
+Sex on Fire,Kings of Leon,204,Rock
+Use Somebody,Kings of Leon,230,Rock
+Viva La Vida,Coldplay,242,Alternative
+Yellow,Coldplay,269,Alternative
+Fix You,Coldplay,294,Alternative
+Clocks,Coldplay,307,Alternative
+Paradise,Coldplay,278,Pop
+Chandelier,Sia,216,Pop
+Titanium,David Guetta ft. Sia,245,Pop
+Without Me,Halsey,201,Pop
+Closer,The Chainsmokers ft. Halsey,244,Pop
+Wake Me Up,Avicii,247,Pop
+Lean On,Major Lazer & DJ Snake,176,Pop
+Despacito,Luis Fonsi ft. Daddy Yankee,229,Pop
+Hips Don't Lie,Shakira ft. Wyclef Jean,218,Pop
+On The Floor,Jennifer Lopez ft. Pitbull,225,Pop
+Timber,Pitbull ft. Kesha,204,Pop
+Tik Tok,Kesha,199,Pop
+Since U Been Gone,Kelly Clarkson,189,Pop
+Stronger,Kelly Clarkson,221,Pop
+Complicated,Avril Lavigne,244,Pop
+Boulevard of Broken Dreams,Green Day,261,Alternative
+American Idiot,Green Day,174,Rock
+All the Small Things,Blink-182,168,Alternative
+Sugar We're Goin Down,Fall Out Boy,230,Alternative
+Misery Business,Paramore,211,Alternative
+Bring Me to Life,Evanescence,235,Metal
+Numb,Linkin Park,187,Metal
+In the End,Linkin Park,216,Metal
+Enter Sandman,Metallica,331,Metal
+Nothing Else Matters,Metallica,388,Metal
+Back in Black,AC/DC,255,Rock
+Highway to Hell,AC/DC,208,Rock
+Another One Bites the Dust,Queen,215,Funk
+We Will Rock You,Queen,122,Rock
+We Are the Champions,Queen,179,Rock
+Billie Jean,Michael Jackson,294,Pop
+Smooth Criminal,Michael Jackson,257,Pop
+Beat It,Michael Jackson,258,Rock
+No Scrubs,TLC,214,R&B
+Waterfalls,TLC,255,R&B
+Say My Name,Destiny's Child,240,R&B
+Crazy in Love,Beyoncé ft. Jay-Z,235,R&B
+Single Ladies,Beyoncé,194,Pop
+Halo,Beyoncé,261,Pop
+Umbrella,Rihanna ft. Jay-Z,263,R&B
+Diamonds,Rihanna,225,Pop
+We Found Love,Rihanna ft. Calvin Harris,215,Pop
