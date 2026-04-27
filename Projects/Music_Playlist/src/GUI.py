@@ -86,18 +86,29 @@ class App:
         self.graph_frame.grid_rowconfigure(2, weight=1)
 
         tk.Label(self.graph_frame, text="Visualisations", font=("Arial", 28, "bold"), bg="#120A38", fg="#FFFFFF").grid(row=0, column=0, columnspan=6, pady=10, sticky="snew")
-        tk.Label(self.graph_frame, text="Explore your playlist insights and trends", font=("Arial", 12), bg="#120A38", fg="#FFFFFF").grid(row=1, column=0, columnspan=6, pady=20)
+        tk.Label(self.graph_frame, text="Explore your playlist insights and trends", font=("Arial", 12), bg="#120A38", fg="#FFFFFF").grid(row=1, column=0, columnspan=6)
 
-        notebook = ttk.Notebook(self.graph_frame)
-        notebook.grid(row=2, column=0, columnspan=6, padx=20, pady=10, sticky="nswe")
+        style = ttk.Style()
+        style.theme_use("default")
 
-        self.tab1 = tk.Frame(notebook, bg="#120A38")
-        self.tab2 = tk.Frame(notebook, bg="#120A38")
-        self.tab3 = tk.Frame(notebook, bg="#120A38")
+        style.configure("TNotebook", background="#120A38", borderwidth=0)
+        style.configure("TNotebook.Tab", background="#22145C", foreground="white", padding=[20, 10])
+        style.map("TNotebook.Tab", background=[("selected", "#6D28D9")], foreground=[("selected", "white")])
 
-        notebook.add(self.tab1, text="Duration")
-        notebook.add(self.tab2, text="Genre")
-        notebook.add(self.tab3, text="Title Words")
+        self.notebook = ttk.Notebook(self.graph_frame)
+        self.notebook.grid(row=2, column=0, columnspan=6, padx=20, pady=10, sticky="nsew")
+
+        self.tab1 = tk.Frame(self.notebook, bg="#120A38")
+        self.tab2 = tk.Frame(self.notebook, bg="#120A38")
+        self.tab3 = tk.Frame(self.notebook, bg="#120A38")
+
+        self.notebook.add(self.tab1, text="Duration")
+        self.notebook.add(self.tab2, text="Genre")
+        self.notebook.add(self.tab3, text="Title Words")
+
+        for tab in (self.tab1, self.tab2, self.tab3):
+            tab.grid_rowconfigure(0, weight=1)
+            tab.grid_columnconfigure(0, weight=1)
 
         tk.Button(self.graph_frame, text="Back", command=lambda: self.show_frame(self.main_frame), bg="#22145C", fg="#FFFFFF").grid(row=3, column=0, columnspan=6, pady=50)
 
@@ -112,15 +123,15 @@ class App:
 
         canvas1 = FigureCanvasTkAgg(fig1, master=self.tab1)
         canvas1.draw()
-        canvas1.get_tk_widget().grid(row=0, column=0)
+        canvas1.get_tk_widget().grid(row=0, column=0, sticky="nsew")
 
         canvas2 = FigureCanvasTkAgg(fig2, master=self.tab2)
         canvas2.draw()
-        canvas2.get_tk_widget().grid(row=0, column=0)
+        canvas2.get_tk_widget().grid(row=0, column=0, sticky="nsew")
 
         canvas3 = FigureCanvasTkAgg(fig3, master=self.tab3)
         canvas3.draw()
-        canvas3.get_tk_widget().grid(row=0, column=0)
+        canvas3.get_tk_widget().grid(row=0, column=0, sticky="nsew")
 
     def add_song(self):
         self.popup = tk.Toplevel(self.root)
