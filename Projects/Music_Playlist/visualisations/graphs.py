@@ -29,19 +29,19 @@ class Graphs:
             durations.append(song.duration)
 
         bins = {
-            "0-120": 0,
-            "120-180": 0,
-            "180-240": 0,
+            "0-119": 0,
+            "120-179": 0,
+            "180-239": 0,
             "240+": 0
         }
 
         for d in durations:
-            if d <= 120:
-                bins["0-120"] += 1
-            elif d <=180:
-                bins["120-180"] += 1
-            elif d <= 240:
-                bins["180-240"] += 1
+            if 0 <= d <= 119:
+                bins["0-119"] += 1
+            elif 120 <= d <= 179:
+                bins["120-179"] += 1
+            elif 180 <= d <= 239:
+                bins["180-239"] += 1
             else:
                 bins["240+"] += 1
 
@@ -106,7 +106,7 @@ class Graphs:
 
     def common_title_words(self):
         plt.close("all")
-        
+
         songs = self.get_all_songs()
 
         stop_words =  ["the", "a", "and", "of", "to", "in"]
