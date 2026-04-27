@@ -35,11 +35,11 @@ class Graphs:
 
         for d in durations:
             if d <= 120:
-                bins["0-120s"] += 1
+                bins["0-120"] += 1
             elif d <=180:
-                bins["120-180s"] += 1
+                bins["120-180"] += 1
             elif d <= 240:
-                bins["180-240s"] += 1
+                bins["180-240"] += 1
             else:
                 bins["240+"] += 1
 
@@ -48,7 +48,7 @@ class Graphs:
         
         sns.set_style("whitegrid")
 
-        fig, ax = plt.subplots(figsize=(8, 5))
+        fig, ax = plt.subplots(figsize=(6, 3))
 
         fig.patch.set_facecolor("#120A38")
         ax.set_facecolor("#120A38")
@@ -82,7 +82,7 @@ class Graphs:
 
         sns.set_style("whitegrid")
 
-        fig, ax = plt.subplots(figsize=(8, 5))
+        fig, ax = plt.subplots(figsize=(6, 3))
 
         fig.patch.set_facecolor("#120A38")
         ax.set_facecolor("#120A38")
@@ -124,7 +124,7 @@ class Graphs:
 
         sns.set_style("whitegrid")
 
-        fig, ax = plt.subplots(figsize=(8, 5))
+        fig, ax = plt.subplots(figsize=(6, 3))
 
         fig.patch.set_facecolor("#120A38")
         ax.set_facecolor("#120A38")
