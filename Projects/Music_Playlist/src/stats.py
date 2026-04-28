@@ -1,12 +1,4 @@
 class Stats:
-    #def __init__(self):
-        #self.total_duration = 0
-        #self.total_play_count = 0
-        #self.genre_counts = {}
-        #self.artist_counts = {}
-
-    #Initialiser method
-
     def total_duration_(self, playlist):
         total = 0
         curr = playlist.head

@@ -90,9 +90,9 @@ class App:
         box2 = tk.Frame(self.stats_frame, bg="#1a1040", highlightbackground="#4a3080", highlightthickness=1, width=400, height=225)
         box2.grid(row=2, column=3, padx=14, pady=14, sticky="nsew")
         box2.grid_propagate(False)
-        tk.Label(box2, text="TOTAL PLAY COUNTS",    font=("Arial", 10, "bold"), bg="#1a1040", fg="#a899cc").grid(row=2, column=0, padx=20, pady=(10,0), sticky="w")
-        tk.Label(box2, text=song_count,                  font=("Arial", 22, "bold"), bg="#1a1040", fg="#FFFFFF").grid(row=3, column=0, padx=20, sticky="w")
-        tk.Label(box2, text="total songs",         font=("Arial", 9),          bg="#1a1040", fg="#a899cc").grid(row=4, column=0, padx=20, pady=(0,10), sticky="w")
+        tk.Label(box2, text="TOTAL PLAY COUNTS", font=("Arial", 10, "bold"), bg="#1a1040", fg="#a899cc").grid(row=2, column=0, padx=20, pady=(10,0), sticky="w")
+        tk.Label(box2, text=song_count, font=("Arial", 22, "bold"), bg="#1a1040", fg="#FFFFFF").grid(row=3, column=0, padx=20, sticky="w")
+        tk.Label(box2, text="total songs", font=("Arial", 9), bg="#1a1040", fg="#a899cc").grid(row=4, column=0, padx=20, pady=(0,10), sticky="w")
 
         max_genre, max_genre_count = self.stats.max_genre_count_(self.pl)
         box3 = tk.Frame(self.stats_frame, bg="#1a1040", highlightbackground="#4a3080", highlightthickness=1, width=400, height=225)
@@ -100,7 +100,7 @@ class App:
         box3.grid_propagate(False)
         tk.Label(box3, text="MAX GENRE COUNT", font=("Arial", 10, "bold"), bg="#1a1040", fg="#a899cc").grid(row=2, column=0, padx=20, pady=(10,0), sticky="w")
         tk.Label(box3, text=max_genre_count, font=("Arial", 22, "bold"), bg="#1a1040", fg="#FFFFFF").grid(row=3, column=0, padx=20, sticky="w")
-        tk.Label(box3, text=max_genre, font=("Arial", 9),          bg="#1a1040", fg="#9b6bff").grid(row=4, column=0, padx=20, pady=(0,10), sticky="w")
+        tk.Label(box3, text=max_genre, font=("Arial", 9), bg="#1a1040", fg="#9b6bff").grid(row=4, column=0, padx=20, pady=(0,10), sticky="w")
 
         max_artist, max_artist_count = self.stats.max_artist_count(self.pl)
         box4 = tk.Frame(self.stats_frame, bg="#1a1040", highlightbackground="#4a3080", highlightthickness=1, width=400, height=225)
