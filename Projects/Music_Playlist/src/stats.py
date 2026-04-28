@@ -2,12 +2,12 @@ class Stats:
     def __init__(self):
         self.total_duration = 0
         self.total_play_count = 0
-        self.genre_counts = {}
+        #self.genre_counts = {}
         self.artist_counts = {}
 
     #Initialiser method
 
-    def total_duration_(self, playlist, remove=False):
+    def total_duration_(self, playlist):
         total = 0
         curr = playlist.head
 
@@ -34,30 +34,29 @@ class Stats:
 
     #Method which appends play count by 1
 
-    def max_genre_count_(self, song, remove=False):
-        if remove:
-            if song.genre in self.genre_counts:
-                self.genre_counts[song.genre] -= 1
-                if self.genre_counts[song.genre] == 0:
-                    del self.genre_counts[song.genre]
+    def max_genre_count_(self, playlist):
+        genre_counts = {}
+        curr = playlist.head
 
-        else:
-            if song.genre in self.genre_counts:
-                self.genre_counts[song.genre] += 1
+        while curr:
+            genre = curr.genre
+
+            if genre in genre_counts:
+                genre_counts[genre] += 1
             else:
-                self.genre_counts[song.genre] = 1
+                genre_counts[genre] = 1
+            
+            curr = curr.next
 
-        max_genre_count = 0
         max_genre = None
-        max_index = -1
+        max_genre_count = 0
 
-        for i, (genre, count) in enumerate(self.genre_counts.items()):
+        for genre, count in genre_counts.items():
             if count > max_genre_count:
                 max_genre_count = count
                 max_genre = genre
-                max_index = i
 
-        return max_index, max_genre, max_genre_count
+        return max_genre, max_genre_count
 
     #Method which calculates max no of songs per genre
 

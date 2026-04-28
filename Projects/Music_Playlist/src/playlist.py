@@ -17,10 +17,7 @@ class Playlist:
         new_node = SongNode(title, artist, duration, genre)
 
         if self.head is None:
-            self.head = self.tail = self.curr = new_node
-            self.stats.max_genre_count_(new_node)
-            self.stats.total_play_counts_()
-            
+            self.head = self.tail = self.curr = new_node                        
             return f"Now playing {self.curr}\n"
 
         self.tail.next = new_node
