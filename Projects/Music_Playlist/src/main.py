@@ -19,7 +19,7 @@ def stats_menu(pl):
             print(st.total_play_counts_())
         
         elif choice == "3":
-            print(st.genre_counts_())
+            print(st.max_genre_count_())
 
         elif choice == "4":
             print("Exited stats")

@@ -7,7 +7,7 @@ class Stats:
 
     #Initialiser method
 
-    def total_duration(self, song, remove=False):
+    def total_duration_(self, song, remove=False):
         if remove:
             self.total_duration -= song.duration
         else:
@@ -17,7 +17,7 @@ class Stats:
     
     #Method which adds song duration
 
-    def total_play_counts(self, remove=False):
+    def total_play_counts_(self, remove=False):
         if remove:
             self.total_play_count -= 1
         else:
@@ -27,7 +27,7 @@ class Stats:
 
     #Method which appends play count by 1
 
-    def max_genre_count(self, song, remove=False):
+    def max_genre_count_(self, song, remove=False):
         if remove:
             if song.genre in self.genre_counts:
                 self.genre_counts[song.genre] -= 1
@@ -40,17 +40,17 @@ class Stats:
             else:
                 self.genre_counts[song.genre] = 1
 
-        max_count = 0
+        max_genre_count = 0
         max_genre = None
         max_index = -1
 
         for i, (genre, count) in enumerate(self.genre_counts.items()):
-            if count > max_count:
-                max_count = count
+            if count > max_genre_count:
+                max_genre_count = count
                 max_genre = genre
                 max_index = i
 
-            return max_index, max_genre, max_count
+        return max_index, max_genre, max_genre_count
 
     #Method which calculates max no of songs per genre
 
@@ -67,16 +67,16 @@ class Stats:
             else:
                 self.artist_counts[song.artist] = 1
 
-        max_count = 0
+        max_artist_count = 0
         max_artist = None
         max_index = -1
 
         for i, (artist, count) in enumerate(self.artist_counts.items()):
-            if count > max_count:
-                max_count = count
+            if count > max_artist_count:
+                max_artist_count = count
                 max_artist = artist
                 max_index = i
 
-        return max_index, max_artist, max_count           
+        return max_index, max_artist, max_artist_count           
 
     #Method which calculates max no of songs by an artist
