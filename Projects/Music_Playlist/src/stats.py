@@ -7,23 +7,27 @@ class Stats:
 
     #Initialiser method
 
-    def update_total_duration(self, song, remove=False):
+    def total_duration(self, song, remove=False):
         if remove:
             self.total_duration -= song.duration
         else:
             self.total_duration += song.duration
+
+        return f"Total duration: {self.total_duration} seconds"
     
     #Method which adds song duration
 
-    def update_total_play_counts(self, remove=False):
+    def total_play_counts(self, remove=False):
         if remove:
             self.total_play_count -= 1
         else:
             self.total_play_count += 1
 
+        return f"Total songs played: {self.total_play_count}"
+
     #Method which appends play count by 1
 
-    def update_genre_counts(self, song, remove=False):
+    def max_genre_count(self, song, remove=False):
         if remove:
             if song.genre in self.genre_counts:
                 self.genre_counts[song.genre] -= 1
@@ -36,9 +40,21 @@ class Stats:
             else:
                 self.genre_counts[song.genre] = 1
 
-    #Method which calculates no of songs per genre
+        max_count = 0
+        max_genre = None
+        max_index = -1
 
-    def update_artist_counts(self, song, remove=False):
+        for i, (genre, count) in enumerate(self.genre_counts.items()):
+            if count > max_count:
+                max_count = count
+                max_genre = genre
+                max_index = i
+
+            return max_index, max_genre, max_count
+
+    #Method which calculates max no of songs per genre
+
+    def max_artist_count(self, song, remove=False):
         if remove:
             if song in self.artist_counts:
                 self.artist_counts[song.artist] -= 1
@@ -51,30 +67,16 @@ class Stats:
             else:
                 self.artist_counts[song.artist] = 1
 
-    #Method which calculates no of songs per artist
+        max_count = 0
+        max_artist = None
+        max_index = -1
 
-    def total_duration_(self):
-        return f"Total duration: {self.total_duration} seconds"
-    
-    #Method which displays total duration
-    
-    def total_play_counts_(self):
-        return f"Total songs played: {self.total_play_count}"
-    
-    #Method which displays total songs played
-    
-    def genre_counts_(self):
-        genre_summary = "Genre Breakdown: \n"
-        for genre, count in self.genre_counts.items():
-            genre_summary += (f"{genre}: {count} tracks\n")
-        return genre_summary
-    
-    #Method which displays the genre breakdown
-    
-    def artist_counts_(self):
-        artist_summary = "Most Played Artist: \n"
-        for artist, count in self.artist_counts.items():
-            artist_summary += (f"{artist}: {count} tracks")
-        return artist_summary
-    
-    #Method which displays number of songs per artist
+        for i, (artist, count) in enumerate(self.artist_counts.items()):
+            if count > max_count:
+                max_count = count
+                max_artist = artist
+                max_index = i
+
+        return max_index, max_artist, max_count           
+
+    #Method which calculates max no of songs by an artist
