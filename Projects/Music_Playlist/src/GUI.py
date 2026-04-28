@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 
 from src.playlist import Playlist
 from visualisations.graphs import Graphs
+from src.stats import Stats
 
 class App:
     def __init__(self, root):
@@ -17,6 +18,7 @@ class App:
         self.root.protocol("WM_DELETE_WINDOW", self.on_close)
 
         self.pl = Playlist()
+        self.stats = Stats()
         self.graphs = Graphs(self.pl)
 
         self.main_frame = tk.Frame(root)
@@ -24,7 +26,6 @@ class App:
         self.graph_frame = tk.Frame(root)
 
         self.create_main_frame()
-        self.create_stats_frame()
         self.create_graphs_frame()
 
         self.show_frame(self.main_frame)
@@ -58,7 +59,7 @@ class App:
         tk.Button(self.main_frame, text="Shuffle", command=self.shuffle, bg="#22145C", fg="#FFFFFF").grid(row=2, column=5, padx=15, pady=50)
         tk.Button(self.main_frame, text="Import CSV", command=self.import_from_csv, bg="#22145C", fg="#FFFFFF").grid(row=2, column=6, padx=15, pady=50)
 
-        tk.Button(self.main_frame, text="Stats", command=self.stats, bg="#22145C", fg="#FFFFFF").grid(row=3, column=3, padx=15, pady=20)
+        tk.Button(self.main_frame, text="Stats", command=self.show_stats, bg="#22145C", fg="#FFFFFF").grid(row=3, column=3, padx=15, pady=20)
         tk.Button(self.main_frame, text="Visualisation", command=self.visualisations, bg="#22145C", fg="#FFFFFF").grid(row=3, column=4, padx=15, pady=20)
 
         self.result_label = tk.Label(self.main_frame, text="Welcome to the playlist manager",
@@ -77,33 +78,34 @@ class App:
         tk.Label(self.stats_frame, text="Statistics", font=("Arial", 28, "bold"), bg="#120A38", fg="#FFFFFF").grid(row=0, column=0, columnspan=6, pady=10, sticky="nsew")   
         tk.Label(self.stats_frame, text="Key Metrics and Insights", font=("Arial", 12), bg="#120A38", fg="#FFFFFF").grid(row=1, column=0, columnspan=6)
 
+        total_duration = self.stats.total_duration_(self.pl)
         box1 = tk.Frame(self.stats_frame, bg="#1a1040", highlightbackground="#4a3080", highlightthickness=1, width=400, height=225)
         box1.grid(row=2, column=2, padx=14, pady=14, sticky="nsew")
         box1.grid_propagate(False)
-        tk.Label(box1, text="TOTAL DURATION",       font=("Arial", 10, "bold"), bg="#1a1040", fg="#a899cc").grid(row=2, column=0, padx=20, pady=(10,0), sticky="w")
-        tk.Label(box1, text="12h 45m 32s",          font=("Arial", 22, "bold"), bg="#1a1040", fg="#FFFFFF").grid(row=3, column=0, padx=20,             sticky="w")
-        tk.Label(box1, text="of music in your playlist", font=("Arial", 9),          bg="#1a1040", fg="#a899cc").grid(row=4, column=0, padx=20, pady=(0,10), sticky="w")
+        tk.Label(box1, text="TOTAL DURATION", font=("Arial", 10, "bold"), bg="#1a1040", fg="#a899cc").grid(row=2, column=0, padx=20, pady=(10,0), sticky="w")
+        tk.Label(box1, text=total_duration, font=("Arial", 22, "bold"), bg="#1a1040", fg="#FFFFFF").grid(row=3, column=0, padx=20,             sticky="w")
+        tk.Label(box1, text="of music in your playlist", font=("Arial", 9), bg="#1a1040", fg="#a899cc").grid(row=4, column=0, padx=20, pady=(0,10), sticky="w")
 
         box2 = tk.Frame(self.stats_frame, bg="#1a1040", highlightbackground="#4a3080", highlightthickness=1, width=400, height=225)
         box2.grid(row=2, column=3, padx=14, pady=14, sticky="nsew")
         box2.grid_propagate(False)
         tk.Label(box2, text="TOTAL PLAY COUNTS",    font=("Arial", 10, "bold"), bg="#1a1040", fg="#a899cc").grid(row=2, column=0, padx=20, pady=(10,0), sticky="w")
-        tk.Label(box2, text="342",                  font=("Arial", 22, "bold"), bg="#1a1040", fg="#FFFFFF").grid(row=3, column=0, padx=20,             sticky="w")
+        tk.Label(box2, text="PLACEHOLDER",                  font=("Arial", 22, "bold"), bg="#1a1040", fg="#FFFFFF").grid(row=3, column=0, padx=20,             sticky="w")
         tk.Label(box2, text="times played",         font=("Arial", 9),          bg="#1a1040", fg="#a899cc").grid(row=4, column=0, padx=20, pady=(0,10), sticky="w")
 
         box3 = tk.Frame(self.stats_frame, bg="#1a1040", highlightbackground="#4a3080", highlightthickness=1, width=400, height=225)
         box3.grid(row=3, column=2, padx=14, pady=14, sticky="nsew")
         box3.grid_propagate(False)
         tk.Label(box3, text="MAX GENRE COUNT",      font=("Arial", 10, "bold"), bg="#1a1040", fg="#a899cc").grid(row=2, column=0, padx=20, pady=(10,0), sticky="w")
-        tk.Label(box3, text="128",                  font=("Arial", 22, "bold"), bg="#1a1040", fg="#FFFFFF").grid(row=3, column=0, padx=20,             sticky="w")
+        tk.Label(box3, text="PLACEHOLDER",                  font=("Arial", 22, "bold"), bg="#1a1040", fg="#FFFFFF").grid(row=3, column=0, padx=20,             sticky="w")
         tk.Label(box3, text="Rock",                 font=("Arial", 9),          bg="#1a1040", fg="#9b6bff").grid(row=4, column=0, padx=20, pady=(0,10), sticky="w")
 
         box4 = tk.Frame(self.stats_frame, bg="#1a1040", highlightbackground="#4a3080", highlightthickness=1, width=400, height=225)
         box4.grid(row=3, column=3, padx=14, pady=14, sticky="nsew")
         box4.grid_propagate(False)
         tk.Label(box4, text="MAX ARTIST COUNT",     font=("Arial", 10, "bold"), bg="#1a1040", fg="#a899cc").grid(row=2, column=0, padx=20, pady=(10,0), sticky="w")
-        tk.Label(box4, text="45",                   font=("Arial", 22, "bold"), bg="#1a1040", fg="#FFFFFF").grid(row=3, column=0, padx=20,             sticky="w")
-        tk.Label(box4, text="Drake",                font=("Arial", 9),          bg="#1a1040", fg="#9b6bff").grid(row=4, column=0, padx=20, pady=(0, 10), sticky="w")
+        tk.Label(box4, text="PLACEHOLDER",                   font=("Arial", 22, "bold"), bg="#1a1040", fg="#FFFFFF").grid(row=3, column=0, padx=20,             sticky="w")
+        tk.Label(box4, text="PLACEHOLDER",                font=("Arial", 9),          bg="#1a1040", fg="#9b6bff").grid(row=4, column=0, padx=20, pady=(0, 10), sticky="w")
             
         tk.Button(self.stats_frame, text="Back to Home", command=lambda: self.show_frame(self.main_frame), bg="#22145C", fg="#FFFFFF").grid(row=4, column=0, columnspan=6, pady=50)
 
@@ -256,7 +258,8 @@ class App:
         self.result_label.config(text=message)
         messagebox.showinfo("Now playing", message)
 
-    def stats(self):
+    def show_stats(self):
+        self.create_stats_frame()
         self.show_frame(self.stats_frame)
 
     def visualisations(self):

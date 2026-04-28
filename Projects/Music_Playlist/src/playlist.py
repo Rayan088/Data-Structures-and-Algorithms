@@ -18,7 +18,6 @@ class Playlist:
 
         if self.head is None:
             self.head = self.tail = self.curr = new_node
-            self.stats.total_duration_(new_node)
             self.stats.max_genre_count_(new_node)
             self.stats.total_play_counts_()
             
@@ -27,8 +26,6 @@ class Playlist:
         self.tail.next = new_node
         new_node.prev = self.tail
         self.tail = new_node
-
-        self.stats.total_duration_(new_node)
 
         return f"New song added to end of list (Title: {new_node.title}, Artist: {new_node.artist}, Duration {new_node.duration} seconds, Genre: {new_node.genre})\n"
 
@@ -91,7 +88,7 @@ class Playlist:
         
         if self.curr and self.curr.next:
             self.curr = self.curr.next
-            self.stats.update_total_play_counts()
+            self.stats.total_play_counts_()
             return f"Now playing {self.curr}\n"
 
         return f"Already at the end of the playlist\n"

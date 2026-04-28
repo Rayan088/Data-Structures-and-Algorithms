@@ -7,13 +7,20 @@ class Stats:
 
     #Initialiser method
 
-    def total_duration_(self, song, remove=False):
-        if remove:
-            self.total_duration -= song.duration
-        else:
-            self.total_duration += song.duration
+    def total_duration_(self, playlist, remove=False):
+        total = 0
+        curr = playlist.head
 
-        return f"Total duration: {self.total_duration} seconds"
+        while curr:
+            total += curr.duration
+            curr = curr.next
+
+        hours = total // 3600
+        remaining_seconds = total % 3600
+        minutes = remaining_seconds // 60
+        seconds = remaining_seconds % 60
+
+        return f"{hours}h {minutes}m {seconds}s"
     
     #Method which adds song duration
 
@@ -59,7 +66,7 @@ class Stats:
             if song in self.artist_counts:
                 self.artist_counts[song.artist] -= 1
                 if self.artist_counts[song.artist] == 0:
-                    del self.genre_counts[song.genre]
+                    del self.artist_counts[song.artist]
         
         else:
             if song.artist in self.artist_counts:
