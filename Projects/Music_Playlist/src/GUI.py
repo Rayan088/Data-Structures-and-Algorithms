@@ -86,12 +86,13 @@ class App:
         tk.Label(box1, text=total_duration, font=("Arial", 22, "bold"), bg="#1a1040", fg="#FFFFFF").grid(row=3, column=0, padx=20,             sticky="w")
         tk.Label(box1, text="of music in your playlist", font=("Arial", 9), bg="#1a1040", fg="#a899cc").grid(row=4, column=0, padx=20, pady=(0,10), sticky="w")
 
+        song_count = self.stats.total_play_counts_(self.pl)
         box2 = tk.Frame(self.stats_frame, bg="#1a1040", highlightbackground="#4a3080", highlightthickness=1, width=400, height=225)
         box2.grid(row=2, column=3, padx=14, pady=14, sticky="nsew")
         box2.grid_propagate(False)
         tk.Label(box2, text="TOTAL PLAY COUNTS",    font=("Arial", 10, "bold"), bg="#1a1040", fg="#a899cc").grid(row=2, column=0, padx=20, pady=(10,0), sticky="w")
-        tk.Label(box2, text="PLACEHOLDER",                  font=("Arial", 22, "bold"), bg="#1a1040", fg="#FFFFFF").grid(row=3, column=0, padx=20, sticky="w")
-        tk.Label(box2, text="times played",         font=("Arial", 9),          bg="#1a1040", fg="#a899cc").grid(row=4, column=0, padx=20, pady=(0,10), sticky="w")
+        tk.Label(box2, text=song_count,                  font=("Arial", 22, "bold"), bg="#1a1040", fg="#FFFFFF").grid(row=3, column=0, padx=20, sticky="w")
+        tk.Label(box2, text="total songs",         font=("Arial", 9),          bg="#1a1040", fg="#a899cc").grid(row=4, column=0, padx=20, pady=(0,10), sticky="w")
 
         max_genre, max_genre_count = self.stats.max_genre_count_(self.pl)
         box3 = tk.Frame(self.stats_frame, bg="#1a1040", highlightbackground="#4a3080", highlightthickness=1, width=400, height=225)

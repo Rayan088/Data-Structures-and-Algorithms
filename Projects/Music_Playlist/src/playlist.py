@@ -36,7 +36,7 @@ class Playlist:
 
         while curr:
             if curr.title == title:
-                
+
                 if curr == self.head:
                     self.head = curr.next
                     if self.head:
@@ -83,7 +83,6 @@ class Playlist:
         
         if self.curr and self.curr.next:
             self.curr = self.curr.next
-            self.stats.total_play_counts_()
             return f"Now playing {self.curr}\n"
 
         return f"Already at the end of the playlist\n"

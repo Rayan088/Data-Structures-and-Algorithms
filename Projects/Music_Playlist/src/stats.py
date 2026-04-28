@@ -1,6 +1,6 @@
 class Stats:
-    def __init__(self):
-        self.total_duration = 0
+    #def __init__(self):
+        #self.total_duration = 0
         #self.total_play_count = 0
         #self.genre_counts = {}
         #self.artist_counts = {}
@@ -24,13 +24,15 @@ class Stats:
     
     #Method which adds song duration
 
-    def total_play_counts_(self, remove=False):
-        if remove:
-            self.total_play_count -= 1
-        else:
-            self.total_play_count += 1
+    def total_play_counts_(self, playlist):
+        song_count = 0
+        curr = playlist.head
 
-        return f"Total songs played: {self.total_play_count}"
+        while curr:
+            song_count += 1
+            curr = curr.next
+
+        return song_count
 
     #Method which appends play count by 1
 
