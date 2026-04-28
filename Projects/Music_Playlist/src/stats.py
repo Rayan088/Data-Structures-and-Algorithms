@@ -1,9 +1,9 @@
 class Stats:
     def __init__(self):
         self.total_duration = 0
-        self.total_play_count = 0
+        #self.total_play_count = 0
         #self.genre_counts = {}
-        self.artist_counts = {}
+        #self.artist_counts = {}
 
     #Initialiser method
 
@@ -60,29 +60,28 @@ class Stats:
 
     #Method which calculates max no of songs per genre
 
-    def max_artist_count(self, song, remove=False):
-        if remove:
-            if song in self.artist_counts:
-                self.artist_counts[song.artist] -= 1
-                if self.artist_counts[song.artist] == 0:
-                    del self.artist_counts[song.artist]
-        
-        else:
-            if song.artist in self.artist_counts:
-                self.artist_counts[song.artist] += 1
+    def max_artist_count(self, playlist):
+        artist_counts = {}
+        curr = playlist.head
+
+        while curr:
+            artist = curr.artist
+
+            if artist in artist_counts:
+                artist_counts[artist] += 1
             else:
-                self.artist_counts[song.artist] = 1
+                artist_counts[artist] = 1
+            
+            curr = curr.next
 
-        max_artist_count = 0
         max_artist = None
-        max_index = -1
+        max_artist_count = 0
 
-        for i, (artist, count) in enumerate(self.artist_counts.items()):
+        for artist, count in artist_counts.items():
             if count > max_artist_count:
                 max_artist_count = count
                 max_artist = artist
-                max_index = i
 
-        return max_index, max_artist, max_artist_count           
+        return max_artist, max_artist_count
 
     #Method which calculates max no of songs by an artist

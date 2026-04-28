@@ -36,9 +36,7 @@ class Playlist:
 
         while curr:
             if curr.title == title:
-                self.stats.max_genre_count_(curr, remove=True)
-                self.stats.total_duration_(curr, remove=True)
-
+                
                 if curr == self.head:
                     self.head = curr.next
                     if self.head:
