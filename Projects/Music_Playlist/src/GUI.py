@@ -74,8 +74,38 @@ class App:
         for i in range(6):
             self.stats_frame.grid_columnconfigure(i, weight=1)
 
-        tk.Label(self.stats_frame, text="Stats", font=("Arial", 28, "bold"), bg="#120A38", fg="#FFFFFF").grid(row=0, column=0, columnspan=6, pady=10, sticky="nsew")   
-        tk.Button(self.stats_frame, text="Back", command=lambda: self.show_frame(self.main_frame), bg="#22145C", fg="#FFFFFF").grid(row=1, column=0, columnspan=6, pady=50)
+        tk.Label(self.stats_frame, text="Statistics", font=("Arial", 28, "bold"), bg="#120A38", fg="#FFFFFF").grid(row=0, column=0, columnspan=6, pady=10, sticky="nsew")   
+        tk.Label(self.stats_frame, text="Key Metrics and Insights", font=("Arial", 12), bg="#120A38", fg="#FFFFFF").grid(row=1, column=0, columnspan=6)
+
+        box1 = tk.Frame(self.stats_frame, bg="#1a1040", highlightbackground="#4a3080", highlightthickness=1, width=400, height=225)
+        box1.grid(row=2, column=2, padx=14, pady=14, sticky="nsew")
+        box1.grid_propagate(False)
+        tk.Label(box1, text="TOTAL DURATION",       font=("Arial", 10, "bold"), bg="#1a1040", fg="#a899cc").grid(row=2, column=0, padx=20, pady=(10,0), sticky="w")
+        tk.Label(box1, text="12h 45m 32s",          font=("Arial", 22, "bold"), bg="#1a1040", fg="#FFFFFF").grid(row=3, column=0, padx=20,             sticky="w")
+        tk.Label(box1, text="of music in your playlist", font=("Arial", 9),          bg="#1a1040", fg="#a899cc").grid(row=4, column=0, padx=20, pady=(0,10), sticky="w")
+
+        box2 = tk.Frame(self.stats_frame, bg="#1a1040", highlightbackground="#4a3080", highlightthickness=1, width=400, height=225)
+        box2.grid(row=2, column=3, padx=14, pady=14, sticky="nsew")
+        box2.grid_propagate(False)
+        tk.Label(box2, text="TOTAL PLAY COUNTS",    font=("Arial", 10, "bold"), bg="#1a1040", fg="#a899cc").grid(row=2, column=0, padx=20, pady=(10,0), sticky="w")
+        tk.Label(box2, text="342",                  font=("Arial", 22, "bold"), bg="#1a1040", fg="#FFFFFF").grid(row=3, column=0, padx=20,             sticky="w")
+        tk.Label(box2, text="times played",         font=("Arial", 9),          bg="#1a1040", fg="#a899cc").grid(row=4, column=0, padx=20, pady=(0,10), sticky="w")
+
+        box3 = tk.Frame(self.stats_frame, bg="#1a1040", highlightbackground="#4a3080", highlightthickness=1, width=400, height=225)
+        box3.grid(row=3, column=2, padx=14, pady=14, sticky="nsew")
+        box3.grid_propagate(False)
+        tk.Label(box3, text="MAX GENRE COUNT",      font=("Arial", 10, "bold"), bg="#1a1040", fg="#a899cc").grid(row=2, column=0, padx=20, pady=(10,0), sticky="w")
+        tk.Label(box3, text="128",                  font=("Arial", 22, "bold"), bg="#1a1040", fg="#FFFFFF").grid(row=3, column=0, padx=20,             sticky="w")
+        tk.Label(box3, text="Rock",                 font=("Arial", 9),          bg="#1a1040", fg="#9b6bff").grid(row=4, column=0, padx=20, pady=(0,10), sticky="w")
+
+        box4 = tk.Frame(self.stats_frame, bg="#1a1040", highlightbackground="#4a3080", highlightthickness=1, width=400, height=225)
+        box4.grid(row=3, column=3, padx=14, pady=14, sticky="nsew")
+        box4.grid_propagate(False)
+        tk.Label(box4, text="MAX ARTIST COUNT",     font=("Arial", 10, "bold"), bg="#1a1040", fg="#a899cc").grid(row=2, column=0, padx=20, pady=(10,0), sticky="w")
+        tk.Label(box4, text="45",                   font=("Arial", 22, "bold"), bg="#1a1040", fg="#FFFFFF").grid(row=3, column=0, padx=20,             sticky="w")
+        tk.Label(box4, text="Drake",                font=("Arial", 9),          bg="#1a1040", fg="#9b6bff").grid(row=4, column=0, padx=20, pady=(0, 10), sticky="w")
+            
+        tk.Button(self.stats_frame, text="Back to Home", command=lambda: self.show_frame(self.main_frame), bg="#22145C", fg="#FFFFFF").grid(row=4, column=0, columnspan=6, pady=50)
 
     def create_graphs_frame(self):
         self.graph_frame = tk.Frame(self.root, bg="#120A38")
@@ -110,7 +140,7 @@ class App:
             tab.grid_rowconfigure(0, weight=1)
             tab.grid_columnconfigure(0, weight=1)
 
-        tk.Button(self.graph_frame, text="Back", command=lambda: self.show_frame(self.main_frame), bg="#22145C", fg="#FFFFFF").grid(row=3, column=0, columnspan=6, pady=50)
+        tk.Button(self.graph_frame, text="Back to Home", command=lambda: self.show_frame(self.main_frame), bg="#22145C", fg="#FFFFFF").grid(row=3, column=0, columnspan=6, pady=50)
 
     def load_graphs(self):
         for tab in [self.tab1, self.tab2, self.tab3]:
