@@ -37,13 +37,13 @@ Data/songs.csv
 The application has 3 main screens:
 
 **Home Screen**
-The main landing screen with buttons to:
-Add song - opens a pop-up to enter title, artist, duration and genre
-Remove song - opens a pop-up to remove a song by title
-Next/Previous song - navigate through the playlist
-Shuffle - randomise playlist order
-Import CSV - load data from a csv file
-Stats - navigates to the Statistics screen
+The main landing screen with buttons to:  
+Add song - opens a pop-up to enter title, artist, duration and genre  
+Remove song - opens a pop-up to remove a song by title  
+Next/Previous song - navigate through the playlist  
+Shuffle - randomise playlist order  
+Import CSV - load data from a csv file  
+Stats - navigates to the Statistics screen  
 Visualistion - navigates to the Visaualisations screen
 
 ![Main Screen](screenshots/main_frame.png)
@@ -81,7 +81,12 @@ Represents each song with:
 
 **Playlist (playlist.py)**  
 Manages songs using a doubly linked list  
-Handles navigation, shuffles, and imports
+Handles:
+
+- Navigation (next, prev song)
+- Add & Remove song
+- Shuffle playlist
+- Import from CSV file
 
 **Stats (stats.py)**  
 Tracks:
@@ -94,7 +99,7 @@ Tracks:
 **Graphs (graphs.py)**  
 Generates visual insights using Matplotlib and Seaborn charts
 
-**GUI (GUI.py)**
+**GUI (GUI.py)**  
 Tkinter-based interface with multi-frame navigation, tabbed visualisations and pop-up confirmations
 
 ### Limitations
