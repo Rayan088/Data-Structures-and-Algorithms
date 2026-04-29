@@ -46,6 +46,10 @@ Import CSV - load data from a csv file
 Stats - navigates to the Statistics screen
 Visualistion - navigates to the Visaualisations screen
 
+![Main Screen](screenshots/main_frame.png)
+
+![Add and Remove Song Popups](screenshots/add_remove_song_popup.png)
+
 **Statistcs Screen**
 Displays 4 metric cards:
 
@@ -54,12 +58,16 @@ Displays 4 metric cards:
 - Max Genre Count (most represented genre)
 - Max Artist Count (most represented artist)
 
+![Statistics Screen](screenshots/statistics_frame.png)
+
 **Visualisations Screen**
 A tabbed view with three charts:
 
 - Duration - bar chart of song duration distribution
 - Genre - bar chart of songs per genre
 - Title Words - bar chart of most common words in song titles
+
+![Visualisations Screen](screenshots/visualisations_frame.png)
 
 ### Key Components
 
