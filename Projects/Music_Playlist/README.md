@@ -1,14 +1,14 @@
 ### Overview
 
-A python based music playlist tool that allows users to manage and interact with their music collection by playlist navigation, song management, shuffle functionality, statistical analysis, data visualisation and CSV-based improrting implemented through linked list data structures.
+A Python-based music playlist manager with a graphical user interface built using Tkinter. Users can manage and interact with their music collection through playlist, navigation, song management, statistical analysis, data visualisation and CSV-based importing, implemented through a doubly linked list data structure.
 
 ### Features
 
 - Add and remove songs from a playlist
 - Navigate between songs (next, previous)
 - Shuffle the playlist randomly
-- Track playlist statistics (Total duration, playcount, genre distribution)
-- Generate visualisations (Song duration distribution, songs per genre, most common words in song titles)
+- Track playlist statistics (Total duration, playcount, top genre, top artist)
+- Generate visualisations (Song duration distribution, genre distribution, most common words in song titles)
 - Import ready made playlist from a CSV file
 
 ### Data Structures & Concepts
@@ -16,6 +16,7 @@ A python based music playlist tool that allows users to manage and interact with
 - Doubly linked list for playlist management
 - Data analysis (stats tracking)
 - Data visualisation using matplotlib and seaborn
+- GUI build with Tkinter (tabbed notebook layout, multiframe navigation, pop-up dialogues)
 - File handling with CSV import
 
 ### How to Run
@@ -26,41 +27,39 @@ Install Dependences:
 pip install matplotlib seaborn
 
 Run program using:  
-python.main.py
+python GUI.py
 
 Make sure your entered files exist at:  
 Data/songs.csv
 
-### Menu System
+### GUI Overview
 
-**Playlist Menu**  
---- Playlist Menu ---
+The application has 3 main screens:
 
-1. Add Song
-2. Remove Song
-3. Next Song
-4. Previous Song
-5. Shuffle
-6. Stats
-7. Visualisations
-8. Import Songs from CSV
-9. Exit
+**Home Screen**
+The main landing screen with buttons to:
+Add song - opens a pop-up to enter title, artist, duration and genre
+Remove song - opens a pop-up to remove a song by title
+Next/Previous song - navigate through the playlist
+Shuffle - randomise playlist order
+Import CSV - load data from a csv file
+Stats - navigates to the Statistics screen
+Visualistion - navigates to the Visaualisations screen
 
-**Stats Menu**  
---- Stats Menu ---
+**Statistcs Screen**
+Displays 4 metric cards:
 
-1. Total Duration
-2. Total Play Counts
-3. Genre Counts
-4. Exit
+- Total Duration of playlist
+- Total Play Count (number of songs)
+- Max Genre Count (most represented genre)
+- Max Artist Count (most represented artist)
 
-**Visualisations Menu**  
---- Visualisations ---
+**Visualisations Screen**
+A tabbed view with three charts:
 
-1. Songs per Duration
-2. Songs per Genre
-3. Most common title words
-4. Exit
+- Duration - bar chart of song duration distribution
+- Genre - bar chart of songs per genre
+- Title Words - bar chart of most common words in song titles
 
 ### Key Components
 
@@ -82,14 +81,18 @@ Tracks:
 - Total duration
 - Play counts
 - Genre distribution
+- Artist distribution
 
 **Graphs (graphs.py)**  
-Generates visual insights using charts
+Generates visual insights using Matplotlib and Seaborn charts
+
+**GUI (GUI.py)**
+Tkinter-based interface with multi-frame navigation, tabbed visualisations and pop-up confirmations
 
 ### Limitations
 
 Limitations include:
 
-- Fixed CSV file path
+- Fixed CSV file path (data/songs.csv)
 - Data is lost upon refresh and must be re-imported from CSV File
 - Users cannot search, sort, or filter songs within playlist
