@@ -37,14 +37,15 @@ Data/songs.csv
 The application has 3 main screens:
 
 **Home Screen**  
-The main landing screen with buttons to:  
-Add song - opens a pop-up to enter title, artist, duration and genre  
-Remove song - opens a pop-up to remove a song by title  
-Next/Previous song - navigate through the playlist  
-Shuffle - randomise playlist order  
-Import CSV - load data from a csv file  
-Stats - navigates to the Statistics screen  
-Visualistion - navigates to the Visaualisations screen
+The main landing screen with buttons to:
+
+- Add song - opens a pop-up to enter title, artist, duration and genre
+- Remove song - opens a pop-up to remove a song by title
+- Next/Previous song - navigate through the playlist
+- Shuffle - randomise playlist order
+- Import CSV - load data from a csv file
+- Stats - navigates to the Statistics screen
+- Visualistion - navigates to the Visaualisations screen
 
 ![Main Screen](screenshots/main_frame.png)
 
