@@ -1,5 +1,2 @@
 # Ignore python bytecode files
 __pycache__/
-
-#Ignore screenshots
-screenshots/
