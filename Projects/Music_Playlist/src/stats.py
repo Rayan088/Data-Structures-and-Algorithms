@@ -14,7 +14,7 @@ class Stats:
 
         return f"{hours}h {minutes}m {seconds}s"
     
-    #Method which adds song duration
+    #Method which adds song durations
 
     def total_play_counts_(self, playlist):
         song_count = 0
@@ -78,4 +78,4 @@ class Stats:
 
         return max_artist, max_artist_count
 
-    #Method which calculates max no of songs by an artist
+    #Method which calculates max no of songs per artist

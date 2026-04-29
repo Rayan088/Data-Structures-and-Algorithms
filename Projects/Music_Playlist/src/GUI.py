@@ -30,15 +30,21 @@ class App:
 
         self.show_frame(self.main_frame)
 
+    #Method which creates frames and sets root properties
+
     def on_close(self):
         plt.close("all")
         self.root.quit()
         self.root.destroy()
 
+    #Cleanup method when app is closing
+
     def show_frame(self, frame):
         for f in (self.main_frame, self.stats_frame, self.graph_frame):
             f.pack_forget()
         frame.pack(fill="both", expand=True)
+    
+    #Displays chosen frame
 
     def create_main_frame(self):
         self.main_frame = tk.Frame(self.root, bg="#120A38")
@@ -68,6 +74,8 @@ class App:
                                       bd=2, highlightbackground="#6D28D9", highlightthickness=2)
         
         self.result_label.grid(row=4, column=1, columnspan=6, pady=30)
+    
+    #Method which creates the main frame
 
     def create_stats_frame(self):
         self.stats_frame = tk.Frame(self.root, bg="#120A38")
@@ -112,6 +120,8 @@ class App:
             
         tk.Button(self.stats_frame, text="Back to Home", command=lambda: self.show_frame(self.main_frame), bg="#22145C", fg="#FFFFFF").grid(row=4, column=0, columnspan=6, pady=50)
 
+    #Method which creates stats frame
+
     def create_graphs_frame(self):
         self.graph_frame = tk.Frame(self.root, bg="#120A38")
 
@@ -147,10 +157,13 @@ class App:
 
         tk.Button(self.graph_frame, text="Back to Home", command=lambda: self.show_frame(self.main_frame), bg="#22145C", fg="#FFFFFF").grid(row=3, column=0, columnspan=6, pady=50)
 
+    #Method which creates graph frame
+
     def load_graphs(self):
         for tab in [self.tab1, self.tab2, self.tab3]:
             for widget in tab.winfo_children():
                 widget.destroy()
+        #Clears old graphs
 
         fig1 = self.graphs.song_durations()
         fig2 = self.graphs.songs_per_genre()
@@ -167,6 +180,8 @@ class App:
         canvas3 = FigureCanvasTkAgg(fig3, master=self.tab3)
         canvas3.draw()
         canvas3.get_tk_widget().grid(row=0, column=0, sticky="nsew")
+
+    #Method which loads graphs
 
     def add_song(self):
         self.popup = tk.Toplevel(self.root)
@@ -190,6 +205,8 @@ class App:
         self.genre_entry.grid(row=3, column=1, padx=5, pady=5)
 
         tk.Button(self.popup, text="Add Song", command=self.confirm_add_song).grid(row=4, column=0, columnspan=2, pady=10)
+
+    #Method which creates add song popup
 
     def confirm_add_song(self):
         title = self.title_entry.get()
@@ -215,6 +232,8 @@ class App:
         self.popup.destroy()
         del self.popup
 
+    #Method which adds song to playlist with messagebox confirmation
+
     def remove_song(self):
         self.remove_popup = tk.Toplevel(self.root)
         self.remove_popup.title("Remove Song")
@@ -226,6 +245,8 @@ class App:
         self.remove_entry.grid(row=0, column=1, padx=5, pady=5)
 
         tk.Button(self.remove_popup, text="Remove Song", command=self.confirm_remove_song).grid(row=1, column=1, sticky="w", columnspan=2, pady=0)
+
+    #Method which creates remove song popup
 
     def confirm_remove_song(self):
         remove_title = self.remove_entry.get()
@@ -240,35 +261,51 @@ class App:
 
         self.remove_popup.destroy()
         del self.remove_popup
+    
+    #Method which removes song with messagebox confirmation 
 
     def next_song(self):
         message = self.pl.next_song()
         self.result_label.config(text=message)
         messagebox.showinfo("Now playing", message)
+    
+    #Next song method
 
     def previous_song(self):
         message = self.pl.prev_song()
         self.result_label.config(text=message)
         messagebox.showinfo("Now playing", message)
+    
+    #Previous song method
 
     def shuffle(self):
         message = self.pl.shuffle()
         self.result_label.config(text=message)
         messagebox.showinfo("Now playing", message)
 
+    #Shuffle playlist method
+
     def import_from_csv(self):
         message = self.pl.import_songs("data/songs.csv")
         self.result_label.config(text=message)
         messagebox.showinfo("Now playing", message)
+    
+    #Import from csv method
 
     def show_stats(self):
         self.create_stats_frame()
         self.show_frame(self.stats_frame)
+    
+    #Method to show stats frame
 
     def visualisations(self):
         self.load_graphs()
         self.show_frame(self.graph_frame)
+    
+    #Method to show visualisations frame
 
 root = tk.Tk()
 app = App(root)
 root.mainloop()
+
+#Creates main application window and starts event loop
