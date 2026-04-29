@@ -36,7 +36,7 @@ Data/songs.csv
 
 The application has 3 main screens:
 
-**Home Screen**
+**Home Screen**  
 The main landing screen with buttons to:  
 Add song - opens a pop-up to enter title, artist, duration and genre  
 Remove song - opens a pop-up to remove a song by title  
@@ -50,7 +50,7 @@ Visualistion - navigates to the Visaualisations screen
 
 ![Add and Remove Song Popups](screenshots/add_remove_song_popup.png)
 
-**Statistcs Screen**
+**Statistcs Screen**  
 Displays 4 metric cards:
 
 - Total Duration of playlist
@@ -60,7 +60,7 @@ Displays 4 metric cards:
 
 ![Statistics Screen](screenshots/statistics_frame.png)
 
-**Visualisations Screen**
+**Visualisations Screen**  
 A tabbed view with three charts:
 
 - Duration - bar chart of song duration distribution
