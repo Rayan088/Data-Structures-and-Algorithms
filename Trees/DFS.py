@@ -79,18 +79,17 @@ print("\n")
 
 """
 Postorder Traversal:
-Rule: Right, Root, Left
+Rule: Left, Right, Root
 """
 
 def postorder(root):
     if root is None:
         return
-    
+
+    postorder(root.left)
     postorder(root.right)
 
     print(root.value, end=" ")
-
-    postorder(root.left)
 
 #Postorder: 7 3 6 1 5 2 4
 
