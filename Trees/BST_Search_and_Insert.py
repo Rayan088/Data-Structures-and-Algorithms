@@ -6,7 +6,6 @@ In BST's we perform 3 main operations:
 - Insert
 - Delete
 
-
 Visualisation
                             8
             3                                10
