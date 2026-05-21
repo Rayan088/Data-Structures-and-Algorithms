@@ -1,7 +1,8 @@
 import random
 
-class Structure:
-    def __init__(self, position, Id=None):
+class Employee:
+    def __init__(self, position, head, Id=None):
+        self.head = head
         self.position = position
         self.children = []
 
@@ -10,3 +11,5 @@ class Structure:
             self.Id = randomId
         else:
             self.Id = Id
+
+    #Initialiser method
