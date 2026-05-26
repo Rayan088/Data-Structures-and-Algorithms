@@ -6,7 +6,7 @@ class Operations:
 
         self.children.append(newEmployee)
         print(f"Employee added successfully. (ID: {Employee.Id})")
-
+ 
         return newEmployee
     
     # Method to insert employee
@@ -21,7 +21,7 @@ class Operations:
             if result:
                 return result
             
-        return f"No employee found with ID {employee_Id}"
+        return None
     
     # Method to search for employee
     
@@ -36,13 +36,25 @@ class Operations:
             employee.name = name
 
         if position is not None:
-            employee.positon = position
+            employee.position = position
 
         print(f"Employee added successfully (Employee ID {employee_Id})")
 
     # Method to update employee
 
     def delete_Employee(self, employee_Id):
-        pass
+        for child in self.children:
+            if child.id == employee_Id:
+                self.children.remove(child)
+
+                print(f"Employee delted successfully (Employee ID {employee_Id})")
+                return True
+            
+            deleted = child.deleteEmployee(employee_Id)
+
+            if deleted:
+                return True
+            
+        return False
 
     # Method to delete employee
