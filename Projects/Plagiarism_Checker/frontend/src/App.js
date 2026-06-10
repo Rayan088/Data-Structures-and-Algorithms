@@ -32,7 +32,7 @@ function App() {
 
   return (
     <div>
-      <p className='title'>Plagiarism Detector</p>
+      <p className='title'>Plagiarism Detector Tool</p>
 
       <div className='input-box'>
         <input type='file' onChange={(e) => setFile1(e.target.files[0])} className='input1' />
@@ -41,13 +41,40 @@ function App() {
         <button onClick={handleCompare} className='run-button'>Run Analysis</button>
       </div>
 
-        <div>
-          <p>Results Summary</p>
-          <p>Score: {result.score}</p>
-          <p>Label: {result.label}</p>
-          
-          <p>Longest phrase: {result.longest_phrase}</p>
-          <p>Most common: {result.most_common}</p>
+        <div className='results-box'>
+          <p className='results-text'>Results Summary</p>
+
+          <div className='results-grid'>
+            <div className='result-card'>
+              <p className='similarity-title'>Jaccard Similarity Score</p>
+              <p className='similarity-value'>{result.score}</p>
+            </div>
+
+            <div className='result-card'>
+              <p className='similarity-level-title'>Similarity Level</p>
+              <p className='similarity-level-value'>{result.label}</p>
+            </div>
+
+            <div className='result-card'>
+              <p className='result-value'>IMAGE HERE</p>
+            </div>
+          </div>
+        </div>
+        
+        <div className='insights-box'>
+          <p className='insights-text'>Key Insights</p>
+
+          <div className='insights-grid'>
+            <div className='longest-phrase-grid'>
+              <p className='longest-phrase-text'>Longest Matching Phrase</p>
+              <p className='longest-phrase-result'>{result.longest_phrase}</p>
+            </div>
+
+            <div className='common-phrase-grid'>
+              <p className='common-phrase-text'>Most Common Word</p>
+              <p className='common-phrase-result'>{result.most_common}</p>
+            </div>
+          </div>
         </div>
     </div>
   );
