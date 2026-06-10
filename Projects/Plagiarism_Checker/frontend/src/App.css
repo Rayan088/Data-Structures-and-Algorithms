@@ -1,9 +1,9 @@
 body {
-  background-color: lavender;
+  background-color: #F3F0FF;
 }
 
 .title {
-  color: darkblue;
+  color: #003ECB;
   font-size: 42px;
   font-weight: bold;
   margin-left: 20px;
@@ -28,6 +28,8 @@ body {
 }
 
 .input1, .input2 {
+  background-color: #F7F8FC;
+  
   padding-top: 39px;
   padding-bottom: 39px;
   padding-left: 25px;
@@ -42,7 +44,7 @@ body {
 }
 
 .run-button {
-  background-color: blueviolet;
+  background-color: #0e4fe7;
   color: white;
   font-size: 20px;
 
@@ -53,7 +55,7 @@ body {
   margin-right: 40px;
   border: none;
   border-radius: 12px;
-  box-shadow: 0 2px 6px blueviolet;
+  box-shadow: 0 2px 6px #0e4fe7;
   cursor: pointer;
 
 }
@@ -146,7 +148,7 @@ body {
 }
 
 .longest-phrase-result {
-  background-color: lightblue;
+  background-color: #EEF2FF;
   color: blue;
   margin-top: 20px;
   border: 1px solid #d1d5db;
@@ -156,8 +158,8 @@ body {
 }
 
 .common-phrase-result {
-   background-color: lightgreen;
-  color: green;
+  background-color: rgb(198, 235, 198);
+  color: #15803D;
   margin-top: 20px;
   border: 1px solid #d1d5db;
   border-radius: 12px;
