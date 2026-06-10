@@ -7,13 +7,14 @@ class Analysis:
 
         for phrase in k_grams1:
             if phrase in set_kgram2:
-                longest_phrase = phrase
+                if longest_phrase is None or len(phrase) > len(longest_phrase):
+                    longest_phrase = phrase
         #Checking for longest a matching phrase
 
         if longest_phrase is None:
             return "No matching phrase found"
         else:
-            return f"Longest phrase: {longest_phrase}"
+            return longest_phrase
         
     #Method which finds longest phrase of length k of k_grams
         
@@ -47,7 +48,7 @@ class Analysis:
         #Finding the maximum frequency of the most common word
 
         if most_common_word != None:
-            return f"Most common word: {most_common_word} (appears {max_frequency} times)"
+            return f"{most_common_word} (appears {max_frequency} times)"
         else:
             return f"No matching words found"
         

@@ -4,11 +4,16 @@ import { useState } from 'react';
 function App() {
   const [file1, setFile1] = useState(null);
   const [file2, setFile2] = useState(null);
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState({
+    score: "N/A",
+    label: "N/A", 
+    longest_phrase: "N/A",
+    most_common: "N/A"
+  });
 
   const handleCompare = async () => {
     if (!file1 || !file2) {
-      alert('Upload both files');
+      alert('Missing files')
       return;
     }
 
@@ -16,7 +21,7 @@ function App() {
     formData.append("file1", file1);
     formData.append("file2", file2);
 
-    const response = await fetch("http://localhost:5000/compare", {
+    const response = await fetch("http://127.0.0.1:5000/compare", {
       method: "POST",
       body: formData
     });
@@ -36,7 +41,6 @@ function App() {
         <button onClick={handleCompare} className='run-button'>Run Analysis</button>
       </div>
 
-      {result && (
         <div>
           <p>Results Summary</p>
           <p>Score: {result.score}</p>
@@ -45,7 +49,6 @@ function App() {
           <p>Longest phrase: {result.longest_phrase}</p>
           <p>Most common: {result.most_common}</p>
         </div>
-      )}
     </div>
   );
 }

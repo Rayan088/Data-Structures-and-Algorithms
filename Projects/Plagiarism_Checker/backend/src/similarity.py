@@ -24,17 +24,17 @@ class Similarity:
         calculation = float(calculation)
 
         if union == 0:
-            return f"Jaccard score: ({calculation}) signifies No Similarity"
-        elif  0.0 < calculation <= 0.1:
-            return f"Jaccard score: ({calculation}) signifies Very Low Similarity"
+            return calculation, "No Similarity"
+        elif 0.0 < calculation <= 0.1:
+            return calculation, "Very Low Similarity"
         elif 0.1 < calculation <= 0.3:
-            return f"Jaccard score: ({calculation}) signifies Low Similarity"
+            return calculation, "Low Similarity"
         elif 0.3 < calculation <= 0.5:
-            return f"Jaccard Score ({calculation}) signifies Moderate Similarity"
+            return calculation, "Moderate Similarity"
         elif 0.5 < calculation <= 0.7:
-            return f"Jaccard Score ({calculation}) signifies High Similarity"
+            return calculation, "High Similarity"
         else:
-            return f"Jaccard Score ({calculation}) signifies Very High Similarity"
+            return calculation, "Very High Similarity"
 
         #Result of Jaccard Score
         
