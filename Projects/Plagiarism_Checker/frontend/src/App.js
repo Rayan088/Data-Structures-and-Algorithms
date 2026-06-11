@@ -11,6 +11,7 @@ import gaugeIcon from './images/gauge-icon.png'
 function App() {
   const [file1, setFile1] = useState(null);
   const [file2, setFile2] = useState(null);
+  const [hasRun, setHasRun] = useState(false)
   const [result, setResult] = useState({
     score: "N/A",
     label: "N/A", 
@@ -45,6 +46,8 @@ function App() {
 
     const data = await response.json();
     setResult(data);
+
+    setHasRun(true);
   }
 
   return (
@@ -134,6 +137,14 @@ function App() {
                 </div>
               </div>
             </div>
+          </div>
+
+          <div
+            className={`status-message ${hasRun ? "status-done" : "status-empty"}`}>
+            
+            {!hasRun
+              ? "No analysis yet — upload files and run analysis"
+              : "Analysis complete ✓"}
           </div>
       </div>
     </div>
