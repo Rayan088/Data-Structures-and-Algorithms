@@ -160,7 +160,7 @@ body {
 }
 
 .results-text, .insights-text {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: bold;
   margin-left: 25px;
   margin-top: -30px;
@@ -221,6 +221,27 @@ body {
   margin: 0 35px;
 }
 
+.insight-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.insight-icon {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;  
+}
+
+.insight-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  margin-top: -10px;  
+}
+
 .longest-phrase-grid, .common-phrase-grid {
   padding-top: 39px;
   padding-bottom: 39px;
@@ -231,29 +252,37 @@ body {
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
   margin: 0;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 16px
 }
 
 .longest-phrase-text, .common-phrase-text {
-  font-size: 16px;
+  font-size: 21px;
   font-weight: bold;
-  margin-top: -20px;
-  margin-bottom: -10px;
+  margin: 0;
+}
+
+.longest-phrase-result, .common-phrase-result {
+  margin: 0;
+  font-weight: 600;
 }
 
 .longest-phrase-result {
   background-color: #EEF2FF;
   color: blue;
-  margin-top: 20px;
   border: 1px solid #d1d5db;
   border-radius: 12px;
   padding: 16px 20px;
+  max-width: 500px;
 }
 
 .common-phrase-result {
   background-color: rgb(198, 235, 198);
   color: #15803D;
-  margin-top: 20px;
   border: 1px solid #d1d5db;
   border-radius: 12px;
   padding: 16px 20px;
+  max-width: 500px;
 }

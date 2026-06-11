@@ -4,6 +4,8 @@ import { useState } from 'react';
 import fileIcon from './images/file-icon.png';
 import runIcon from './images/run-icon.png'
 import mainIcon from './images/main-icon.png'
+import phraseIcon from './images/phrase-icon.png'
+import wordIcon from './images/word-icon.png'
 
 function App() {
   const [file1, setFile1] = useState(null);
@@ -104,13 +106,21 @@ function App() {
 
             <div className='insights-grid'>
               <div className='longest-phrase-grid'>
-                <p className='longest-phrase-text'>Longest Matching Phrase</p>
-                <p className='longest-phrase-result'>{result.longest_phrase}</p>
+                <img src={phraseIcon} alt="icon" className='insight-icon' />
+
+                <div className='insight-content'>
+                  <p className='longest-phrase-text'>Longest Matching Phrase</p>
+                  <p className='longest-phrase-result'>{result.longest_phrase}</p>
+                </div>
               </div>
 
               <div className='common-phrase-grid'>
-                <p className='common-phrase-text'>Most Common Word</p>
-                <p className='common-phrase-result'>{result.most_common}</p>
+                <img src={wordIcon} alt="icon" className='insight-icon' />
+
+                <div className='insight-content'>
+                  <p className='common-phrase-text'>Most Common Word</p>
+                  <p className='common-phrase-result'>{result.most_common}</p>
+                </div>
               </div>
             </div>
           </div>
