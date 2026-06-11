@@ -1,6 +1,10 @@
 ### Overview
 
-A Python based plagiarism detection tool that compares two texts by using text-preprocessing, k-gram phrase matching, Jaccard Similarity, and frequency based analysis.
+A web-based plagiarism detection tool with a React frontend and Flask backend that compares two text documents by using text-preprocessing, k-gram phrase matching, Jaccard Similarity, and frequency based analysis.
+
+### Preview
+
+![Dashboard](./frontend/src/images/screenshot.png)
 
 ### How it works
 
@@ -26,33 +30,25 @@ Returns a labelled similarity score:
 Finds longest copied phrase utilising sets for fast lookup (O(n))  
 Finds most common phrase by using Counter to track frequency and identify most repeated shared phrase
 
-### How to Run
+### Live Demo
 
-Project requres python installed (preferred: python 3.13)
-
-Run program using:  
-python.main.py
-
-Make sure your entered files exist at:  
-Projects/Plagiarism_Checker/data/sample1.txt  
-Projects/Plagiarism_Checker/data/sample2.txt
-
-### Example Output
-
-------------------Plagiarism Checker---------------------  
-Jaccard Score (0.32) signifies Moderate Similarity  
-Longest phrase: modified genetically modified organisms gmos first  
-Most common word: gmos (appears 19 times)
+Live project available at:
 
 ### Limitations
 
 Limitations include:
 
 - Only detects exact matches
-- Fixed k-gram size (Currently k=6)
+- Fixed k-gram size (Currently k=3)
+- Only allows .txt files
 
 Cannot detect:
 
 - Paraphrasing
 - Synonyms
 - Reorded Setences
+
+### Tech Stack
+
+**React** - Frontend  
+**Flask** - Backend
