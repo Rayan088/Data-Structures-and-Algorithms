@@ -6,6 +6,7 @@ import runIcon from './images/run-icon.png'
 import mainIcon from './images/main-icon.png'
 import phraseIcon from './images/phrase-icon.png'
 import wordIcon from './images/word-icon.png'
+import gaugeIcon from './images/gauge-icon.png'
 
 function App() {
   const [file1, setFile1] = useState(null);
@@ -85,18 +86,18 @@ function App() {
             <p className='results-text'>Results Summary</p>
 
             <div className='results-grid'>
-              <div className='result-card'>
+              <div className='results-card'>
                 <p className='similarity-title'>Jaccard Similarity Score</p>
                 <p className='similarity-value'>{result.score}</p>
               </div>
 
-              <div className='result-card'>
+              <div className='results-card'>
                 <p className='similarity-level-title'>Similarity Level</p>
                 <p className='similarity-level-value'>{result.label}</p>
               </div>
 
-              <div className='result-card'>
-                <p className='result-value'>IMAGE HERE</p>
+              <div className='results-card'>
+                <img src={gaugeIcon} alt="icon" className='guage-icon'></img>
               </div>
             </div>
           </div>
