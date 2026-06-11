@@ -30,22 +30,25 @@ function App() {
     };
 
   const handleCompare = async () => {
+    // Stops user sending empty requests by checking if both files are present
     if (!file1 || !file2) {
       alert('Missing files')
       return;
     }
 
+    // FormData is an object to send data (files) to backend
     const formData = new FormData();
     formData.append("file1", file1);
     formData.append("file2", file2);
 
+    // Sends request to run compare() function
     const response = await fetch("http://127.0.0.1:5000/compare", {
       method: "POST",
       body: formData
     });
 
-    const data = await response.json();
-    setResult(data);
+    const data = await response.json(); // Converts JSON to JS object
+    setResult(data); // Re-renders with data from backend
 
     setHasRun(true);
   }

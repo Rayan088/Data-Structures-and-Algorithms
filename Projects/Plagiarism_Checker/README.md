@@ -30,9 +30,10 @@ Returns a labelled similarity score:
 Finds longest copied phrase utilising sets for fast lookup (O(n))  
 Finds most common phrase by using Counter to track frequency and identify most repeated shared phrase
 
-### Live Demo
+### Tech Stack
 
-Live project available at:
+**React** - Frontend  
+**Flask** - Backend
 
 ### Limitations
 
@@ -47,8 +48,3 @@ Cannot detect:
 - Paraphrasing
 - Synonyms
 - Reorded Setences
-
-### Tech Stack
-
-**React** - Frontend  
-**Flask** - Backend

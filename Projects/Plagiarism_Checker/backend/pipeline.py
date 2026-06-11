@@ -19,6 +19,7 @@ def run_pipeline(text1, text2):
     longest_phrase = analysis.longest_copied_phrase(kgrams1, kgrams2)
     most_common_word = analysis.top_matching_phrase(tokens1, tokens2)
 
+    # Returning values for efficient JSON conversion
     return {
         "score": score,
         "label": label,
