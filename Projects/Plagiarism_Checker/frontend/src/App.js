@@ -18,6 +18,16 @@ function App() {
     most_common: "N/A"
   });
 
+  const getLabelColor = (label) => {
+      if (label === 'No Similarity') return '#15803D'
+      if (label === 'Very Low Similarity') return '#22C55E'
+      if (label === 'Low Similarity') return '#a0ff0f'
+      if (label === 'Moderate Similarity') return '#F59E0B'
+      if (label === 'High Similarity') return '#F97316'
+      if (label === 'Very High Similarity') return '#DC2626'
+      return '#000000'
+    };
+
   const handleCompare = async () => {
     if (!file1 || !file2) {
       alert('Missing files')
@@ -93,7 +103,7 @@ function App() {
 
               <div className='results-card'>
                 <p className='similarity-level-title'>Similarity Level</p>
-                <p className='similarity-level-value'>{result.label}</p>
+                <p className='similarity-level-value' style={{color: getLabelColor(result.label)}}>{result.label}</p>
               </div>
 
               <div className='results-card'>
