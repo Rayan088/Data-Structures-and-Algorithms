@@ -12,10 +12,10 @@ def get_btc_market_data():
 
     return {
         "price": float(data["lastPrice"]),
-        "change": float(data["priceChangePercent"]),
+        "change": round(float(data["priceChangePercent"]), 2),
         "high": float(data["highPrice"]),
         "low": float(data["lowPrice"]),
-        "volume": float(data["volume"])
+        "volume": round(float(data["volume"]), 2)
     }
 
 # Function to get market data
