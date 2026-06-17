@@ -37,18 +37,30 @@ class OrderBook:
     # Method to sort full asks list
 
     def get_best_bid(self):
-        if len(self.bids) > 0:
+        if self.bids:
             return self.bids[0][2]
         return None
     
     # Method which returns highest bid
     
     def get_best_ask(self):
-        if len(self.asks) > 0:
+        if self.asks:
             return self.asks[0][2]
         return None
     
     # Method which returns lowest sell 
+
+    def remove_best_bid(self):
+        if self.bids:
+            heapq.heappop(self.bids)
+
+    # Method which removes best bid
+
+    def remove_best_ask(self):
+        if self.asks:
+            heapq.heappop(self.asks)
+
+    # Method which removes best ask
 
     def get_order_book_display(self):
         return {
