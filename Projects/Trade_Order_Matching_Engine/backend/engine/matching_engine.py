@@ -1,5 +1,5 @@
-from order_book import OrderBook
-from trade import Trade
+from .order_book import OrderBook
+from .trade import Trade
 
 # Matching Engine class
 
