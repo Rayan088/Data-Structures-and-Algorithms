@@ -62,6 +62,23 @@ def get_wallet():
 
 # Data of current user wallet
 
+@app.route('/userorders')
+def user_orders():
+     return jsonify([
+        {
+            "id": o.order_id,
+            "time": o.time,
+            "side": o.side,
+            "price": o.price,
+            "qty": o.quantity,
+            "filled": o.filled,
+            "status": o.status
+        }
+        for o in engine.user_orders
+    ])
+
+# Data of current user orders
+
 @app.route('/order', methods=["POST"])
 def place_order():
     data = request.json

@@ -8,8 +8,12 @@ class MatchingEngine:
         self.wallet = wallet
         self.order_book = OrderBook()
         self.trades = []
+        self.user_orders = []
 
     def add_order(self, order):
+        if order.is_user:
+            self.user_orders.append(order)
+            
         self.order_book.add_order(order)
         self.match_orders(order)
 
