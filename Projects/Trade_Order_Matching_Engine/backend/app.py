@@ -5,6 +5,7 @@ import threading
 from backend.engine.matching_engine import MatchingEngine
 from backend.bots.market_maker import MarketMaker
 from backend.market.market_data import get_market_summary
+from backend.market.market_stats import calculate_market_stats
 from backend.account.wallet import Wallet
 from backend.engine.order import Order
 
@@ -45,6 +46,12 @@ def market():
     return jsonify(get_market_summary())
 
 # Data for current market stats
+
+@app.route('/stats')
+def stats():
+    return jsonify(calculate_market_stats(engine.order_book))
+
+# Mean and spread of current bids and asks
 
 @app.route('/wallet')
 def get_wallet():
