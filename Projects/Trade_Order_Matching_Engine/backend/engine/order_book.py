@@ -37,18 +37,24 @@ class OrderBook:
     # Method to sort full asks list
 
     def get_best_bid(self):
-        if self.bids:
-            return self.bids[0][2]
-        return None
+        if not self.bids:
+            return None
+        return self.bids[0][2]
     
     # Method which returns highest bid
     
     def get_best_ask(self):
-        if self.asks:
-            return self.asks[0][2]
-        return None
+        if not self.asks:
+            return None
+        return self.asks[0][2]
     
     # Method which returns lowest sell 
+
+    def get_bids(self):
+        return [order for (_, _, order) in self.bids]
+    
+    def get_asks(self):
+        return [order for (_, _, order) in self.asks]
 
     def remove_best_bid(self):
         if self.bids:
