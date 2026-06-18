@@ -51,6 +51,9 @@ class MatchingEngine:
                 break
             
             trade = Trade(buy, sell, sell.price, quantity)
+
+            trade.taker_side = incoming_order.side
+
             self.trades.append(trade)
 
             if buy.is_user:

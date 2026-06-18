@@ -30,7 +30,7 @@ def trades():
         {
             "price": t.price,
             "qty": t.quantity,
-            "side": t.side
+            "side": t.taker_side
         }
         for t in engine.trades
     ])

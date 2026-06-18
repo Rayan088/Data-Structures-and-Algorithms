@@ -13,11 +13,11 @@ class Trade:
         self.buy_order = buy_order
         self.sell_order = sell_order
         self.price = price
-        self.quantity = quantity
-
-        self.side = buy_order.side
+        self.quantity = round(quantity, 3)
 
         self.time = time.time()
+
+        self.taker_side = None
 
     def get_trade_data(self):
         return {
