@@ -3,6 +3,16 @@ class Wallet:
         self.btc = 1.0
         self.cash = 0.0
 
+    def can_buy(self, cost):
+        return self.usd >= cost
+    
+    # Method if user has funds to buy
+    
+    def can_sell(self, qty):
+        return self.btc >= qty
+    
+    # Method if user has funds to sell
+
     def buy_btc(self, price, quantity):
         cost = price * quantity
 

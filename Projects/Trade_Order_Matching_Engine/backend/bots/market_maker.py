@@ -16,8 +16,8 @@ class MarketMaker:
         spread = random.randint(10, 100)
         quantity = round(random.uniform(0.01, 0.5), 3)
 
-        buy_order = Order("BUY", current_price - spread, quantity)
-        sell_order = Order("SELL", current_price + spread, quantity)
+        buy_order = Order("BUY", current_price - spread, quantity, is_user=False)
+        sell_order = Order("SELL", current_price + spread, quantity, is_user=False)
 
         return buy_order, sell_order
     

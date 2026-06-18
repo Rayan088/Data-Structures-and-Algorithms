@@ -4,7 +4,8 @@ from .trade import Trade
 # Matching Engine class
 
 class MatchingEngine:
-    def __init__(self):
+    def __init__(self, wallet):
+        self.wallet = wallet
         self.order_book = OrderBook()
         self.trades = []
 
@@ -49,9 +50,16 @@ class MatchingEngine:
             if quantity <= 0:
                 break
             
-            trade = Trade(buy, sell, sell.price, quantity, incoming_order.side)
-
+            trade = Trade(buy, sell, sell.price, quantity)
             self.trades.append(trade)
+
+            if buy.is_user:
+                self.wallet.btc += trade.quantity
+                self.wallet.usd -= trade.quantity * trade.price
+
+            if sell.is_user:
+                self.wallet.btc -= trade.quantity
+                self.wallet.usd += trade.quantity * trade.price
 
             buy.filled += quantity
             sell.filled += quantity

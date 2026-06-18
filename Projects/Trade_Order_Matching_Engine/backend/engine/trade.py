@@ -5,7 +5,7 @@ import time
 class Trade:
     trade_counter = 1
 
-    def __init__(self, buy_order, sell_order, price, quantity, side):
+    def __init__(self, buy_order, sell_order, price, quantity):
         self.trade_id = Trade.trade_counter
 
         Trade.trade_counter += 1
@@ -14,7 +14,8 @@ class Trade:
         self.sell_order = sell_order
         self.price = price
         self.quantity = quantity
-        self.side = side
+
+        self.side = buy_order.side
 
         self.time = time.time()
 
