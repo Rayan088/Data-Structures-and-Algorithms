@@ -15,7 +15,7 @@ wallet = Wallet()
 engine = MatchingEngine(wallet)
 bot = MarketMaker(engine)
 
-threading.Thread(target=bot.start, daemon=True).start()
+threading.Thread(target=bot.start, daemon=True).start() # Starts bot in background
 
 @app.route('/orderbook')
 def orderbook():
@@ -24,10 +24,13 @@ def orderbook():
         "asks": [{"price": order.price, "qty": order.quantity} for order in engine.order_book.get_asks()]
     })
 
+# Data for bids and asks 
+
 @app.route('/trades')
 def trades():
     return jsonify([
         {
+            "time": t.time,
             "price": t.price,
             "qty": t.quantity,
             "side": t.taker_side
@@ -35,9 +38,22 @@ def trades():
         for t in engine.trades
     ])
 
+# Data for successful trades
+
 @app.route('/market')
 def market():
     return jsonify(get_market_summary())
+
+# Data for current market stats
+
+@app.route('/wallet')
+def get_wallet():
+    return jsonify({
+        "btc": wallet.btc,
+        "usd": wallet.cash
+    })
+
+# Data of current user wallet
 
 @app.route('/order', methods=["POST"])
 def place_order():
@@ -61,6 +77,8 @@ def place_order():
     engine.add_order(order)
 
     return jsonify({"status": "order placed"})
+
+# Method for trade execution
 
 if __name__ == "__main__":
     app.run(debug=True)

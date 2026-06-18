@@ -4,7 +4,7 @@ class Wallet:
         self.cash = 0.0
 
     def can_buy(self, cost):
-        return self.usd >= cost
+        return self.cash >= cost
     
     # Method if user has funds to buy
     

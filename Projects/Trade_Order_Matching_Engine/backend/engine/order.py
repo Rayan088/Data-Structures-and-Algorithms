@@ -19,7 +19,6 @@ class Order:
         self.filled = 0
         self.status = "OPEN"
 
-
     def remaining_quantity(self):
         return self.quantity - self.filled
     
