@@ -1,3 +1,5 @@
+import "./App.css"
+
 import Wallet from "./components/Wallet";
 import OrderBook from "./components/OrderBook";
 import Trades from "./components/Trades";
@@ -7,22 +9,36 @@ import MarketStats from "./components/MarketStats";
 import LiveStats from "./components/LiveStats";
 
 function App() {
-
     return (
-        <div>
+        <div className="dashboard">
 
-            <h1>Mini Exchange</h1>
-            <LiveStats />
+            <div className="card stats">
+                <LiveStats />
+            </div>
 
-            <MarketStats />
-            <OrderBook />
-            <Wallet />
+            <div className="card market">
+                <MarketStats />
+            </div>
 
-            <OrderForm />
+            <div className="card orderbook">
+                <OrderBook />
+            </div>
 
-            <UserOrders />
+            <div className="card wallet">
+                <Wallet />
+            </div>
 
-            <Trades />
+            <div className="card orderform">
+                <OrderForm />
+            </div>
+
+            <div className="card userorders">
+                <UserOrders />
+            </div>
+
+            <div className="card trades">
+                <Trades />
+            </div>
 
         </div>
     );
