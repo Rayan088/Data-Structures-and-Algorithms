@@ -1,5 +1,10 @@
 const API = "http://localhost:5000";
 
+export async function getMarket() {
+    const res = await fetch(`${API}/market`);
+    return res.json();
+}
+
 export async function getOrderBook() {
     const res = await fetch(`${API}/orderbook`)
     return res.json();

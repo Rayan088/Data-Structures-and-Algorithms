@@ -4,6 +4,7 @@ import Trades from "./components/Trades";
 import OrderForm from "./components/OrderForm";
 import UserOrders from "./components/UserOrders";
 import MarketStats from "./components/MarketStats";
+import LiveStats from "./components/LiveStats";
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
         <div>
 
             <h1>Mini Exchange</h1>
+            <LiveStats />
 
             <MarketStats />
             <OrderBook />
