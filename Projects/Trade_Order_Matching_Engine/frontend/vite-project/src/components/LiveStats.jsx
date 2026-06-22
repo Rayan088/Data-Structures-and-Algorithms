@@ -25,12 +25,35 @@ function LiveStats() {
     }, []);
 
     return (
-        <div>
-            <h2>{market.asset} Market</h2>
-            <p>Price: {market.current_price}</p>
-            <p>24h Change: {market.change_24h}%</p>
-            <p>High / Low: {market.highlow}</p>
-            <p>Volume: {market.volume}</p>
+        <div className="market-bar">
+
+            <div className="market-box">
+                <span>Asset</span>
+                <strong>{market.asset}</strong>
+            </div>
+
+            <div className="market-box">
+                <span>Price</span>
+                <strong>${market.current_price}</strong>
+            </div>
+
+            <div className="market-box">
+                <span>24h Change</span>
+                <strong style={{ color: market.change_24h > 0 ? "#22c55e" : "#ef4444" }}>
+                    {market.change_24h}%
+                </strong>
+            </div>
+
+            <div className="market-box">
+                <span>High / Low</span>
+                <strong>{market.highlow}</strong>
+            </div>
+
+            <div className="market-box">
+                <span>24h Volume</span>
+                <strong>{market.volume}</strong>
+            </div>
+
         </div>
     );
 }

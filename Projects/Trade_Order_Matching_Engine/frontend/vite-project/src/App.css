@@ -8,10 +8,8 @@ body {
 .dashboard {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto auto auto;
   gap: 15px;
   padding: 15px;
-  height: 100vh;
   box-sizing: border-box;
 }
 
@@ -24,29 +22,65 @@ body {
 }
 
 .stats {
-    grid-column: 1;
+  grid-column: 1 / -1;
+  grid-row: 1;
+}
+
+.market-bar {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+}
+
+.market-box {
+  flex: 1;
+  background: #1a1d25;
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 70px;
+  border: 1px solid #2b303b;
+}
+
+.market-box span {
+  font-size: 12px;
+  color: #8b95a7;
+  margin-bottom: 8px;
+}
+
+.market-box strong {
+  font-size: 18px;
+  color: white;
 }
 
 .market {
-  grid-column: 1 / 4;
+  grid-column: 1 / -1;
+  grid-row: 2;
 }
 
 .orderbook {
   grid-column: 1;
+  grid-row: 3;
 }
 
 .wallet {
   grid-column: 2;
+  grid-row: 3;
 }
 
 .trades {
   grid-column: 3;
+  grid-row: 3 / 5;
 }
 
 .orderform {
   grid-column: 1 / 3;
+  grid-row: 4;
 }
 
 .userorders {
   grid-column: 3;
+  grid-row: 5;
 }
