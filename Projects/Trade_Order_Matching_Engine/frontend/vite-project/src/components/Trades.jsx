@@ -19,7 +19,7 @@ function Trades() {
 
     return (
         <div>
-            <h2>Trades</h2>
+            <h2>Time & Sales</h2>
 
             {trades.map((t, i) => (
                 <div key={i}>
