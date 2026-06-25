@@ -1,6 +1,5 @@
 import "./App.css"
 
-import Wallet from "./components/Wallet";
 import OrderBook from "./components/OrderBook";
 import Trades from "./components/Trades";
 import OrderForm from "./components/OrderForm";
@@ -17,10 +16,6 @@ function App() {
 
             <div className="card orderbook">
                 <OrderBook />
-            </div>
-
-            <div className="card wallet">
-                <Wallet />
             </div>
 
             <div className="card orderform">
