@@ -31,7 +31,7 @@ function OrderBook() {
 
     return (
         <div className="ob-wrap">
-            <h2 className="panel-title">Order Book</h2>
+            <h2 className="panel-title">ORDER BOOK</h2>
 
             <div className="ob-grid ob-header-row">
                 <div className="ob-col-header ask-header">

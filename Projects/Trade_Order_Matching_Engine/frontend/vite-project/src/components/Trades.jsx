@@ -29,7 +29,7 @@ function Trades() {
 
     return (
         <div className="ts-wrap">
-            <h2 className="panel-title">Time & Sales</h2>
+            <h2 className="panel-title">TIME & SALES</h2>
 
             <div className="ts-header-row">
                 <span>Time</span>

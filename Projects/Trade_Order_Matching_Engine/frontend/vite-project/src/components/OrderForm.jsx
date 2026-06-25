@@ -39,7 +39,7 @@ function OrderForm() {
     return (
         <div>
 
-            <h2>Place Order</h2>
+            <h2>PLACE ORDER</h2>
             
             <select value={side} onChange={(e) => setSide(e.target.value)}>
                 <option>BUY</option>

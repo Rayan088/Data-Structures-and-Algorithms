@@ -18,7 +18,7 @@ function UserOrders() {
 
     return (
         <div>
-            <h2>Your Orders</h2>
+            <h2>YOUR ORDERS</h2>
             {orders.map((o, i) => (
                 <div key={i}>
                     {o.id} | {o.side} | {o.price} | {o.qty} | {o.filled} | {o.status}

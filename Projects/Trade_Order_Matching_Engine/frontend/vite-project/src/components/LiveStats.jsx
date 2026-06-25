@@ -33,24 +33,24 @@ function LiveStats() {
             </div>
 
             <div className="market-box">
-                <span>Price</span>
+                <span>Current Price (BTC)</span>
                 <strong>${market.current_price}</strong>
             </div>
 
             <div className="market-box">
-                <span>24h Change</span>
+                <span>24h Change (%)</span>
                 <strong style={{ color: market.change_24h > 0 ? "#22c55e" : "#ef4444" }}>
                     {market.change_24h}%
                 </strong>
             </div>
 
             <div className="market-box">
-                <span>High / Low</span>
+                <span>24h High / Low</span>
                 <strong>{market.highlow}</strong>
             </div>
 
             <div className="market-box">
-                <span>24h Volume</span>
+                <span>24h Volume (BTC)</span>
                 <strong>{market.volume}</strong>
             </div>
 
