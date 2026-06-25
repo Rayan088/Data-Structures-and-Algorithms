@@ -37,7 +37,7 @@ function Trades() {
                 <span>Qty (BTC)</span>
             </div>
 
-            {trades.slice(0, 100).map((t, i) => {
+            {[...trades].slice(-100).reverse().map((t, i) => {
                 const isBuy = t.side?.toLowerCase() === "buy";
                 return (
                     <div key={i} className={`ts-row ${isBuy ? "ts-buy" : "ts-sell"}`}>
