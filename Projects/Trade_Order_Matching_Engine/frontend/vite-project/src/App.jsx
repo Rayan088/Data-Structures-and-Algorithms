@@ -5,7 +5,6 @@ import OrderBook from "./components/OrderBook";
 import Trades from "./components/Trades";
 import OrderForm from "./components/OrderForm";
 import UserOrders from "./components/UserOrders";
-import MarketStats from "./components/MarketStats";
 import LiveStats from "./components/LiveStats";
 
 function App() {
@@ -14,10 +13,6 @@ function App() {
 
             <div className="card stats">
                 <LiveStats />
-            </div>
-
-            <div className="card market">
-                <MarketStats />
             </div>
 
             <div className="card orderbook">

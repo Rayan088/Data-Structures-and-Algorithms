@@ -1,15 +1,22 @@
 import { useEffect, useState } from "react";
-import { getOrderBook } from "../api/exchange";
+import { getOrderBook, getStats } from "../api/exchange";
 
 function OrderBook() {
     const [data, setData] = useState({ bids: [], asks: [] });
+    const [stats, setStats] = useState({})
 
     useEffect(() => {
         async function load() {
-            const res = await getOrderBook();
-            setData(res);
+            const [orderBookRes, statsRes] = await Promise.all([
+                getOrderBook(),
+                getStats()
+            ]);
+            setData(orderBookRes);
+            setStats(statsRes)
         }
+
         load();
+
         const interval = setInterval(load, 2000);
         return () => clearInterval(interval);
     }, []);
@@ -21,16 +28,6 @@ function OrderBook() {
     // Finds largest ask and bid
     const maxAskQty = Math.max(...asks.map(a => a.qty), 1);
     const maxBidQty = Math.max(...bids.map(b => b.qty), 1);
-
-    // Calculating spread
-    const spread = asks.length && bids.length
-        ? (asks[0].price - bids[0].price).toFixed(2)
-        : "—";
-
-    // Calculating mid price
-    const mid = asks.length && bids.length
-        ? ((asks[0].price + bids[0].price) / 2).toFixed(2)
-        : "—";
 
     return (
         <div className="ob-wrap">
@@ -77,8 +74,8 @@ function OrderBook() {
             </div>
 
             <div className="ob-spread-row">
-                <span>SPREAD <strong>{spread} ({spread && bids[0] ? ((spread / bids[0].price) * 100).toFixed(2) : "—"}%)</strong></span>
-                <span>MID PRICE <strong>{mid}</strong></span>
+                <span>SPREAD <strong>{stats.spread}</strong></span>
+                <span>MID PRICE <strong>{stats.mean_price}</strong></span>
             </div>
         </div>
     );
