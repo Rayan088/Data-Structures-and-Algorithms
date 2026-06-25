@@ -37,16 +37,18 @@ function Trades() {
                 <span>Qty (BTC)</span>
             </div>
 
-            {[...trades].slice(-100).reverse().map((t, i) => {
-                const isBuy = t.side?.toLowerCase() === "buy";
-                return (
-                    <div key={i} className={`ts-row ${isBuy ? "ts-buy" : "ts-sell"}`}>
-                        <span className="ts-time">{formatTime(t.time)}</span>
-                        <span className="ts-price">{t.price?.toLocaleString() ?? t.price}</span>
-                        <span className="ts-qty">{t.qty}</span>
-                    </div>
-                );
-            })}
+            <div className="ts-body">
+                {[...trades].slice(-100).reverse().map((t, i) => {
+                    const isBuy = t.side?.toLowerCase() === "buy";
+                    return (
+                        <div key={i} className={`ts-row ${isBuy ? "ts-buy" : "ts-sell"}`}>
+                            <span className="ts-time">{formatTime(t.time)}</span>
+                            <span className="ts-price">{t.price?.toLocaleString() ?? t.price}</span>
+                            <span className="ts-qty">{t.qty}</span>
+                        </div>
+                    );
+                })}
+            </div>
         </div>
     );
 }
