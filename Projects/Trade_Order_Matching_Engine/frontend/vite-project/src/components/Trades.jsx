@@ -17,15 +17,36 @@ function Trades() {
         return () => clearInterval(interval);
     }, []);
 
-    return (
-        <div>
-            <h2>Time & Sales</h2>
+    // Function to format time into appropriate format
+    const formatTime = (ts) => {
+        if (!ts) return "—";
+        return new Date(ts * 1000).toLocaleTimeString("en-GB", {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+        });
+    };
 
-            {trades.map((t, i) => (
-                <div key={i}>
-                    {t.price} | {t.qty} | {t.side}
-                </div>
-            ))}
+    return (
+        <div className="ts-wrap">
+            <h2 className="panel-title">Time & Sales</h2>
+
+            <div className="ts-header-row">
+                <span>Time</span>
+                <span>Price (USD)</span>
+                <span>Qty (BTC)</span>
+            </div>
+
+            {trades.slice(0, 100).map((t, i) => {
+                const isBuy = t.side?.toLowerCase() === "buy";
+                return (
+                    <div key={i} className={`ts-row ${isBuy ? "ts-buy" : "ts-sell"}`}>
+                        <span className="ts-time">{formatTime(t.time)}</span>
+                        <span className="ts-price">{t.price?.toLocaleString() ?? t.price}</span>
+                        <span className="ts-qty">{t.qty}</span>
+                    </div>
+                );
+            })}
         </div>
     );
 }
