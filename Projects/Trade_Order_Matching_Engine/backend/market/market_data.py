@@ -7,7 +7,7 @@ def get_market_summary():
      "asset": "BTC",
      "current_price": data["price"],
      "change_24h": data["change"],
-     "highlow": f"{data['high']}/{data['low']}",
+     "highlow": f"{data['high']} / {data['low']}",
      "volume": data["volume"]   
     }
 
