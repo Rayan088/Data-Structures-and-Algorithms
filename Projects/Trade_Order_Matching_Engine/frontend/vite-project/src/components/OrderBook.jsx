@@ -17,7 +17,7 @@ function OrderBook() {
 
         load();
 
-        const interval = setInterval(load, 2000);
+        const interval = setInterval(load, 1000);
         return () => clearInterval(interval);
     }, []);
 

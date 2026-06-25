@@ -21,8 +21,8 @@ threading.Thread(target=bot.start, daemon=True).start() # Starts bot in backgrou
 @app.route('/orderbook')
 def orderbook():
     return jsonify({
-        "bids": [{"price": order.price, "qty": order.quantity} for order in engine.order_book.get_bids()],
-        "asks": [{"price": order.price, "qty": order.quantity} for order in engine.order_book.get_asks()]
+        "bids": [{"price": order.price, "qty": order.quantity} for order in engine.order_book.bid_display],
+        "asks": [{"price": order.price, "qty": order.quantity} for order in engine.order_book.ask_display]
     })
 
 # Data for bids and asks 

@@ -19,7 +19,7 @@ function LiveStats() {
 
         load();
 
-        const interval = setInterval(load, 2000);
+        const interval = setInterval(load, 500);
         return () => clearInterval(interval);
 
     }, []);
