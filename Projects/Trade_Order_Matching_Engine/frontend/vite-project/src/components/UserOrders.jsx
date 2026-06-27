@@ -17,13 +17,41 @@ function UserOrders() {
     }, []);
 
     return (
-        <div>
-            <h2>YOUR ORDERS</h2>
-            {orders.map((o, i) => (
-                <div key={i}>
-                    {o.id} | {o.side} | {o.price} | {o.qty} | {o.filled} | {o.status}
-                </div>
-            ))}
+        <div className="uo-wrap">
+            <div className="uo-title-row">
+                <h2 className="panel-title">OPEN ORDERS</h2>
+            </div>
+
+            <div className="uo-table-wrap">
+                <table className="uo-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Side</th>
+                            <th>Price (USD)</th>
+                            <th>Qty (BTC)</th>
+                            <th>Filled</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {orders.map((o, i) => {
+                            const isBuy = o.side?.toUpperCase() === "BUY";
+                            const isOpen = o.status?.toUpperCase() === "OPEN";
+                            return (
+                                <tr key={i} className="uo-row">
+                                    <td>{o.id}</td>
+                                    <td className={isBuy ? "uo-buy" : "uo-sell"}>{o.side}</td>
+                                    <td>{o.price?.toLocaleString()}</td>
+                                    <td>{o.qty}</td>
+                                    <td>{o.filled}</td>
+                                    <td className={isOpen ? "uo-open" : "uo-muted"}>{o.status}</td>
+                                </tr>
+                            );
+                        })}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 }
