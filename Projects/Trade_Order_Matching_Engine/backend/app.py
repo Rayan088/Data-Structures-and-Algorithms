@@ -81,26 +81,29 @@ def user_orders():
 
 @app.route('/order', methods=["POST"])
 def place_order():
-    data = request.json
+    try:
+        data = request.json
 
-    side = data["side"]
-    price = float(data["price"])
-    qty = float(data["quantity"])
+        side = data["side"]
+        price = float(data["price"])
+        qty = float(data["quantity"])
 
-    if side == "BUY":
-        cost = price * qty
-        if not wallet.can_buy(cost):
-            return jsonify({"error": "Insufficient USD"}), 400
+        if side == "BUY":
+            cost = price * qty
+            if not wallet.can_buy(cost):
+                return jsonify({"error": "Insufficient USD"}), 400
 
-    if side == "SELL":
-        if not wallet.can_sell(qty):
-            return jsonify({"error": "Insufficient BTC"}), 400
+        if side == "SELL":
+            if not wallet.can_sell(qty):
+                return jsonify({"error": "Insufficient BTC"}), 400
 
-    order = Order(side, price, qty, is_user=True)
+        order = Order(side, price, qty, is_user=True)
+        engine.add_order(order)
+        return jsonify({"status": "order placed"})
 
-    engine.add_order(order)
-
-    return jsonify({"status": "order placed"})
+    except Exception as e:
+        print(f"Order error: {e}")
+        return jsonify({"error": str(e)}), 500
 
 # Method for trade execution
 
