@@ -93,7 +93,7 @@ function OrderForm() {
                         </button>
                     ))}
                 </div>
-
+ 
                 <div className="of-section">
                     <label className="of-label">Total (USD)</label>
                     <span className="of-input">${total}</span>
