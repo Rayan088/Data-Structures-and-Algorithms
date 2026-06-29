@@ -14,7 +14,7 @@ class MarketMaker:
         current_price = market["current_price"]
 
         spread = random.randint(10, 100)
-        quantity = round(random.uniform(0.01, 0.5), 3)
+        quantity = round(random.uniform(0.01, 1.0), 3)
 
         buy_order = Order("BUY", current_price - spread, quantity, is_user=False)
         sell_order = Order("SELL", current_price + spread, quantity, is_user=False)

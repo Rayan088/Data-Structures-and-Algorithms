@@ -68,6 +68,14 @@ class OrderBook:
 
     # Method which removes best ask
 
+    def remove_order_from_display(self, order):
+        if order.side == "BUY":
+            self.bid_display = [o for o in self.bid_display if o is not order]
+        elif order.side == "SELL":
+            self.ask_display = [o for o in self.ask_display if o is not order]
+
+    # Method which removes orders from orderbook
+
     def get_order_book_display(self):
         return {
             "bids": [{"price": order.price,

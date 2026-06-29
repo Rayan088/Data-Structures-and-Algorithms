@@ -50,9 +50,10 @@ class MatchingEngine:
                 if buy.price < sell.price:
                     break
 
-                quantity = min(buy.quantity - buy.filled, sell.quantity- sell.filled)
+                quantity = round(min(buy.quantity - buy.filled, sell.quantity- sell.filled), 8)
 
-                if quantity <= 0:
+                # break if number is less that one hundred-milionth
+                if quantity <= 1e-8:
                     break
                 
                 trade = Trade(buy, sell, sell.price, quantity)
@@ -69,16 +70,21 @@ class MatchingEngine:
                     self.wallet.btc -= trade.quantity
                     self.wallet.cash += trade.quantity * trade.price
 
-                buy.filled += quantity
-                sell.filled += quantity
+                buy.filled = round(buy.filled + quantity, 8)
+                sell.filled = round(sell.filled + quantity, 8)
 
                 if buy.filled >= buy.quantity:
                     buy.status = "CLOSED"
                     self.order_book.remove_best_bid()
+                    self.order_book.remove_order_from_display(buy)
                 
                 if sell.filled >= sell.quantity:
                     sell.status = "CLOSED"
                     self.order_book.remove_best_ask()
+                    self.order_book.remove_order_from_display(sell)
+
+                if buy.status != "CLOSED" and sell.status != "CLOSED":
+                    break
 
         except Exception as e:
             print(f"Match error: {e}")
