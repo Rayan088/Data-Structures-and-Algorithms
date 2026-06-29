@@ -94,9 +94,9 @@ function OrderForm() {
                     ))}
                 </div>
 
-                <div className="of-total-row">
-                    <span className="of-label">Total (USD)</span>
-                    <span className="of-total-value">${total}</span>
+                <div className="of-section">
+                    <label className="of-label">Total (USD)</label>
+                    <span className="of-input">${total}</span>
                 </div>
 
                 <button className={`of-submit ${side === "BUY" ? "buy" : "sell"}`} onClick={submit}>
