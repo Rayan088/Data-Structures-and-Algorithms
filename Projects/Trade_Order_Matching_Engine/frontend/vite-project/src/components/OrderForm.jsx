@@ -106,7 +106,7 @@ function OrderForm() {
                 <div className="of-balance">
                     <div className="of-balance-row">
                         <span>Available USD</span>
-                        <span>${wallet.usd?.toLocaleString()}</span>
+                        <span>${wallet.usd?.toFixed(2).toLocaleString()}</span>
                     </div>
                     <div className="of-balance-row">
                         <span>Available BTC</span>
