@@ -66,7 +66,7 @@ def get_wallet():
 def user_orders():
      return jsonify([
         {
-            "id": o.order_id,
+            "id": o.id,
             "time": o.time,
             "side": o.side,
             "price": o.price,
