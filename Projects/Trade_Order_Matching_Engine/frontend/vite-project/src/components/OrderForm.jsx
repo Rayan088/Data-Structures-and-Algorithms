@@ -60,7 +60,7 @@ function OrderForm() {
                 <div className="of-section">
                     <label className="of-label">Order Type</label>
                     <div className="of-type-bar">
-                        <span className="of-type-btn active">Market</span>
+                        <span className="of-type-btn active">Limit</span>
                     </div>
                 </div>
 
@@ -93,7 +93,7 @@ function OrderForm() {
                         </button>
                     ))}
                 </div>
- 
+
                 <div className="of-section">
                     <label className="of-label">Total (USD)</label>
                     <span className="of-input">${total}</span>
