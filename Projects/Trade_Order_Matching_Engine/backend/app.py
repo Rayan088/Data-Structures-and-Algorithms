@@ -8,9 +8,15 @@ from backend.market.market_data import get_market_summary
 from backend.market.market_stats import calculate_market_stats
 from backend.account.wallet import Wallet
 from backend.engine.order import Order
+from backend.db import db
 
 app = Flask(__name__)
 CORS(app)
+
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:YOUR_PASSWORD@localhost:5432/trade_exchange"
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+db.init_app(app)
 
 wallet = Wallet()
 engine = MatchingEngine(wallet)
@@ -109,3 +115,6 @@ def place_order():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+with app.app_context():
+    db.create_all()
