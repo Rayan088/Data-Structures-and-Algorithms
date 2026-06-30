@@ -10,11 +10,11 @@ from backend.engine.matching_engine import MatchingEngine
 from backend.bots.market_maker import MarketMaker
 from backend.market.market_data import get_market_summary
 from backend.market.market_stats import calculate_market_stats
-#from backend.account.wallet import Wallet
+from backend.account.wallet import Wallet
 from backend.engine.order import Order
 from backend.database.db import db
 
-from backend.database.models import Wallet
+from backend.database.models import Wallet as WalletModel
 
 app = Flask(__name__)
 CORS(app)
@@ -67,6 +67,8 @@ def stats():
 
 @app.route('/wallet')
 def get_wallet():
+    w = WalletModel.query.filter_by(user_id=1).first()
+
     return jsonify({
         "btc": wallet.btc,
         "usd": wallet.cash
@@ -121,7 +123,20 @@ def place_order():
 
 if __name__ == "__main__":
     with app.app_context():
+
         db.create_all()
-        print("DB Tables Created")
+
+        if not WalletModel.query.first():
+
+            wallet = WalletModel(
+                user_id=1,
+                btc_balance=0,
+                usd_balance=10000
+            )
+
+            db.session.add(wallet)
+            db.session.commit()
+
+            print("Wallet created")
 
     app.run(debug=True)
