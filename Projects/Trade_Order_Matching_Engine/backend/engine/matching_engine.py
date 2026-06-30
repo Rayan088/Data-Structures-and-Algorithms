@@ -65,10 +65,10 @@ class MatchingEngine:
 
                 # Updating database
                 if buy.is_user:
-                    update_wallet(user_id=1, btc_change=trade.quantity, usd_change=(trade.quantity * trade.price))
+                    update_wallet(user_id=1, btc_change=trade.quantity, usd_change=-(trade.quantity * trade.price))
 
                 if sell.is_user:
-                    update_wallet(user_id=1, btc_change=trade.quantity, usd_change=(trade.quantity * trade.price))
+                    update_wallet(user_id=1, btc_change=-trade.quantity, usd_change=(trade.quantity * trade.price))
 
                 buy.filled = round(buy.filled + quantity, 8)
                 sell.filled = round(sell.filled + quantity, 8)
