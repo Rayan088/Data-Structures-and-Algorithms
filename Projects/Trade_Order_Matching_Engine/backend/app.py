@@ -2,18 +2,24 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import threading
 
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
 from backend.engine.matching_engine import MatchingEngine
 from backend.bots.market_maker import MarketMaker
 from backend.market.market_data import get_market_summary
 from backend.market.market_stats import calculate_market_stats
-from backend.account.wallet import Wallet
+#from backend.account.wallet import Wallet
 from backend.engine.order import Order
-from backend.db import db
+from backend.database.db import db
+
+from backend.database.models import Wallet
 
 app = Flask(__name__)
 CORS(app)
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:YOUR_PASSWORD@localhost:5432/trade_exchange"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db.init_app(app)
@@ -114,7 +120,8 @@ def place_order():
 # Method for trade execution
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    with app.app_context():
+        db.create_all()
+        print("DB Tables Created")
 
-with app.app_context():
-    db.create_all()
+    app.run(debug=True)
