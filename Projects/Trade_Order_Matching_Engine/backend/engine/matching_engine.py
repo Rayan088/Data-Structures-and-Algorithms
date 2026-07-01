@@ -22,7 +22,7 @@ class MatchingEngine:
     def match_orders(self, incoming_order):
         try: 
             while True:
-
+ 
                 while self.order_book.bids:
                     bid = self.order_book.get_best_bid()
 
