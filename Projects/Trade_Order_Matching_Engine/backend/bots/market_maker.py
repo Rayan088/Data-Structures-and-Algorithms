@@ -13,11 +13,12 @@ class MarketMaker:
         market = get_market_summary()
         current_price = market["current_price"]
 
-        spread = random.randint(10, 100)
+        buy_spread = round(current_price * random.uniform(0.0001, 0.0003), 2)
+        sell_spread = round(current_price * random.uniform(0.0002, 0.0004), 2)
         quantity = round(random.uniform(0.01, 1.0), 3)
 
-        buy_order = Order("BUY", current_price - spread, quantity, is_user=False)
-        sell_order = Order("SELL", current_price + spread, quantity, is_user=False)
+        buy_order = Order("BUY", current_price - buy_spread, quantity, is_user=False)
+        sell_order = Order("SELL", current_price + sell_spread, quantity, is_user=False)
 
         return buy_order, sell_order
     
@@ -32,7 +33,7 @@ class MarketMaker:
             self.engine.add_order(buy)
             self.engine.add_order(sell)
 
-            time.sleep(5)
+            time.sleep(2)
 
     # Method to add bot orders to bid and asks lists
 
