@@ -1,6 +1,5 @@
 from .order_book import OrderBook
 from .trade import Trade
-from backend.database.wallet_service import update_wallet
 
 # Matching Engine class
 
@@ -23,7 +22,7 @@ class MatchingEngine:
     def match_orders(self, incoming_order):
         try: 
             while True:
- 
+
                 while self.order_book.bids:
                     bid = self.order_book.get_best_bid()
 
@@ -63,12 +62,13 @@ class MatchingEngine:
 
                 self.trades.append(trade)
 
-                # Updating database
                 if buy.is_user:
-                    update_wallet(user_id=1, btc_change=trade.quantity, usd_change=-(trade.quantity * trade.price))
+                    self.wallet.btc += trade.quantity
+                    self.wallet.cash -= trade.quantity * trade.price
 
                 if sell.is_user:
-                    update_wallet(user_id=1, btc_change=-trade.quantity, usd_change=(trade.quantity * trade.price))
+                    self.wallet.btc -= trade.quantity
+                    self.wallet.cash += trade.quantity * trade.price
 
                 buy.filled = round(buy.filled + quantity, 8)
                 sell.filled = round(sell.filled + quantity, 8)
