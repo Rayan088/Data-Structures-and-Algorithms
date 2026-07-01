@@ -1,2 +1,3 @@
 # Ignore python bytecode files
 __pycache__/
+.env
