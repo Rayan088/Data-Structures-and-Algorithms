@@ -1,0 +1,66 @@
+/* Time and Sales styles */
+.trades {
+  grid-column: 3;
+  grid-row: 2;
+  height: 625px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ts-wrap {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.ts-header-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    font-size: 14px;
+    color: #6b7280;
+    padding: 4px 6px;
+    border-bottom: 1px solid #1f2330;
+    margin-bottom: 2px;
+}
+
+.ts-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    font-size: 15px;
+    padding: 8px 10px;
+    position: relative;
+}
+
+.ts-body {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+.ts-row:hover {
+  filter: brightness(1.3);
+}
+
+.ts-buy {
+  background: rgba(34,197,94,0.05);
+}
+
+.ts-buy .ts-price,
+.ts-buy .ts-qty {
+  color: #22c55e;
+}
+
+.ts-sell {
+  background: rgba(239,68,68,0.05);
+}
+
+.ts-sell .ts-price,
+.ts-sell .ts-qty {
+  color: #ef4444;
+}
+
+.ts-time {
+  color: #6b7280;
+  font-size: 14px;
+}

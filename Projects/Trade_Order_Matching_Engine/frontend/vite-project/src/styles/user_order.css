@@ -1,0 +1,71 @@
+/* User orders styling*/
+.userorders {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  height: 160px;
+}
+
+.uo-wrap {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.uo-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: -4px;
+    flex-shrink: 0;
+}
+
+.uo-table-wrap {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+.uo-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 0px;
+}
+
+.uo-table thead {
+    position: sticky;
+    top: 0;
+    background: #1a1d25;
+    z-index: 1;
+}
+
+.uo-table th {
+    font-size: 11px;
+    font-weight: 600;
+    color: #6b7280;
+    text-align: left;
+    padding: 6px 12px;
+    border-bottom: 1px solid #1f2330;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.uo-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #161921;
+    color: #e0e0e0;
+    white-space: nowrap;
+}
+
+.uo-row:hover {
+  background: #1f2330;
+}
+
+.uo-table td.uo-buy, .uo-table td.uo-open {
+  color: #22c55e; font-weight: 600;
+}
+
+.uo-table td.uo-sell, .uo-table td.uo-muted {
+  color: #ef4444; font-weight: 600;
+}

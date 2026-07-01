@@ -1,0 +1,16 @@
+/* ScrollBar styles*/
+.ob-body::-webkit-scrollbar, .ts-body::-webkit-scrollbar, .uo-table-wrap::-webkit-scrollbar {
+  width: 6px;
+}
+
+.ob-body::-webkit-scrollbar-track, .ts-body::-webkit-scrollbar-track, .uo-table-wrap::-webkit-scrollbar-track {
+  background: #161922;
+}
+
+.ob-body::-webkit-scrollbar-thumb, .ts-body::-webkit-scrollbar-thumb, .uo-table-wrap::-webkit-scrollbar-thumb {
+  background: #3a3f4b;
+}
+
+.ob-body::-webkit-scrollbar-thumb:hover, .ts-body::-webkit-scrollbar-thumb:hover, .uo-body::-webkit-scrollbar-thumb:hover {
+  background: #5a6272;
+}
