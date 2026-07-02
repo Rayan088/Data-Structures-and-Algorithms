@@ -13,13 +13,13 @@ class OrderBook:
 
     def add_order(self, order):
         if order.side == "BUY":
-            heapq.heappush(self.bids, (-order.price, order.time, order))
+            heapq.heappush(self.bids, (-order.price, order.time, order.order_id, order))
 
             self.bid_display.append(order)
             self.sort_bid_display()
         
         elif order.side == "SELL":
-            heapq.heappush(self.asks, (order.price, order.time, order))
+            heapq.heappush(self.asks, (order.price, order.time, order.order_id, order))
 
             self.ask_display.append(order)
             self.sort_ask_display()
@@ -39,24 +39,24 @@ class OrderBook:
     def get_best_bid(self):
         if not self.bids:
             return None
-        return self.bids[0][2]
+        return self.bids[0][3]
     
     # Method which returns highest bid
     
     def get_best_ask(self):
         if not self.asks:
             return None
-        return self.asks[0][2]
+        return self.asks[0][3]
     
     # Method which returns lowest sell 
 
     def get_bids(self):
-        return [order for (_, _, order) in self.bids]
+        return [order for (_, _, _, order) in self.bids]
     
     # Method which returns all bids
     
     def get_asks(self):
-        return [order for (_, _, order) in self.asks]
+        return [order for (_, _, _, order) in self.asks]
     
     # Method which returns all asks
 
