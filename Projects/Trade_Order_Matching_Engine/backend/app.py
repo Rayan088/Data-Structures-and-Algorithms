@@ -16,8 +16,6 @@ wallet = Wallet()
 engine = MatchingEngine(wallet)
 bot = MarketMaker(engine)
 
-threading.Thread(target=bot.start, daemon=True).start() # Starts bot in background
-
 @app.route('/orderbook')
 def orderbook():
     return jsonify({
@@ -108,4 +106,5 @@ def place_order():
 # Method for trade execution
 
 if __name__ == "__main__":
+    threading.Thread(target=bot.start, daemon=True).start() # Starts bot in background
     app.run(debug=True)

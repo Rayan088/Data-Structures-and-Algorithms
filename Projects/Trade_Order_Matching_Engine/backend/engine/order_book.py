@@ -53,8 +53,12 @@ class OrderBook:
     def get_bids(self):
         return [order for (_, _, order) in self.bids]
     
+    # Method which returns all bids
+    
     def get_asks(self):
         return [order for (_, _, order) in self.asks]
+    
+    # Method which returns all asks
 
     def remove_best_bid(self):
         if self.bids:
