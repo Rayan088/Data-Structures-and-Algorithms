@@ -1,9 +1,9 @@
 /* Order Form styling*/
-
 .orderform {
   grid-column: 1;
   grid-row: 2;
   overflow-y: auto;
+  height: 645px;
 }
 
 .of-wrap {

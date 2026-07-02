@@ -44,10 +44,11 @@ class Wallet:
     
     # Method calculating total portfolio value
 
-    def get_balance(self):
+    def get_balance(self, btc_price):
         return {
             "BTC": self.btc,
-            "USD": self.cash
+            "USD": self.cash,
+            "portfolio_value": self.get_total_value(btc_price)
         }
     
     # Method returning current balance

@@ -53,9 +53,12 @@ def stats():
 
 @app.route('/wallet')
 def get_wallet():
+    current_price = get_market_summary()["current_price"]
+
     return jsonify({
         "btc": wallet.btc,
-        "usd": wallet.cash
+        "usd": wallet.cash,
+        "portfolio_value": wallet.get_total_value(current_price)
     })
 
 # Data of current user wallet
