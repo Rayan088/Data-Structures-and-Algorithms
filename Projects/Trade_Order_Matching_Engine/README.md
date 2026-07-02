@@ -36,15 +36,16 @@ A full stack simulated cryptocurrency trading platform build with a Python Flask
 
 ### API Endpoints
 
-| Method | Endpoint      | Description                                |
-| ------ | ------------- | ------------------------------------------ |
-| GET    | `/orderbook`  | Current bids and asks                      |
-| GET    | `/trades`     | All executed trades                        |
-| GET    | `/market`     | Market summary (price, volume, 24h change) |
-| GET    | `/stats`      | Spread and mid price                       |
-| GET    | `/wallet`     | User wallet balances                       |
-| GET    | `/userorders` | User's submitted orders                    |
-| POST   | `/order`      | Place a new order                          |
+| Method | Endpoint           | Description                                |
+| ------ | ------------------ | ------------------------------------------ |
+| GET    | `/orderbook`       | Current bids and asks                      |
+| GET    | `/trades`          | All executed trades                        |
+| GET    | `/market`          | Market summary (price, volume, 24h change) |
+| GET    | `/stats`           | Spread and mid price                       |
+| GET    | `/wallet`          | User wallet balances                       |
+| GET    | `/userorders`      | User's submitted orders                    |
+| POST   | `/order`           | Place a new order                          |
+| DELETE | `/order/{orderId}` | Cancel an existing order                   |
 
 ---
 
