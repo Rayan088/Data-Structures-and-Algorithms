@@ -80,6 +80,18 @@ def user_orders():
 
 # Data of current user orders
 
+@app.route('/order/<int:order_id>', methods=["DELETE"])
+def cancel_order(order_id):
+    try:
+        success = engine.cancel_order(order_id)
+        if success:
+            return jsonify({"status": "cancelled"})
+        return jsonify({"error": "Order not found or already closed"}), 404
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    
+# Data to cancel order
+
 @app.route('/order', methods=["POST"])
 def place_order():
     try:

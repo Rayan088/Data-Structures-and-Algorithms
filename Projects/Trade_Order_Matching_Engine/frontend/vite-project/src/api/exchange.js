@@ -30,6 +30,13 @@ export async function getStats(){
     return res.json();
 }
 
+export async function cancelOrder(orderId) {
+    const res = await fetch(`http://localhost:5000/order/${orderId}`, {
+        method: "DELETE"
+    });
+    return res.json();
+}
+
 export async function placeOrder(order){
     const res = await fetch(
         `${API}/order`,

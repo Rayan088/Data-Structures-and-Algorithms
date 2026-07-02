@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getUserOrders } from "../api/exchange";
+import { getUserOrders, cancelOrder } from "../api/exchange";
 
 function UserOrders() {
     const [orders, setOrders] = useState([]);
@@ -15,6 +15,10 @@ function UserOrders() {
         const interval = setInterval(load, 2000); // Executes every 2 seconds
         return () => clearInterval(interval); // Cleanup function when component is removed
     }, []);
+
+    async function handleCancel(orderId) {
+        await cancelOrder(orderId);
+    }
 
     return (
         <div className="uo-wrap">
@@ -32,6 +36,7 @@ function UserOrders() {
                             <th>Qty (BTC)</th>
                             <th>Filled</th>
                             <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,6 +51,16 @@ function UserOrders() {
                                     <td>{o.qty}</td>
                                     <td>{o.filled}</td>
                                     <td className={isOpen ? "uo-open" : "uo-muted"}>{o.status}</td>
+                                    <td>
+                                        {isOpen && (
+                                            <button
+                                                className="uo-cancel-btn"
+                                                onClick={() => handleCancel(o.id)}
+                                            >
+                                                Cancel
+                                            </button>
+                                        )}
+                                    </td>
                                 </tr>
                             );
                         })}

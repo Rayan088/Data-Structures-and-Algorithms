@@ -19,6 +19,16 @@ class MatchingEngine:
 
     # Method to add orders to orderbook
 
+    def cancel_order(self, order_id):
+        for order in self.user_orders:
+            if order.id == order_id and order.status == "OPEN":
+                order.status = "CANCELLED"
+                self.order_book.remove_order_from_display(order)
+                return True
+        return False
+    
+    # Method to cancel order
+
     def match_orders(self, incoming_order):
         try: 
             while True:

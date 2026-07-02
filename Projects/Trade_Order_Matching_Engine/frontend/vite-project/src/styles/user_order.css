@@ -69,3 +69,23 @@
 .uo-table td.uo-sell, .uo-table td.uo-muted {
   color: #ef4444; font-weight: 600;
 }
+
+.uo-cancel-btn {
+    background: transparent;
+    border: 1px solid #ef4444;
+    color: #ef4444;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.uo-cancel-btn:hover {
+    background: #ef4444;
+    color: #fff;
+}
+
+.uo-table td.uo-closed {
+    color: #6b7280;
+}
