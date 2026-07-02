@@ -50,7 +50,7 @@ A full stack simulated cryptocurrency trading platform build with a Python Flask
 
 ### Testing
 
-## Unit Tests
+#### Unit Tests
 
 **Order** - Creation, ID generation and order fill logic  
 **Wallet** - Balance management, and buy/sell validation  
@@ -58,7 +58,7 @@ A full stack simulated cryptocurrency trading platform build with a Python Flask
 **Matching Engine** - Trade execution, partial fills and wallet updates  
 **API** - Flask endpoint responses and order placement
 
-## Stress Tests
+#### Stress Tests
 
 **Orders Processed:** 10000  
 **Time Taken:** 0.6625 seconds  
