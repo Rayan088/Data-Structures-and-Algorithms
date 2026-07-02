@@ -86,13 +86,25 @@ def place_order():
         price = float(data["price"])
         qty = float(data["quantity"])
 
+        reserved_btc = sum(o.remaining_quantity()
+                           for o in engine.user_orders
+                           if o.side == "SELL" and o.status == "OPEN")
+        
+        reserved_usd = sum(o.remaining_quantity()
+                           for o in engine.user_orders
+                           if o.side == "BUY" and o.status == "OPEN")
+        
+        available_btc = wallet.btc - reserved_btc
+        available_usd = wallet.cash - reserved_usd
+
+
         if side == "BUY":
             cost = price * qty
-            if not wallet.can_buy(cost):
+            if cost > available_usd:
                 return jsonify({"error": "Insufficient USD"}), 400
 
         if side == "SELL":
-            if not wallet.can_sell(qty):
+            if qty > available_btc:
                 return jsonify({"error": "Insufficient BTC"}), 400
 
         order = Order(side, price, qty, is_user=True)

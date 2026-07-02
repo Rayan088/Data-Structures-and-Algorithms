@@ -34,7 +34,7 @@ A full stack simulated cryptocurrency trading platform build with a Python Flask
 
 ---
 
-## API Endpoints
+### API Endpoints
 
 | Method | Endpoint      | Description                                |
 | ------ | ------------- | ------------------------------------------ |
