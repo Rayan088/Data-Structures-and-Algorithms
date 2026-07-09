@@ -2,6 +2,10 @@ from flask import Flask
 from config import Config
 from database.db import db
 
+from models.customer import Customer
+from models.transactions import Transaction
+from models.alert import Alert
+
 app = Flask(__name__)
 
 app.config.from_object(Config)
