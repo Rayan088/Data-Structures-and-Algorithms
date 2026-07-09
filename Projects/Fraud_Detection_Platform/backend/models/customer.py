@@ -11,3 +11,4 @@ class Customer(db.Model):
     home_country = db.Column(db.String(30))
 
     transactions = db.relationship("Transaction", backref="customer", lazy=True)
+    alerts = db.relationship("Alert", backref="customer", lazy=True)
