@@ -6,6 +6,8 @@ from models.customer import Customer
 from models.transactions import Transaction
 from models.alert import Alert
 
+from engines.customer_generator import customerGenerator
+
 app = Flask(__name__)
 
 app.config.from_object(Config)
@@ -18,6 +20,10 @@ def home():
 
 if __name__ == "__main__":
     with app.app_context():
+        db.drop_all() # Temporary for development
         db.create_all()
+
+        generator = customerGenerator()
+        generator.generate_customers(100)
 
     app.run(debug=True)
