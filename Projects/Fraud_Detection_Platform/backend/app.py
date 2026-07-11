@@ -7,6 +7,7 @@ from models.transactions import Transaction
 from models.alert import Alert
 
 from engines.customer_generator import customerGenerator
+from engines.transaction_generator import TransactionGenerator
 
 app = Flask(__name__)
 
@@ -20,10 +21,14 @@ def home():
 
 if __name__ == "__main__":
     with app.app_context():
-        db.drop_all() # Temporary for development
+
+        db.drop_all()
         db.create_all()
 
-        generator = customerGenerator()
-        generator.generate_customers(100)
+        customer_generator = customerGenerator()
+        customer_generator.generate_customers(250)
+
+        transaction_generator = TransactionGenerator()
+        transaction_generator.generate_transactions()
 
     app.run(debug=True)
