@@ -31,14 +31,7 @@ merchants = {
     ]
 }
 
-devices = [
-    "iPhone 17",
-    "iPhone 15",
-    "Samsung Galaxy S24",
-    "Windows Laptop",
-    "MacBook Pro",
-    "iPad"
-]
+devices = ["iPhone 17", "iPhone 15", "Samsung Galaxy S24", "Windows Laptop", "MacBook Pro", "iPad"]
 
 countries = {
     "United Kingdom": "GBP",
@@ -84,11 +77,10 @@ class TransactionGenerator:
                 "trusted_devices": trusted_devices
             }
 
-
-    def generate_transaction(self, customer):
+    def generate_normal_transaction(self, customer):
         profile = self.customer_profiles[customer.customer_id]
 
-        days_ago = random.randint(0, 365)
+        days_ago = random.randint(0, 100)
         hours_ago = random.randint(0, 23)
         minutes_ago = random.randint(0, 59)
 
@@ -96,41 +88,29 @@ class TransactionGenerator:
 
         # Generating timestamp
 
-        account_merchants = merchants[customer.account_type]
-
-        random_merchant = random.random()
-
-        all_merchants = (merchants["Standard"] + merchants["Premium"] + merchants["Business"])
-
-        if random_merchant < 0.7:
+        if random.random() < 0.82:
             merchant = random.choice(profile["favourite_merchants"])
-        elif random_merchant < 0.96:
-            merchant = random.choice(account_merchants)
         else:
-            merchant = random.choice(all_merchants)
+            merchant = random.choice(merchants[customer.account_type])
 
-        # Setting merchant
+        # Generating merchant
 
-        amount = abs(random.gauss(profile["avg_amount"], profile["avg_amount"] * 0.4))
-        amount = round(amount, 2)
-
-        # Setting amount spent
-
-        if random.random() < 0.90:
-            country = customer.home_country
-            currency = countries[country]
+        random_chance = random.random()
+        if random_chance < 0.85:
+            amount *= random.uniform(0.6, 1.4)
         else:
-            country = random.choice(list(countries.keys()))
-            currency = countries[country]
+            amount *= random.uniform(1.6, 2.0)
 
-        # Setting home country and corresponding currency
+        # Generating amount
 
-        if random.random() < 0.90:
-            device = random.choice(profile["trusted_devices"])
-        else:
-            device = random.choice(devices)
+        country = customer.home_country
+        currency = countries[country]
 
-        # Setting devices
+        # Setting country and corresponding currency
+
+        device = random.choice(profile["trusted_devices"])
+
+        # Generating device from chosen customer devices
 
         transaction = Transaction(
             customer_id=customer.customer_id,
@@ -145,9 +125,24 @@ class TransactionGenerator:
             status="PENDING"
             )
         
-        # Creating transaction
-        
         return transaction
+    
+    # Method for generating normal transaction
+
+    def generate_fraudulent_transaction(self, customer):
+        pass
+
+
+    def generate_transaction(self, customer):
+
+        fraud_chance = random.random()
+
+        if fraud_chance < 0.07:
+            return self.generate_fraudulent_transaction(customer)
+        else:
+            return self.generate_normal_transaction(customer)
+        
+    # Method to generate transaction type
 
     def generate_transactions(self):
         customers = Customer.query.all()
