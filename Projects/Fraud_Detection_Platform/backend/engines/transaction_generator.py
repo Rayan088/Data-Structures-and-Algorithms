@@ -153,7 +153,7 @@ class TransactionGenerator:
         customers = Customer.query.all()
 
         for customer in customers:
-            num_transactions = random.randint(100, 300)
+            num_transactions = random.randint(50, 100)
 
             for _ in range(num_transactions):
                 transaction = (self.generate_transaction(customer))

@@ -26,7 +26,7 @@ if __name__ == "__main__":
         db.create_all()
 
         customer_generator = customerGenerator()
-        customer_generator.generate_customers(250)
+        customer_generator.generate_customers(100)
 
         transaction_generator = TransactionGenerator()
         transaction_generator.generate_transactions()
