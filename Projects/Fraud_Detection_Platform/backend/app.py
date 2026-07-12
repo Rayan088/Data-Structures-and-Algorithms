@@ -8,6 +8,7 @@ from models.alert import Alert
 
 from engines.customer_generator import customerGenerator
 from engines.transaction_generator import TransactionGenerator
+from engines.analytics_engine import AnalyticsEngine
 
 app = Flask(__name__)
 
@@ -30,5 +31,7 @@ if __name__ == "__main__":
 
         transaction_generator = TransactionGenerator()
         transaction_generator.generate_transactions()
+
+        analytics = AnalyticsEngine()
 
     app.run(debug=True)
