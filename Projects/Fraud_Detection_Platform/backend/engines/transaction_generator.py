@@ -86,8 +86,6 @@ class TransactionGenerator:
 
         timestamp = (datetime.now() - timedelta(days=days_ago, hours=hours_ago, minutes=minutes_ago))
 
-        # Generating timestamp
-
         if random.random() < 0.82:
             merchant = random.choice(profile["favourite_merchants"])
         else:
@@ -95,11 +93,13 @@ class TransactionGenerator:
 
         # Generating merchant
 
+        amount = profile["avg_amount"]
         random_chance = random.random()
         if random_chance < 0.85:
             amount *= random.uniform(0.6, 1.4)
         else:
             amount *= random.uniform(1.6, 2.0)
+        amount = round(amount, 2)
 
         # Generating amount
 
@@ -130,14 +130,95 @@ class TransactionGenerator:
     # Method for generating normal transaction
 
     def generate_fraudulent_transaction(self, customer):
-        pass
+        profile = self.customer_profiles[customer.customer_id]
 
+        days_ago = random.randint(0, 100)
+        hours_ago = random.randint(0, 23)
+        minutes_ago = random.randint(0, 59)
+
+        timestamp = (datetime.now() - timedelta(days=days_ago, hours=hours_ago, minutes=minutes_ago))
+
+        merchant = random.choice(profile["favourite_merchants"])
+
+        amount = profile["avg_amount"]
+        random_chance = random.random()
+        if random_chance < 0.85:
+            amount *= random.uniform(0.6, 1.4)
+        else:
+            amount *= random.uniform(1.6, 2.0)
+        amount = round(amount, 2)
+
+        country = customer.home_country
+        currency = countries[country]
+
+        device = random.choice(profile["trusted_devices"])
+
+        severity = random.random()
+        if severity < 0.8:
+            num_rules = random.randint(2, 3)
+
+        else:
+            num_rules = random.randint(3, 4)    
+        
+        fraud_rules = random.sample([
+            "new_device", "high_amount", "impossible_travel", "unfamiliar_merchant"
+        ], k=num_rules)
+
+        if "new_device" in fraud_rules:
+            untrusted_devices = [d for d in devices if d not in profile["trusted_devices"]]
+            device = random.choice(untrusted_devices)
+
+        if "high_amount" in fraud_rules:
+            if customer.account_type == "Standard":
+                multiplier = random.randint(10, 25)
+            elif customer.account_type == "Premium":
+                multiplier = random.randint(6, 15)
+            else:
+                multiplier = random.randint(4, 10)
+        amount = round(profile["avg_amount"] * multiplier, 2)
+
+        if "impossible_travel" in fraud_rules:
+            foreign_countries = [c for c in countries.keys() if c != customer.home_country]
+            country = random.choice(foreign_countries)
+            currency = countries[country]
+
+        if "unfamiliar_merchant" in fraud_rules:
+            if customer.account_type == "Standard":
+                unfamiliar_m = merchants["Premium"]
+                merchant = random.choice(unfamiliar_m)
+
+            elif customer.account_type == "Premium":
+                unfamiliar_m = merchants["Business"]
+                merchant = random.choice(unfamiliar_m)
+            
+            else:
+                unfamiliar_m = merchants["Business"]
+                merchant = random.choice(unfamiliar_m)
+
+        # Generating fraudulent transactions
+
+        transaction = Transaction(
+            customer_id = customer.customer_id,
+            timestamp=timestamp,
+            merchant=merchant,
+            amount=amount,
+            country=country,
+            currency=currency,
+            device=device,
+            risk_score=0,
+            risk_level="LOW",
+            status="PENDING"
+        )
+
+        return transaction
+    
+    # Method to generate fraudulent transaction
 
     def generate_transaction(self, customer):
 
         fraud_chance = random.random()
 
-        if fraud_chance < 0.07:
+        if fraud_chance < 0.15:
             return self.generate_fraudulent_transaction(customer)
         else:
             return self.generate_normal_transaction(customer)
