@@ -23,15 +23,25 @@ def home():
 if __name__ == "__main__":
     with app.app_context():
 
+        print("Creating database...")
+
         db.drop_all()
         db.create_all()
+
+        print("Generating customers...")
 
         customer_generator = customerGenerator()
         customer_generator.generate_customers(100)
 
+        print("Generating transactions...")
+
         transaction_generator = TransactionGenerator()
         transaction_generator.generate_transactions()
 
-        analytics = AnalyticsEngine()
+        print("Starting fraud analysis...")
+
+        transactions = Transaction.query.all()
+
+        db.session.commit()
 
     app.run(debug=True)
