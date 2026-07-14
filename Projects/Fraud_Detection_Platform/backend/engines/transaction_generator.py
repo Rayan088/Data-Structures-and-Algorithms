@@ -321,4 +321,9 @@ class TransactionGenerator:
 
         db.session.commit()
 
-    # Generating transactions per customer
+     # Generating transactions per customer
+
+    def get_customer_profile(self, customer_id):
+        return self.customer_profiles.get(customer_id)
+
+    # Method to get customer profile by id

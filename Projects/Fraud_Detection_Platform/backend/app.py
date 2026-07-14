@@ -8,7 +8,7 @@ from models.alert import Alert
 
 from engines.customer_generator import customerGenerator
 from engines.transaction_generator import TransactionGenerator
-from engines.analytics_engine import AnalyticsEngine
+from engines.fraud_detection_engine import FraudDetectionEngine
 
 app = Flask(__name__)
 
@@ -40,7 +40,8 @@ if __name__ == "__main__":
 
         print("Starting fraud analysis...")
 
-        transactions = Transaction.query.all()
+        fraud_engine = FraudDetectionEngine(transaction_generator)
+        fraud_engine.process_all_transactions()
 
         db.session.commit()
 
