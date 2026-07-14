@@ -77,14 +77,20 @@ class TransactionGenerator:
                 "trusted_devices": trusted_devices
             }
 
-    def generate_normal_transaction(self, customer):
-        profile = self.customer_profiles[customer.customer_id]
-
+    def generate_time_stamp(self):
         days_ago = random.randint(0, 100)
         hours_ago = random.randint(0, 23)
         minutes_ago = random.randint(0, 59)
 
         timestamp = (datetime.now() - timedelta(days=days_ago, hours=hours_ago, minutes=minutes_ago))
+
+        return timestamp
+    
+    # Method for generating timestamp
+
+    def generate_normal_transaction(self, customer):
+        profile = self.customer_profiles[customer.customer_id]
+        timestamp = self.generate_time_stamp()
 
         if random.random() < 0.82:
             merchant = random.choice(profile["favourite_merchants"])
@@ -103,12 +109,20 @@ class TransactionGenerator:
 
         # Generating amount
 
-        country = customer.home_country
+        if random.random() < 0.03:
+            foreign = [c for c in countries if c != customer.home_country]
+            country = random.choice(foreign)
+        else:
+            country = customer.home_country
+
         currency = countries[country]
 
         # Setting country and corresponding currency
 
-        device = random.choice(profile["trusted_devices"])
+        if random.random() < 0.03:
+            device = random.choice(devices)
+        else:
+            device = random.choice(profile["trusted_devices"])
 
         # Generating device from chosen customer devices
 
@@ -129,14 +143,82 @@ class TransactionGenerator:
     
     # Method for generating normal transaction
 
+    def generate_suspicious_transaction(self, customer):
+        profile = self.customer_profiles[customer.customer_id]
+        timestamp = self.generate_time_stamp()
+
+        merchant = random.choice(profile["favourite_merchants"])
+
+        amount = profile["avg_amount"]
+        random_chance = random.random()
+        if random_chance < 0.85:
+            amount *= random.uniform(0.6, 1.4)
+        else:
+            amount *= random.uniform(1.6, 2.0)
+        amount = round(amount, 2)
+
+        country = customer.home_country
+        currency = countries[country]
+
+        device = random.choice(profile["trusted_devices"])   
+        
+        fraud_rules = random.sample([
+            "new_device", "high_amount", "impossible_travel", "unfamiliar_merchant"
+        ], k=1)
+
+        if "new_device" in fraud_rules:
+            untrusted_devices = [d for d in devices if d not in profile["trusted_devices"]]
+            device = random.choice(untrusted_devices)
+
+        if "high_amount" in fraud_rules:
+            if customer.account_type == "Standard":
+                multiplier = random.randint(2.5, 5)
+            elif customer.account_type == "Premium":
+                multiplier = random.randint(2, 4)
+            else:
+                multiplier = random.randint(1.5, 3)
+            amount = round(profile["avg_amount"] * multiplier, 2)
+
+        if "impossible_travel" in fraud_rules:
+            foreign_countries = [c for c in countries.keys() if c != customer.home_country]
+            country = random.choice(foreign_countries)
+            currency = countries[country]
+
+        if "unfamiliar_merchant" in fraud_rules:
+            if customer.account_type == "Standard":
+                unfamiliar_m = merchants["Premium"]
+                merchant = random.choice(unfamiliar_m)
+
+            elif customer.account_type == "Premium":
+                unfamiliar_m = merchants["Business"]
+                merchant = random.choice(unfamiliar_m)
+            
+            else:
+                unfamiliar_m = merchants["Business"]
+                merchant = random.choice(unfamiliar_m)
+
+        # Generating fraudulent transactions
+
+        transaction = Transaction(
+            customer_id = customer.customer_id,
+            timestamp=timestamp,
+            merchant=merchant,
+            amount=amount,
+            country=country,
+            currency=currency,
+            device=device,
+            risk_score=0,
+            risk_level="LOW",
+            status="PENDING"
+        )
+
+        return transaction
+
+    # Method for generating suspicious transaction
+
     def generate_fraudulent_transaction(self, customer):
         profile = self.customer_profiles[customer.customer_id]
-
-        days_ago = random.randint(0, 100)
-        hours_ago = random.randint(0, 23)
-        minutes_ago = random.randint(0, 59)
-
-        timestamp = (datetime.now() - timedelta(days=days_ago, hours=hours_ago, minutes=minutes_ago))
+        timestamp = self.generate_time_stamp()
 
         merchant = random.choice(profile["favourite_merchants"])
 
@@ -156,7 +238,6 @@ class TransactionGenerator:
         severity = random.random()
         if severity < 0.8:
             num_rules = random.randint(2, 3)
-
         else:
             num_rules = random.randint(3, 4)    
         
@@ -175,7 +256,7 @@ class TransactionGenerator:
                 multiplier = random.randint(6, 15)
             else:
                 multiplier = random.randint(4, 10)
-        amount = round(profile["avg_amount"] * multiplier, 2)
+            amount = round(profile["avg_amount"] * multiplier, 2)
 
         if "impossible_travel" in fraud_rules:
             foreign_countries = [c for c in countries.keys() if c != customer.home_country]
@@ -218,10 +299,12 @@ class TransactionGenerator:
 
         fraud_chance = random.random()
 
-        if fraud_chance < 0.15:
-            return self.generate_fraudulent_transaction(customer)
-        else:
+        if fraud_chance < 0.70:
             return self.generate_normal_transaction(customer)
+        elif fraud_chance < 0.85:
+            return self.generate_suspicious_transaction(customer)
+        else:
+            return self.generate_fraudulent_transaction(customer)
         
     # Method to generate transaction type
 
