@@ -172,11 +172,11 @@ class TransactionGenerator:
 
         if "high_amount" in fraud_rules:
             if customer.account_type == "Standard":
-                multiplier = random.randint(2.5, 5)
+                multiplier = random.uniform(2.5, 5)
             elif customer.account_type == "Premium":
                 multiplier = random.randint(2, 4)
             else:
-                multiplier = random.randint(1.5, 3)
+                multiplier = random.uniform(1.5, 3)
             amount = round(profile["avg_amount"] * multiplier, 2)
 
         if "impossible_travel" in fraud_rules:
