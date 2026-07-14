@@ -27,11 +27,13 @@ class FraudDetectionEngine:
 
     # Method to process transactions and add to database
 
-    def analyse_transaction(self, transaction):
+    def analyse_transaction(self, transaction, customer):
         customer_profile = (self.transaction_generator.get_customer_profile(transaction.customer_id))
 
         if not customer_profile:
             return
+        
+        self.score_transaction(transaction, customer_profile, customer)
         
     # Method to get customer profile
 
@@ -88,9 +90,9 @@ class FraudDetectionEngine:
     # Method to score transaction and add to appropriate database
 
     def calculate_risk_level(self, score):
-        if score < 20:
+        if score < 25:
             return "LOW"
-        elif score < 45:
+        elif score < 50:
             return "MEDIUM"
         elif score < 70:
             return "HIGH"

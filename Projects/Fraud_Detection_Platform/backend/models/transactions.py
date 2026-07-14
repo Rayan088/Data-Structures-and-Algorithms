@@ -15,6 +15,5 @@ class Transaction(db.Model):
     risk_level = db.Column(db.String(20), default="LOW")
     status = db.Column(db.String(20), default="PENDING")
     analyst_action = db.Column(db.String(50), default=None)
-    is_actual_fraud = db.Column(db.Boolean, default=False)
 
     alert = db.relationship("Alert", backref="transaction", uselist=False)
