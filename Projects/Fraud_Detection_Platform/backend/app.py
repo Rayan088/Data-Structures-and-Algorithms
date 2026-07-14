@@ -1,5 +1,7 @@
 from flask import Flask
 from config import Config
+import threading
+
 from database.db import db
 
 from models.customer import Customer
@@ -9,6 +11,7 @@ from models.alert import Alert
 from engines.customer_generator import customerGenerator
 from engines.transaction_generator import TransactionGenerator
 from engines.fraud_detection_engine import FraudDetectionEngine
+from engines.live_transaction_generator import LiveTransactionGenerator
 
 app = Flask(__name__)
 
@@ -43,6 +46,10 @@ if __name__ == "__main__":
         fraud_engine = FraudDetectionEngine(transaction_generator)
         fraud_engine.process_all_transactions()
 
+        live_generator = LiveTransactionGenerator(app, transaction_generator, fraud_engine)
+        thread = threading.Thread(target=live_generator.start, daemon=True)
+        thread.start()
+
         db.session.commit()
 
-    app.run(debug=True)
+    app.run(debug=True, use_reloader=False)
