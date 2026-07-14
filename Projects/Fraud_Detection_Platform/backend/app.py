@@ -14,6 +14,7 @@ from engines.fraud_detection_engine import FraudDetectionEngine
 from engines.live_transaction_generator import LiveTransactionGenerator
 
 from routes.transaction_routes import transaction_bp
+from routes.analytics_routes import analytics_bp
 
 app = Flask(__name__)
 
@@ -22,6 +23,7 @@ app.config.from_object(Config)
 db.init_app(app)
 
 app.register_blueprint(transaction_bp)
+app.register_blueprint(analytics_bp, url_prefix="/api/analytics")
 
 @app.route("/")
 def home():

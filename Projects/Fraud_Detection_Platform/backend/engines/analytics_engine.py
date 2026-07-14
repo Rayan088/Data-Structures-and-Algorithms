@@ -19,7 +19,7 @@ class AnalyticsEngine:
     # Method for total number of high risk alerts
 
     def transactions_awaiting_review(self):
-        return Transaction.query.filter_by(status="PENDING").count()
+        return Transaction.query.filter_by(status="REVIEW").count()
 
     # Method for total number of pending transactions
 
@@ -67,5 +67,7 @@ class AnalyticsEngine:
             rules = alert.reasons.split(", ")
             for rule in rules:
                 fraud_by_rule[rule] += 1
+
+        return fraud_by_rule
 
     # Method for count of blocked accounts by restriction broken
