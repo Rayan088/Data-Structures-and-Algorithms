@@ -3,6 +3,7 @@ from sqlalchemy import func
 from database.db import db
 from models.customer import Customer
 from models.transactions import Transaction
+from models.alert import Alert
 
 class AnalyticsEngine:
     def total_transactions(self):
@@ -53,6 +54,18 @@ class AnalyticsEngine:
     # Method for count of transactions by country
 
     def fraud_by_rule(self):
-        pass
+        fraud_by_rule = {
+            "NEW_DEVICE": 0,
+            "HIGH_AMOUNT": 0,
+            "IMPOSSIBLE_TRAVEL": 0,
+            "UNFAMILIAR_MERCHANT": 0
+        }
+
+        alerts = Alert.query.all()
+
+        for alert in alerts:
+            rules = alert.reasons.split(", ")
+            for rule in rules:
+                fraud_by_rule[rule] += 1
 
     # Method for count of blocked accounts by restriction broken
