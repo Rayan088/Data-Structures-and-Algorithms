@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     background-color: #0f172a;
@@ -6,10 +10,10 @@ body {
 }
 
 .dashboard {
-    padding: 30px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
 }
 
 .title {
@@ -29,22 +33,27 @@ body {
     gap: 20px;
 }
 
-.card,
 .stat-card {
     background: #1e293b;
     border-radius: 16px;
-    padding: 20px;
-    min-height: 150px;
+    border: 1px solid #334155;
+    padding-top: 14px;
+    padding-left: 20px;
 
-    box-shadow: 0px 4px 20px rgba(0,0,0,0.25);
-}
-
-.stat-card {
-    min-height: 120px;
+    height: 110px;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.card {
+    background: #1e293b;
+    border-radius: 16px;
+    border: 1px solid #334155;
+    padding: 20px;
+
+    min-height: 270px;
 }
 
 .stat-card h3 {
@@ -59,6 +68,5 @@ body {
 }
 
 .transactions {
-    width: 100%;
     min-height: 500px;
 }
