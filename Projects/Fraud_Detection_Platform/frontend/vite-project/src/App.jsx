@@ -89,17 +89,16 @@ function App() {
                 </div>
 
                 <div className="card">
+                    <RiskiestCustomers />
+                </div>
+
+                <div className="card">
                     <TransactionsByCountry />
                 </div>
 
                 <div className="card">
                     <FraudByRule />
                 </div>
-
-                <div className="card">
-                    <RiskiestCustomers />
-                </div>
-
             </div>
         </div>
     );
