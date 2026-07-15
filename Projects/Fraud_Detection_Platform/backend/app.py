@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_cors import CORS
 from config import Config
 import threading
 
@@ -17,6 +18,7 @@ from routes.transaction_routes import transaction_bp
 from routes.analytics_routes import analytics_bp
 
 app = Flask(__name__)
+CORS(app)
 
 app.config.from_object(Config)
 
