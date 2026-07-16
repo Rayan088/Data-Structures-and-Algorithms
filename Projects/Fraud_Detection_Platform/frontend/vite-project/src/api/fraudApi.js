@@ -31,7 +31,7 @@ export async function getTransactionsByRisk() {
 }
 
 export async function getRiskiestCustomers() {
-    const res = await fetch(`${API}/api/analyrics/riskiest-customers`)
+    const res = await fetch(`${API}/api/analytics/riskiest-customers`)
     return res.json()
 }
 
