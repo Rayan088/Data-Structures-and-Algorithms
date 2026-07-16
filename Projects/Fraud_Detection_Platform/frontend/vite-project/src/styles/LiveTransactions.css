@@ -1,0 +1,82 @@
+.live-container {
+    font-family: sans-serif;
+}
+
+.live-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.live-header h3 {
+    margin: 0;
+    font-size: 19px;
+}
+
+.table-container {
+
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+.transaction-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px;
+    font-size: 13px;
+    table-layout: fixed;
+}
+
+.transaction-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.transaction-table th {
+    text-align: left;
+    padding: 10px;
+    color: #888;
+    border-bottom: 1px solid #333;
+    background-color: #1e293b;
+}
+
+.transaction-table td {
+    padding: 10px;
+    border-bottom: 1px solid #222;
+}
+
+small {
+    color: #888;
+}
+
+.risk {
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: white;
+}
+
+.risk.low {
+    background: #22c55e;
+}
+
+.risk.medium {
+    background: #eab308;
+}
+
+.risk.high {
+    background: #f97316;
+}
+
+.risk.critical {
+    background: #ef4444;
+}
+
+.count {
+    margin-top: 12px;
+    font-size: 12px;
+    color: #888;
+}

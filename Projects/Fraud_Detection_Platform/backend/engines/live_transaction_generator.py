@@ -26,8 +26,6 @@ class LiveTransactionGenerator:
 
                 db.session.commit()
 
-                print(f"Added {transaction.transaction_id}")
-
                 time.sleep(1)
 
     # Creates one new transaction per second

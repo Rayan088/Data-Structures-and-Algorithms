@@ -20,6 +20,8 @@ def get_live_transactions():
                 "transaction_id": transaction.transaction_id,
                 "timestamp": transaction.timestamp.isoformat(),
                 "customer_id": transaction.customer_id,
+                "customer_name": transaction.customer.name,
+                "merchant": transaction.merchant,
                 "amount": transaction.amount,
                 "country": transaction.country,
                 "device": transaction.device,
