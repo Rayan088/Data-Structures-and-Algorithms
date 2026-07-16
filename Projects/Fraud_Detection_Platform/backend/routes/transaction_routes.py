@@ -26,6 +26,7 @@ def get_live_transactions():
                 "country": transaction.country,
                 "device": transaction.device,
                 "risk_score": transaction.risk_score,
+                "risk_level": transaction.risk_level,
                 "status": transaction.status
             }
         )

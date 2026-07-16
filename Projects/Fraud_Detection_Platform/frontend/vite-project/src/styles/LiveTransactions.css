@@ -12,10 +12,10 @@
 .live-header h3 {
     margin: 0;
     font-size: 19px;
+    padding-left: 10px;
 }
 
 .table-container {
-
     max-height: 400px;
     overflow-y: auto;
     overflow-x: auto;
@@ -25,7 +25,7 @@
     width: 100%;
     border-collapse: collapse;
     min-width: 900px;
-    font-size: 13px;
+    font-size: 15px;
     table-layout: fixed;
 }
 
@@ -37,8 +37,9 @@
 
 .transaction-table th {
     text-align: left;
+    font-size: 17px;
     padding: 10px;
-    color: #888;
+    color: white;
     border-bottom: 1px solid #333;
     background-color: #1e293b;
 }
@@ -46,10 +47,15 @@
 .transaction-table td {
     padding: 10px;
     border-bottom: 1px solid #222;
+    font-weight: 100;
+}
+
+.customer-name {
+    font-weight: 700;
 }
 
 small {
-    color: #888;
+    color: #c2bdbd;
 }
 
 .risk {
@@ -73,6 +79,26 @@ small {
 
 .risk.critical {
     background: #ef4444;
+}
+
+.approved-text {
+    color: #22c55e;
+    font-weight: bold;
+}
+
+.review-text {
+    color: #eab308;
+    font-weight: bold;
+}
+
+.flagged-text {
+    color: #f97316;
+    font-weight: bold;
+}
+
+.blocked-text {
+    color: #ef4444;
+    font-weight: bold;
 }
 
 .count {

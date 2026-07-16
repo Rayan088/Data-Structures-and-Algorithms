@@ -24,11 +24,26 @@ function LiveTransactions() {
 
     }, []);
 
-    function riskColor(score) {
+    function riskColor (score) {
         if (score >= 86) return "critical";
         if (score >= 70) return "high";
         if (score >= 40) return "medium";
         return "low";
+    }
+
+    function statusColor (status) {
+        switch(status) {
+            case "APPROVED":
+                return "approved-text";
+            case "REVIEW":
+                return "review-text";
+            case "FLAGGED":
+                return "flagged-text";
+            case "BLOCKED":
+                return "blocked-text";
+            default:
+                return "";
+        }
     }
 
     return (
@@ -49,15 +64,16 @@ function LiveTransactions() {
                             <th>Device</th>
                             <th>Risk Score</th>
                             <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
 
                     {transactions.map((txn)=>(
                         <tr key={txn.transaction_id}>
-                            <td>{txn.timestamp}</td>
+                            <td>{new Date(txn.timestamp).toLocaleDateString()}</td>
                             <td>
-                                <div>{txn.customer_name}</div>
+                                <div className="customer-name">{txn.customer_name}</div>
                                 <small>{txn.customer_id}</small>
                             </td>
                             <td>{txn.merchant}</td>
@@ -65,7 +81,8 @@ function LiveTransactions() {
                             <td>{txn.country}</td>
                             <td>{txn.device}</td>
                             <td><span className={`risk ${riskColor(txn.risk_score)}`}>{txn.risk_score}</span></td>
-                            <td>{txn.status}</td>
+                            <td><span className={statusColor(txn.status)}>{txn.status}</span></td>
+                            <td><button>Inspect</button></td>
                         </tr>
                     ))}
                     </tbody>
