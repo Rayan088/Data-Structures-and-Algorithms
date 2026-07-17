@@ -2,6 +2,7 @@
 @import "./styles/RiskDistribution.css";
 @import "./styles/RiskiestCustomer.css";
 @import "./styles/TransactionsByCountry.css";
+@import "./styles/FraudByRule.css";
 
 * {
     box-sizing: border-box;

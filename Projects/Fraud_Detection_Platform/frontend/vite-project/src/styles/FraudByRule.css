@@ -1,0 +1,10 @@
+.rule-container {
+    font-family: sans-serif;
+}
+
+.rule-title {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}

@@ -41,6 +41,6 @@ export async function getTransactionsByCountry() {
 }
 
 export async function getFraudByRule() {
-    const res = await fetch (`${API}/api/analyrics/fraud-by-rule`)
+    const res = await fetch (`${API}/api/analytics/fraud-by-rule`)
     return res.json()
 }
