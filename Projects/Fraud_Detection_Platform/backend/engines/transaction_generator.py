@@ -39,7 +39,7 @@ countries = {
     "France": "EUR",
     "Germany": "EUR",
     "Spain": "EUR",
-    "United Arab Emirates": "AED",
+    "UAE": "AED",
     "Brazil": "BRL"
 }
 

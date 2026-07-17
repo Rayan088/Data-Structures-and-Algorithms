@@ -11,7 +11,7 @@ fake = Faker()
 account_types = ["Standard", "Premium", "Business"]
 account_weights = [75, 20, 5]
 
-countries = ["United Kingdom", "United States", "France", "Germany", "Spain", "United Arab Emirates", "Brazil"]
+countries = ["United Kingdom", "United States", "France", "Germany", "Spain", "UAE", "Brazil"]
 country_weights = [75, 8, 5, 4, 3, 3, 2]
 
 status = ["Active", "Frozen"]
