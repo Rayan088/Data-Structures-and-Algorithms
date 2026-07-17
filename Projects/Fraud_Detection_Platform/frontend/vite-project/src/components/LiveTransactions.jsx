@@ -25,8 +25,8 @@ function LiveTransactions() {
     }, []);
 
     function riskColor (score) {
-        if (score >= 86) return "critical";
-        if (score >= 70) return "high";
+        if (score >= 75) return "critical";
+        if (score >= 65) return "high";
         if (score >= 40) return "medium";
         return "low";
     }
@@ -82,7 +82,7 @@ function LiveTransactions() {
                             <td>{txn.device}</td>
                             <td><span className={`risk ${riskColor(txn.risk_score)}`}>{txn.risk_score}</span></td>
                             <td><span className={statusColor(txn.status)}>{txn.status}</span></td>
-                            <td><button>Inspect</button></td>
+                            <td><button className="inspect-button">Inspect</button></td>
                         </tr>
                     ))}
                     </tbody>

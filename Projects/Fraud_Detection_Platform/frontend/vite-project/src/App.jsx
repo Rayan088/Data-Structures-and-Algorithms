@@ -54,25 +54,25 @@ function App() {
     return (
         <div className="dashboard">
             <div className="headerAnalytics">
-                <div className="stat-card">
+                <div className="stat-card transactions-processed">
                     <StatCard
                         title="Transactions Processed"
                         value={totalTransactions}/>
                 </div>
 
-                <div className="stat-card">
+                <div className="stat-card risk-alerts">
                     <StatCard
                         title="High Risk Alerts"
                         value={highRiskAlerts}/>
                 </div>
 
-                <div className="stat-card">
+                <div className="stat-card awaiting-review">
                     <StatCard
                         title="Transactions Awaiting Review"
                         value={awaitingReview}/>
                 </div>
 
-                <div className="stat-card">
+                <div className="stat-card fraud-prevented">
                     <StatCard
                         title="Fraud Prevented (£)"
                         value={`£${fraudPrevented.toLocaleString()}`}/>
