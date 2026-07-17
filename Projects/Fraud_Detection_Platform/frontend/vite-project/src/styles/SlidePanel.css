@@ -1,0 +1,94 @@
+.slide-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+.slide-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 380px;
+    height: 100%;
+    background: #1e293b;
+    border-left: 1px solid #334155;
+    z-index: 101;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    font-family: sans-serif;
+    animation: slideIn 0.25s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+.slide-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.slide-header h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.slide-close {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.slide-body {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+}
+
+.slide-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 10px;
+}
+
+.slide-label {
+    color: #94a3b8;
+}
+
+.slide-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.approve-btn, .decline-btn {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.approve-btn {
+    background: #22c55e;
+    color: white;
+}
+
+.decline-btn {
+    background: #ef4444;
+    color: white;
+}

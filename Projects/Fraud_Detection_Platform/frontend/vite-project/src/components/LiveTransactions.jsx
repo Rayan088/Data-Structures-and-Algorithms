@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { getLiveTransactions } from "../api/fraudApi";
+import SlidePanel from "./SlidePanel";
 
 function LiveTransactions() {
     const [transactions, setTransactions] = useState([]);
+    const [selectedTxn, setSelectedTxn] = useState(null);
 
     useEffect(() => {
         async function loadData() {
@@ -82,12 +84,14 @@ function LiveTransactions() {
                             <td>{txn.device}</td>
                             <td><span className={`risk ${riskColor(txn.risk_score)}`}>{txn.risk_score}</span></td>
                             <td><span className={statusColor(txn.status)}>{txn.status}</span></td>
-                            <td><button className="inspect-button">Inspect</button></td>
+                            <td><button className="inspect-button" onClick={() => setSelectedTxn(txn)}>Inspect</button></td>
                         </tr>
                     ))}
                     </tbody>
                 </table>
             </div>
+
+            <SlidePanel transaction={selectedTxn} onClose={() => setSelectedTxn(null)} />
         </div>
     )
 }

@@ -3,6 +3,7 @@
 @import "./styles/RiskiestCustomer.css";
 @import "./styles/TransactionsByCountry.css";
 @import "./styles/FraudByRule.css";
+@import "./styles/SlidePanel.css";
 
 * {
     box-sizing: border-box;
@@ -10,7 +11,7 @@
 
 body {
     margin: 0;
-    background-color: #0f172a;
+    background-color: #0b111f;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -19,7 +20,7 @@ body {
     padding: 15px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
 }
 
 .title {
@@ -39,20 +40,8 @@ body {
     gap: 20px;
 }
 
-.stat-card {
-    border-radius: 16px;
-    padding-top: 14px;
-    padding-left: 20px;
-
-    height: 110px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
 .transactions-processed {
-    background: #1e293b;
+    background: #17202e;
     border: 1px solid #334155;
 }
 
@@ -71,9 +60,21 @@ body {
     border: 1px solid #2E8B57;
 }
 
+.stat-card {
+    border-radius: 8px;
+    padding-top: 20px;
+    padding-left: 20px;
+
+    height: 95px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .card {
-    background: #1e293b;
-    border-radius: 10px;
+    background: #17202e;
+    border-radius: 8px;
     border: 1px solid #334155;
     padding: 20px;
 
@@ -95,5 +96,5 @@ body {
 }
 
 .transactions {
-    min-height: 500px;
+    min-height: 530px;
 }
