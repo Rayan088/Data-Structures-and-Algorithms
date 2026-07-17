@@ -1,5 +1,6 @@
 @import "./styles/LiveTransactions.css";
 @import "./styles/RiskDistribution.css";
+@import "./styles/RiskiestCustomer.css";
 
 * {
     box-sizing: border-box;
