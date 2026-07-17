@@ -49,21 +49,12 @@ function RiskDistribution() {
     }, []);
 
     return (
-        <div
-            style={{fontFamily: "sans-serif"}}>
-            <h3 style={{ margin: 0, fontSize: 19, fontWeight: 700, marginTop: -9}}>FRAUD ANALYTICS</h3>
+        <div className="risk-container">
+            <h3 className="risk-title">FRAUD ANALYTICS</h3>
+            <p className="risk-subtitle">Transactions by Risk Score</p>
 
-            <p style={{margin: "4px 0 16px", fontSize: 17, marginTop: 10}}>Transactions by Risk Score</p>
-            <div style={{display: "flex", alignItems: "center", gap: 24}}>
-
-                <div
-                    style={{
-                        position: "relative",
-                        width: 200,
-                        height: 200,
-                        flexShrink: 0
-                    }}
-                    >
+            <div className="risk-content">
+                <div className="donut-wrapper">
                     <PieChart width={200} height={200}>
                         <Pie
                             data={data}
@@ -78,40 +69,30 @@ function RiskDistribution() {
                         </Pie>
                     </PieChart>
 
-                    <div
-                        style={{
-                            position: "absolute",
-                            top: "50%",
-                            left: "50%",
-                            transform: "translate(-50%, -50%)",
-                            textAlign: "center"
-                        }}
-                    >
-                        <div style={{fontSize: 20, fontWeight: 700}}>{total}</div>
-                        <div style={{fontSize: 15}}>Total</div>
+                    <div className="donut-center">
+                        <div className="donut-total">{total}</div>
+                        <div className="donut-total-label">Total</div>
                     </div>
                 </div>
 
-                <div
-                    style={{display: "flex", flexDirection: "column", gap: 20}}>
-
+                <div className="risk-legend">
                     {data.map((entry, i) => (
-                            <div key={i} style={{
-                                    display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, fontSize: 16}}>
-                                
-                                <div style={{display: "flex", alignItems: "center", gap: 8}}>
-                                    <span style={{width: 10, height: 10, backgroundColor: entry.color, display: "inline-block"}}/>
-
-                                    <span style={{fontSize: 15.3}}>
-                                        {entry.name} {" "} ({entry.range})
-                                    </span>
-                                </div>
-
-                                <span style={{color: "white"}}>
-                                    {(entry.value / total * 100).toFixed(1)}%
+                        <div key={i} className="risk-legend-row">
+                            <div className="risk-legend-key">
+                                <span
+                                    className="risk-legend-swatch"
+                                    style={{ backgroundColor: entry.color }}
+                                />
+                                <span className="risk-legend-label">
+                                    {entry.name} ({entry.range})
                                 </span>
                             </div>
-                        ))}
+
+                            <span className="risk-legend-percent">
+                                {(entry.value / total * 100).toFixed(1)}%
+                            </span>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>
