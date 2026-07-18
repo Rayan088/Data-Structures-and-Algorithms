@@ -98,3 +98,21 @@ body {
 .transactions {
     min-height: 530px;
 }
+
+/* Main Scroll Bar*/
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background: #171e2b;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3a3f4b;
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #5a6272;
+}
