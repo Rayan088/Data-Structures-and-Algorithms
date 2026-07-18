@@ -16,6 +16,7 @@ from engines.live_transaction_generator import LiveTransactionGenerator
 
 from routes.transaction_routes import transaction_bp
 from routes.analytics_routes import analytics_bp
+from routes.customer_details import customer_details
 
 app = Flask(__name__)
 CORS(app)
@@ -26,6 +27,7 @@ db.init_app(app)
 
 app.register_blueprint(transaction_bp)
 app.register_blueprint(analytics_bp, url_prefix="/api/analytics")
+app.register_blueprint(customer_details)
 
 @app.route("/")
 def home():
