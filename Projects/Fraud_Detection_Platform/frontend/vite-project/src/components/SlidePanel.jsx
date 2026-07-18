@@ -1,4 +1,40 @@
+import { useEffect, useState } from "react";
+import {
+    getCustomerProfile,
+    getRecentTransactions,
+    getTransactionAlerts,
+    
+} from "../api/fraudApi";
+import "../styles/SlidePanel.css";
+
 function SlidePanel({ transaction, onClose }) {
+    const [profile, setProfile] = useState(null);
+    const [recentTxns, setRecentTxns] = useState([]);
+    const [alerts, setAlerts] = useState([]);
+
+    useEffect(() => {
+        if (!transaction) return;
+
+        async function loadPanelData() {
+            try {
+                const [profileRes, recentRes, alertsRes] = await Promise.all([
+                    getCustomerProfile(transaction.customer_id),
+                    getRecentTransactions(transaction.customer_id),
+                    getTransactionAlerts(transaction.transaction_id),
+                ]);
+
+                setProfile(profileRes);
+                setRecentTxns(recentRes);
+                setAlerts(alertsRes);
+
+            } catch (error) {
+                console.log("Failed to load panel data", error);
+            }
+        }
+
+        loadPanelData();
+    }, [transaction]);
+
     if (!transaction) return null;
 
     return (
@@ -43,6 +79,65 @@ function SlidePanel({ transaction, onClose }) {
                         <span className="slide-label">Status</span>
                         <span>{transaction.status}</span>
                     </div>
+                </div>
+
+                {profile && (
+                    <div className="panel-section">
+                        <div className="section-title">Customer Overview</div>
+                        <div className="section-row">
+                            <span className="section-label">Actual Country</span>
+                            <span>{profile.home_country}</span>
+                        </div>
+                        <div className="section-row">
+                            <span className="section-label">Average Spend</span>
+                            <span>£{Number(profile.avg_spend).toFixed(2)}</span>
+                        </div>
+                    </div>
+                )}
+
+                {profile && (
+                    <div className="panel-section trusted-devices">
+                        <div className="section-title green">Trusted Devices ({profile.trusted_devices.length})</div>
+                        {profile.trusted_devices.map((device, i) => (
+                            <div key={i} className="device-row">
+                                <span>{device}</span>
+                            </div>
+                        ))}
+                    </div>
+                )}
+
+                {alerts.length > 0 && (
+                    <div className="panel-section rules-broken">
+                        <div className="section-title red">Rules Broken ({alerts.length})
+                        </div>
+                        {alerts.map((alert, i) => (
+                            <div key={i} className="rule-row">
+                                <span className="rule-icon">{alert.reason}</span>
+                            </div>
+                        ))}
+                    </div>
+                )}
+
+                <div className="panel-section previous-transactions">
+                    <div className="section-title">Previous Transactions</div>
+                    <div className="prev-txn-header">
+                        <span>Merchant</span>
+                        <span>Amount</span>
+                        <span>Time</span>
+                    </div>
+                    {recentTxns.map((txn, i) => (
+                        <div key={i} className="prev-txn-row">
+                            <div>
+                                <div className="prev-txn-merchant">{txn.merchant}</div>
+                                <div className="prev-txn-country">{txn.country}</div>
+                            </div>
+                            <span className="prev-txn-amount">£{Number(txn.amount).toFixed(2)}</span>
+                            <div className="prev-txn-time">
+                                <span>{new Date(txn.timestamp).toLocaleDateString()}</span>
+                                <span className="prev-txn-device">{txn.device}</span>
+                            </div>
+                        </div>
+                    ))}
                 </div>
 
                 <div className="slide-actions">

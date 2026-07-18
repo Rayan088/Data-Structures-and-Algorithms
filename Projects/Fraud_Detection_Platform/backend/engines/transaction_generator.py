@@ -31,7 +31,7 @@ merchants = {
     ]
 }
 
-devices = ["iPhone 17", "iPhone 15", "Samsung Galaxy S24", "Windows Laptop", "MacBook Pro", "iPad"]
+devices = ["iPhone 17", "iPhone 15", "Google Pixel 9", "Windows Laptop", "MacBook Pro", "iPad"]
 
 countries = {
     "United Kingdom": "GBP",
@@ -69,7 +69,7 @@ class TransactionGenerator:
 
             trusted_devices = random.sample(devices, 2)
 
-            customer.trusted_devices = trusted_devices
+            customer.trusted_devices = ",".join(trusted_devices)
             db.session.commit()
 
             # Generates 2 trusted devices and adding to Customer table

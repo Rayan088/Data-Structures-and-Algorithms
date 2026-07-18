@@ -1,4 +1,6 @@
 from flask import Blueprint, jsonify
+import json
+
 from database.db import db
 from models.customer import Customer
 from models.transactions import Transaction
@@ -40,9 +42,11 @@ def get_customer_profile(customer_id):
 
     avg_spend = round(avg_spend_result, 2) if avg_spend_result else 0
 
+    trusted_devices = customer.trusted_devices.split(",") if customer.trusted_devices else []
+
     profile = {
         "home_country": customer.home_country,
-        "trusted_devices": customer.trusted_devices,
+        "trusted_devices": trusted_devices,
         "avg_spend": avg_spend,
     }
 
@@ -54,12 +58,13 @@ def get_customer_profile(customer_id):
 def get_transaction_alerts(transaction_id):
     alerts = Alert.query.filter_by(transaction_id=transaction_id).all()
 
-    result = [{
-            "reason": alert.reasons,
-        }
-        
-        for alert in alerts
-    ]
+    all_rules = []
+    for alert in alerts:
+        if alert.reasons:
+            rules = [r.strip() for r in alert.reasons.split(",")]
+            all_rules.extend(rules)
+
+    result = [{"reason": rule} for rule in all_rules]
 
     return jsonify(result)
 

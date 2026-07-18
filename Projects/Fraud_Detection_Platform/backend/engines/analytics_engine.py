@@ -55,10 +55,10 @@ class AnalyticsEngine:
 
     def fraud_by_rule(self):
         fraud_by_rule = {
-            "NEW_DEVICE": 0,
-            "HIGH_AMOUNT": 0,
-            "IMPOSSIBLE_TRAVEL": 0,
-            "UNFAMILIAR_MERCHANT": 0
+            "New Device": 0,
+            "High Amount": 0,
+            "Impossible Travel": 0,
+            "Unfamiliar Merchant": 0
         }
 
         alerts = Alert.query.all()

@@ -21,6 +21,7 @@
     flex-direction: column;
     padding: 20px;
     font-family: sans-serif;
+    overflow-y: auto;
     animation: slideIn 0.25s ease-out;
 }
 
@@ -33,7 +34,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 14px;
 }
 
 .slide-header h3 {
@@ -54,6 +55,9 @@
     flex-direction: column;
     gap: 14px;
     flex: 1;
+    border: 1px solid #334155;
+    border-radius: 7px;
+    padding: 8px
 }
 
 .slide-row {
@@ -62,10 +66,136 @@
     font-size: 14px;
     border-bottom: 1px solid #334155;
     padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .slide-label {
     color: #94a3b8;
+}
+
+.panel-section {
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 14px;
+    margin-top: 14px;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 17px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 16px;
+    margin-left: -1px;
+}
+
+.section-title.green {
+    color: #22c55e;
+}
+
+.section-title.red {
+    color: #ef4444;
+}
+
+.section-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 7px;
+}
+
+.section-label {
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+.trusted-devices {
+    background: rgba(34, 197, 94, 0.08);
+    border-color: rgba(34, 197, 94, 0.3);
+}
+
+.device-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    padding: 4px 0;
+}
+
+.rules-broken {
+    background: rgba(239, 68, 68, 0.08);
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+.rule-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    padding: 6px 0;
+}
+
+.rule-icon {
+    font-size: 14px;
+}
+
+.previous-transactions .section-title {
+    justify-content: flex-start;
+}
+
+.prev-txn-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #64748b;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #2a3140;
+    margin-bottom: 8px;
+}
+
+.prev-txn-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    padding: 8px 0;
+    border-bottom: 1px solid #1e2530;
+}
+
+.prev-txn-merchant {
+    font-weight: 500;
+    font-size: 13.5px;
+    
+}
+
+.prev-txn-country {
+    font-size: 12px;
+    margin-top: 6px;
+    color: #94a3b8;
+}
+
+.prev-txn-row > div:first-child {
+    flex: 1;
+}
+
+.prev-txn-amount {
+    text-align: center;
+}
+
+.prev-txn-time {
+    width: 108px;
+    font-size: 12.5px;
+    color: #94a3b8;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.prev-txn-device {
+    margin-top: 6px;
 }
 
 .slide-actions {
@@ -76,10 +206,11 @@
 
 .approve-btn, .decline-btn {
     flex: 1;
-    padding: 10px;
+    padding: 12px;
     border: none;
     border-radius: 6px;
     font-weight: 600;
+    font-size: 14px;
     cursor: pointer;
 }
 
@@ -91,4 +222,20 @@
 .decline-btn {
     background: #ef4444;
     color: white;
+}
+
+.slide-panel::-webkit-scrollbar {
+  width: 13px;
+}
+
+.slide-panel::-webkit-scrollbar-track {
+  background: #171e2b;
+}
+
+.slide-panel::-webkit-scrollbar-thumb {
+  background: #3a3f4b;
+}
+
+.slide-panel::-webkit-scrollbar-thumb:hover {
+  background: #5a6272;
 }
