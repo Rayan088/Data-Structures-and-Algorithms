@@ -16,7 +16,7 @@ from engines.live_transaction_generator import LiveTransactionGenerator
 
 from routes.transaction_routes import transaction_bp
 from routes.analytics_routes import analytics_bp
-from routes.customer_details import customer_details
+from routes.customer_details_routes import customer_details
 
 app = Flask(__name__)
 CORS(app)

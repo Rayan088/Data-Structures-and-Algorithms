@@ -55,7 +55,7 @@ def get_transaction_alerts(transaction_id):
     alerts = Alert.query.filter_by(transaction_id=transaction_id).all()
 
     result = [{
-            "reason": alert.reason,
+            "reason": alert.reasons,
         }
         
         for alert in alerts

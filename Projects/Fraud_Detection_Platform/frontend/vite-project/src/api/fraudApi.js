@@ -41,6 +41,21 @@ export async function getTransactionsByCountry() {
 }
 
 export async function getFraudByRule() {
-    const res = await fetch (`${API}/api/analytics/fraud-by-rule`)
+    const res = await fetch(`${API}/api/analytics/fraud-by-rule`)
+    return res.json()
+}
+
+export async function getRecentTransactions(customerId) {
+    const res = await fetch(`${API}/api/customers/${customerId}/recent-transactions`)
+    return res.json()
+}
+
+export async function getCustomerProfile(customerId) {
+    const res = await fetch(`${API}/api/customers/${customerId}/profile`)
+    return res.json()
+}
+
+export async function getTransactionAlerts(transactionId) {
+    const res = await fetch(`${API}/api/transactions/${transactionId}/alerts`)
     return res.json()
 }
