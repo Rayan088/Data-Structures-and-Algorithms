@@ -35,6 +35,19 @@ function SlidePanel({ transaction, onClose }) {
         loadPanelData();
     }, [transaction]);
 
+    function statusColour (status) {
+        if (status === "APPROVED") return "approved-colour"
+        if (status ==="REVIEW") return "review-colour"
+        if (status === "BLOCKED") return "blocked-colour"
+    }
+
+    function riskScoreColour (score) {
+        if (score >= 75) return "blocked-colour";
+        if (score >= 65) return "med-colour";
+        if (score >= 40) return "review-colour";
+        return "approved-colour";
+    }
+
     if (!transaction) return null;
 
     return (
@@ -73,11 +86,11 @@ function SlidePanel({ transaction, onClose }) {
                     </div>
                     <div className="slide-row">
                         <span className="slide-label">Risk Score</span>
-                        <span>{transaction.risk_score}</span>
+                        <span className={`${riskScoreColour(transaction.risk_score)}`}>{transaction.risk_score}</span>
                     </div>
                     <div className="slide-row">
                         <span className="slide-label">Status</span>
-                        <span>{transaction.status}</span>
+                        <span className={`${statusColour(transaction.status)}`}>{transaction.status}</span>
                     </div>
                 </div>
 
@@ -85,7 +98,7 @@ function SlidePanel({ transaction, onClose }) {
                     <div className="panel-section">
                         <div className="section-title">Customer Overview</div>
                         <div className="section-row">
-                            <span className="section-label">Actual Country</span>
+                            <span className="section-label">Home Country</span>
                             <span>{profile.home_country}</span>
                         </div>
                         <div className="section-row">

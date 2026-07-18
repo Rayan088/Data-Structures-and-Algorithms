@@ -74,6 +74,22 @@
     color: #94a3b8;
 }
 
+.approved-colour {
+    color: #22c55e;
+}
+
+.review-colour {
+    color: #eab308;
+}
+
+.med-colour {
+    color: #d36416;
+}
+
+.blocked-colour {
+    color: #ef4444;
+}
+
 .panel-section {
     border: 1px solid #334155;
     border-radius: 8px;
@@ -88,16 +104,18 @@
     font-size: 17px;
     font-weight: 600;
     color: white;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     margin-left: -1px;
 }
 
 .section-title.green {
     color: #22c55e;
+    margin-bottom: 7px;
 }
 
 .section-title.red {
     color: #ef4444;
+    margin-bottom: 6px;
 }
 
 .section-row {
