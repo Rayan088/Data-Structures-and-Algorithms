@@ -31,7 +31,7 @@ export async function getStats(){
 }
 
 export async function cancelOrder(orderId) {
-    const res = await fetch(`http://localhost:5000/order/${orderId}`, {
+    const res = await fetch(`${API}/order/${orderId}`, {
         method: "DELETE"
     });
     return res.json();
