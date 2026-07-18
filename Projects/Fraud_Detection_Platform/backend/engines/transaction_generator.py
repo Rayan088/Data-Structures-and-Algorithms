@@ -69,7 +69,10 @@ class TransactionGenerator:
 
             trusted_devices = random.sample(devices, 2)
 
-            # Generates 2 trusted devices
+            customer.trusted_devices = trusted_devices
+            db.session.commit()
+
+            # Generates 2 trusted devices and adding to Customer table
 
             self.customer_profiles[customer.customer_id] = {
                 "avg_amount": avg_amount,

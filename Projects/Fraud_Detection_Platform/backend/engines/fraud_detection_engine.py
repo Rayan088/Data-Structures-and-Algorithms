@@ -46,7 +46,7 @@ class FraudDetectionEngine:
         if transaction.device not in trusted_devices:
             risk_score += random.randint(7, 17)
 
-            reasons.append("NEW_DEVICE")
+            reasons.append("New Device")
 
         # Checks if device within users trusted devices
 
@@ -54,7 +54,7 @@ class FraudDetectionEngine:
 
         if average_amount and transaction.amount > average_amount * 2.5:
             risk_score += random.randint(15, 25)
-            reasons.append("HIGH_AMOUNT")
+            reasons.append("High Amount")
 
         # Checks if transaction amount is greater than normal
 
@@ -62,7 +62,7 @@ class FraudDetectionEngine:
 
         if transaction.country != normal_country:
             risk_score += random.randint(17, 24)
-            reasons.append("IMPOSSIBLE_TRAVEL")
+            reasons.append("Impossible Travel")
 
         # Checks if user wallet is used in different country
 
@@ -71,7 +71,7 @@ class FraudDetectionEngine:
         if transaction.merchant not in favourite_merchants:
             risk_score += random.randint(14, 18)
 
-            reasons.append("UNFAMILIAR_MERCHANT")
+            reasons.append("Unfamiliar Merchant")
 
         # Checks if unfamiliar merchant in transaction
 

@@ -8,6 +8,7 @@ class Customer(db.Model):
     account_type = db.Column(db.String(40), nullable=False)
     account_status = db.Column(db.String(20), default="Active")
     risk_score = db.Column(db.Integer, default=0)
+    trusted_devices = db.Column(db.String(150))
     home_country = db.Column(db.String(30))
 
     transactions = db.relationship("Transaction", backref="customer", lazy=True)
