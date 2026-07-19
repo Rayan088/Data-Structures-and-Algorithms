@@ -4,7 +4,7 @@ import { getTransactionsByCountry } from "../../api/fraudApi";
 
 function LeftAlignedTick({y, payload }) {
     return (
-        <text x={0} y={y} dy={4} textAnchor="start" fill="white" fontSize={13}>
+        <text x={0} y={y} dy={4} textAnchor="start" fill="#94a3b8" fontSize={13}>
             {payload.value}
         </text>
     );
@@ -50,10 +50,10 @@ function TransactionsByCountry() {
 
             <BarChart
                 width={420}
-                height={Math.max(countries.length * 40, 160) + 30}
+                height={Math.max(countries.length * 34, 160) + 30}
                 data={countries}
                 layout="vertical"
-                margin={{ top: 5, right: 30, left: -10, bottom: 5 }}
+                margin={{ top: 12, right: 10, left: -40, bottom: 0 }}
             >
                 <CartesianGrid stroke="#334155" horizontal={false} />
                 <XAxis

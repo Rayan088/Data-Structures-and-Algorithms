@@ -42,9 +42,9 @@ function SlidePanel({ transaction, onClose }) {
     }
 
     function riskScoreColour (score) {
-        if (score >= 75) return "blocked-colour";
-        if (score >= 65) return "med-colour";
-        if (score >= 40) return "review-colour";
+        if (score >= 70) return "blocked-colour";
+        if (score >= 50) return "med-colour";
+        if (score >= 25) return "review-colour";
         return "approved-colour";
     }
 

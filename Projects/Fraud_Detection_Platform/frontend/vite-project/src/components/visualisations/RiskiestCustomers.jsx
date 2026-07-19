@@ -41,7 +41,7 @@ function TopRiskCustomers() {
 
                 {customers.map((customer, i) => (
                     <div key={i} className="top-risk-row">
-                        <span className="col-id">{customer.customer_id}</span>
+                        <span className="col-id">CUS-{customer.customer_id}</span>
                         <span className="col-name">{customer.name}</span>
                         <span className="col-score">
                             <span className={`risk-badge ${riskClass(customer.risk_score)}`}>

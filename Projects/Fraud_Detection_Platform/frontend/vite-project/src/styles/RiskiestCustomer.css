@@ -3,9 +3,11 @@
 }
 
 .top-risk-title {
-    margin: 0;
-    font-size: 19px;
+    font-size: 18px;
     font-weight: 700;
+    margin-bottom: 5px;
+    margin-top: -8px;
+    margin-left: -3px;
 }
 
 .top-risk-table {
@@ -16,18 +18,19 @@
     display: flex;
     justify-content: space-between;
     font-size: 14px;
-    color: white;
+    color: #D7E0EA;
     padding-bottom: 8px;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid #18324B;
 }
 
 .top-risk-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #222;
-    font-size: 16px;
+    color: #D7E0EA;
+    padding: 8px 0;
+    border-bottom: 1px solid #18324B;
+    font-size: 15.5px;
 }
 
 .col-id {

@@ -3,8 +3,9 @@
 }
 
 .rule-title {
-    margin: 0;
-    font-size: 19px;
+    font-size: 18px;
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: -11px;
+    margin-top: -8px;
+    margin-left: -3px;
 }

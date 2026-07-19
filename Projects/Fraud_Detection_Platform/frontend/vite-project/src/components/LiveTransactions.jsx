@@ -79,7 +79,7 @@ function LiveTransactions() {
                             <td>{new Date(txn.timestamp).toLocaleDateString()}</td>
                             <td>
                                 <div className="customer-name">{txn.customer_name}</div>
-                                <small>{txn.customer_id}</small>
+                                <small>CUS-{txn.customer_id}</small>
                             </td>
                             <td>{txn.merchant}</td>
                             <td>£{Number(txn.amount).toFixed(2)}</td>

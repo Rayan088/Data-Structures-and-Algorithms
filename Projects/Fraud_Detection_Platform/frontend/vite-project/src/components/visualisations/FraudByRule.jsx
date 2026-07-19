@@ -11,7 +11,7 @@ function BottomAlignedTick({ x, y, payload }) {
     const words = toTitleCase(payload.value).split(" ");
 
     return (
-        <text x={x} y={y} textAnchor="middle" fill="white" fontSize={13}>
+        <text x={x} y={y} textAnchor="middle" fill="#94a3b8" fontSize={13}>
             {words.map((word, i) => (
                 <tspan key={i} x={x} dy={i === 0 ? 12 : 14}>{word}</tspan>))}
         </text>
@@ -55,7 +55,7 @@ function FraudByRule() {
                 height={280}
                 data={rules}
                 layout="horizontal"
-                margin={{ top: 20, right: 20, left: 0, bottom: 30 }}
+                margin={{ top: 25, right: 10, left: -27, bottom: 22 }}
             >
                 <CartesianGrid stroke="#334155" vertical={false} />
                 <XAxis
