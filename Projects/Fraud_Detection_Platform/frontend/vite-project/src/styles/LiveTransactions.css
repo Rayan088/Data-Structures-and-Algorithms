@@ -79,6 +79,10 @@ small {
     color: white;
 }
 
+.risk-level {
+    margin-left: 10px;
+}
+
 .risk.low {
     background: #147a3a;
     border: 1px solid #2E8B57;
@@ -109,16 +113,14 @@ small {
     font-weight: 540;
 }
 
-.flagged-text {
-    color: #f97316;
-    font-weight: 540;
+.high-text {
+    color: #d36416;
 }
 
 .blocked-text {
     color: #ef4444;
     font-weight: 540;
 }
-
 
 .inspect-button {
     background: #1f2938;

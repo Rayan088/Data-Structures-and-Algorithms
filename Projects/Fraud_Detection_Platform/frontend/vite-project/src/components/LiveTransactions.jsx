@@ -27,10 +27,17 @@ function LiveTransactions() {
     }, []);
 
     function riskColor (score) {
-        if (score >= 75) return "critical";
-        if (score >= 65) return "high";
-        if (score >= 40) return "medium";
+        if (score >= 70) return "critical";
+        if (score >= 50) return "high";
+        if (score >= 25) return "medium";
         return "low";
+    }
+
+    function riskLevelColor (risk_level) {
+        if (risk_level === "LOW") return "approved-text"
+        if (risk_level === "MEDIUM") return "review-text"
+        if (risk_level === "HIGH") return "high-text"
+        if (risk_level === "CRITICAL") return "blocked-text"
     }
 
     function statusColor (status) {
@@ -39,12 +46,8 @@ function LiveTransactions() {
                 return "approved-text";
             case "REVIEW":
                 return "review-text";
-            case "FLAGGED":
-                return "flagged-text";
             case "BLOCKED":
                 return "blocked-text";
-            default:
-                return "";
         }
     }
 
@@ -82,7 +85,8 @@ function LiveTransactions() {
                             <td>£{Number(txn.amount).toFixed(2)}</td>
                             <td>{txn.country}</td>
                             <td>{txn.device}</td>
-                            <td><span className={`risk ${riskColor(txn.risk_score)}`}>{txn.risk_score}</span></td>
+                            <td><span className={`risk ${riskColor(txn.risk_score)}`}>{txn.risk_score}</span>
+                            <span className={riskLevelColor(txn.risk_level)} style={{marginLeft: "7px"}}>{txn.risk_level}</span></td>
                             <td><span className={statusColor(txn.status)}>{txn.status}</span></td>
                             <td><button className="inspect-button" onClick={() => setSelectedTxn(txn)}>Inspect</button></td>
                         </tr>
