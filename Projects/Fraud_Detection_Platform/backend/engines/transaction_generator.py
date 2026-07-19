@@ -10,7 +10,7 @@ from models.transactions import Transaction
 merchants = {
     "Standard": [
         "Tesco", "ASDA", "McDonalds", "Starbucks", "Amazon",
-        "Netflix", "Uber", "Deliveroo", "Shell",
+        "Ebay", "Uber", "Deliveroo", "Shell", "H&M", "T.J.Maxx", "Home Bargains",
         "Sainsbury's", "Aldi", "Lidl", "Costa Coffee", "Subway",
         "KFC", "Burger King", "Morrisons", "Primark", "Boots"
     ],
@@ -19,19 +19,23 @@ merchants = {
         "Amazon", "Apple", "British Airways", "Hilton Hotels", "Booking.com",
         "Uber", "Selfridges", "John Lewis", "Emirates",
         "Harrods", "The Ritz London", "Rolex", "Tesla", "Louis Vuitton",
-        "Gucci", "American Express Travel", "Singapore Airlines",
+        "Gucci", "Burberry", "Singapore Airlines",
         "Four Seasons Hotels", "Bang & Olufsen"
     ],
 
     "Business": [
         "AWS", "Microsoft Azure", "Salesforce", "Dell", "British Airways",
-        "Adobe", "LinkedIn Premium", "Zoom", "Office Depot",
+        "Emirates", "Qatar Airways", "MailChimp", "Adobe", "Zoom", "Office Depot",
         "Google Cloud", "Oracle", "Slack", "Dropbox Business", "HubSpot",
-        "Cisco", "Atlassian", "SAP", "Workday", "Notion"
+        "Cisco", "Atlassian", "SAP", "Workday", "Notion", "IBM"
     ]
 }
 
-devices = ["iPhone 17", "iPhone 15", "Google Pixel 9", "Windows Laptop", "MacBook Pro", "iPad"]
+devices = [
+    "iPhone 17", "iPhone 16", "iPhone 15", "iPhone 14", "Pixel 9", "Pixel 8", "Galaxy S24",
+    "Galaxy S23", "OnePlus 12", "Moto Edge", "iPad", "iPad Pro", "iPad Air", "iPad Mini",
+    "MacBook Pro", "MacBook Air", "MacBook", "Surface Pro", "Surface Go", "Chromebook"
+]
 
 countries = {
     "United Kingdom": "GBP",

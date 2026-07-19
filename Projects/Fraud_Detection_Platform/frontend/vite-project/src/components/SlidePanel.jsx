@@ -66,7 +66,7 @@ function SlidePanel({ transaction, onClose }) {
                     </div>
                     <div className="slide-row">
                         <span className="slide-label">Customer</span>
-                        <span>{transaction.customer_name} ({transaction.customer_id})</span>
+                        <span>{transaction.customer_name} (CUS-{transaction.customer_id})</span>
                     </div>
                     <div className="slide-row">
                         <span className="slide-label">Merchant</span>
