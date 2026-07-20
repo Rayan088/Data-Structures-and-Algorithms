@@ -4,8 +4,18 @@ import {
     getRecentTransactions,
     getTransactionAlerts,
     
-} from "../api/fraudApi";
+}
+
+from "../api/fraudApi";
 import "../styles/SlidePanel.css";
+
+import gbpFlag from "../assets/united-kingdom-flag.png"
+import usaFlag from "../assets/usa-flag.png"
+import uaeFlag from "../assets/uae-flag.png"
+import franceFlag from "../assets/france-flag.png"
+import germanyFlag from "../assets/germany-flag.png"
+import spainFlag from "../assets/spain-flag.png"
+import brazilFlag from "../assets/brazil-flag.png"
 
 function SlidePanel({ transaction, onClose }) {
     const [profile, setProfile] = useState(null);
@@ -34,6 +44,20 @@ function SlidePanel({ transaction, onClose }) {
 
         loadPanelData();
     }, [transaction]);
+
+    const countryFlags = {
+            "United Kingdom": gbpFlag,
+            "United States": usaFlag,
+            "UAE": uaeFlag,
+            "France": franceFlag,
+            "Germany": germanyFlag,
+            "Spain": spainFlag,
+            "Brazil": brazilFlag,
+        };
+    
+    function getCountryFlag(country) {
+        return countryFlags[country]
+    }
 
     function statusColour (status) {
         if (status === "APPROVED") return "approved-colour"
@@ -78,7 +102,9 @@ function SlidePanel({ transaction, onClose }) {
                     </div>
                     <div className="slide-row">
                         <span className="slide-label">Country</span>
-                        <span>{transaction.country}</span>
+                        <span className="slide-country">
+                            <img className="country-flag" src={getCountryFlag(transaction.country)} alt={transaction.country} />{transaction.country}
+                        </span>
                     </div>
                     <div className="slide-row">
                         <span className="slide-label">Device</span>
@@ -99,7 +125,9 @@ function SlidePanel({ transaction, onClose }) {
                         <div className="section-title">Customer Overview</div>
                         <div className="section-row">
                             <span className="section-label">Home Country</span>
-                            <span>{profile.home_country}</span>
+                            <span className="slide-home-country">
+                                <img className="home-country-flag" src={getCountryFlag(profile.home_country)} alt={profile.home_country} />{profile.home_country}
+                            </span>
                         </div>
                         <div className="section-row">
                             <span className="section-label">Average Spend</span>
@@ -144,7 +172,7 @@ function SlidePanel({ transaction, onClose }) {
                                 <div className="prev-txn-merchant">{txn.merchant}</div>
                                 <div className="prev-txn-country">{txn.country}</div>
                             </div>
-                            <span className="prev-txn-amount">£{Number(txn.amount).toFixed(2)}</span>
+                            <span className="prev-txn-amhount">£{Number(txn.amount).toFixed(2)}</span>
                             <div className="prev-txn-time">
                                 <span>{new Date(txn.timestamp).toLocaleDateString()}</span>
                                 <span className="prev-txn-device">{txn.device}</span>

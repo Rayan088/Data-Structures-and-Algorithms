@@ -70,6 +70,33 @@
     padding-right: 5px;
 }
 
+.slide-country {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.country-flag {
+    width: 22px;
+    height: 16px;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
+.slide-home-country {
+    display: flex;
+    align-items: center;
+    gap: 3.8px;
+}
+
+.home-country-flag {
+    gap: 4px;
+    width: 21px;
+    height: 15px;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
 .slide-label {
     color: #94a3b8;
 }
