@@ -26,6 +26,6 @@ class LiveTransactionGenerator:
 
                 db.session.commit()
 
-                time.sleep(1)
+                time.sleep(2.5)
 
     # Creates one new transaction per second

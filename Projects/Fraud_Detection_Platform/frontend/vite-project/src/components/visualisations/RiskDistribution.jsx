@@ -43,7 +43,7 @@ function RiskDistribution() {
 
         loadData();
 
-        const interval = setInterval(loadData, 2000);
+        const interval = setInterval(loadData, 1000);
 
         return () => clearInterval(interval);
     }, []);

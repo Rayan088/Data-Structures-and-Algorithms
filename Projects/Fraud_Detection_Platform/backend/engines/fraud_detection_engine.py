@@ -105,7 +105,7 @@ class FraudDetectionEngine:
         if level == "LOW":
             return "APPROVED"
         elif level == "MEDIUM":
-            if random.random() < 0.1:
+            if random.random() < 0.25:
                 return "REVIEW"
             return "APPROVED"
         elif level == "HIGH":

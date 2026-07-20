@@ -23,19 +23,13 @@ function App() {
         async function loadAnalytics() {
             try {
                 const total = await getTotalTransactions();
-
                 const alerts = await getHighRiskAlerts();
-
                 const review = await getTransactionsAwaitingReview();
-
                 const prevented = await getFraudPrevented();
 
                 setTotalTransactions(total.total_transactions);
-
                 setHighRiskAlerts(alerts.high_risk_alerts);
-
                 setAwaitingReview(review.transactions_awaiting_review);
-
                 setFraudPrevented(prevented.fraud_prevented);
             }
 
