@@ -11,6 +11,11 @@ import TransactionsByCountry from "./components/visualisations/TransactionsByCou
 import FraudByRule from "./components/visualisations/FraudByRule";
 import RiskiestCustomers from "./components/visualisations/RiskiestCustomers";
 
+import transactionsIcon from "./assets/wallet-icon.png"
+import riskIcon from "./assets/risk-icon.png"
+import reviewIcon from "./assets/accounts-icon.png"
+import preventedIcon from "./assets/prevented-icon.png"
+
 import {getTotalTransactions, getHighRiskAlerts, getTransactionsAwaitingReview, getFraudPrevented} from "./api/fraudApi";
 
 function App() {
@@ -51,25 +56,29 @@ function App() {
                 <div className="stat-card transactions-processed">
                     <StatCard
                         title="Transactions Processed"
-                        value={totalTransactions}/>
+                        value={totalTransactions}
+                        image={transactionsIcon}/>
                 </div>
 
                 <div className="stat-card risk-alerts">
                     <StatCard
                         title="High Risk Alerts"
-                        value={highRiskAlerts}/>
+                        value={highRiskAlerts}
+                        image={riskIcon}/>
                 </div>
 
                 <div className="stat-card awaiting-review">
                     <StatCard
                         title="Transactions Awaiting Review"
-                        value={awaitingReview}/>
+                        value={awaitingReview}
+                        image={reviewIcon}/>
                 </div>
 
                 <div className="stat-card fraud-prevented">
                     <StatCard
                         title="Fraud Prevented (£)"
-                        value={`£${fraudPrevented.toLocaleString()}`}/>
+                        value={`£${fraudPrevented.toLocaleString()}`}
+                        image={preventedIcon}/>
                 </div>
             </div>
 

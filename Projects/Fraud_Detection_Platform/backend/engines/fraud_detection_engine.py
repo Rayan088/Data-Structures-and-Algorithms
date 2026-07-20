@@ -105,12 +105,14 @@ class FraudDetectionEngine:
         if level == "LOW":
             return "APPROVED"
         elif level == "MEDIUM":
-            if random.random() < 0.25:
+            if random.random() < 0.35:
                 return "REVIEW"
             return "APPROVED"
         elif level == "HIGH":
             return "REVIEW"
         else:
+            if random.random() < 0.5:
+                return "REVIEW"
             return "BLOCKED"
         
     # Method to calculate transaction status
