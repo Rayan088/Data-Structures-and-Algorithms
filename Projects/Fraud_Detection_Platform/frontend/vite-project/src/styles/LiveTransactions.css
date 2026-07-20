@@ -71,6 +71,21 @@ small {
     color: #DDE8F7;
 }
 
+.country-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.country-flag {
+    width: 27px;
+    height: 27px;
+}
+
+.country-text {
+    line-height: 1;
+}
+
 .risk {
     display: inline-block;
     width: 32px;
