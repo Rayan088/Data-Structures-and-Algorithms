@@ -1,10 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-    getCustomerProfile,
-    getRecentTransactions,
-    getTransactionAlerts,
-    
-}
+import { getCustomerProfile, getRecentTransactions, getTransactionAlerts, approveTransaction, blockTransaction}
 
 from "../api/fraudApi";
 import "../styles/SlidePanel.css";
@@ -44,6 +39,26 @@ function SlidePanel({ transaction, onClose }) {
 
         loadPanelData();
     }, [transaction]);
+
+    async function handleApprove() {
+        try {
+            await approveTransaction(transaction.transaction_id);
+            transaction.status == "APPROVED";
+            onclose()
+        } catch (error) {
+            console.log(`Failed to approve transaction ${error}`)
+        }
+    }
+
+    async function handleBlock() {
+        try {
+            await blockTransaction(transaction.transaction_id);
+            transaction.status == "BLOCKED"
+            onclose()
+        } catch (error) {
+            console.log(`Failed to block transaction ${error}`)
+        }
+    }
 
     const countryFlags = {
             "United Kingdom": gbpFlag,
@@ -182,8 +197,8 @@ function SlidePanel({ transaction, onClose }) {
                 </div>
 
                 <div className="slide-actions">
-                    <button className="approve-btn">Approve</button>
-                    <button className="decline-btn">Decline</button>
+                    <button className="approve-btn" onClick={handleApprove}>Approve</button>
+                    <button className="decline-btn" onClick={handleBlock}>Decline</button>
                 </div>
             </div>
         </>
