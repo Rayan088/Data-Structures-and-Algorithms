@@ -1,6 +1,6 @@
 ### Overview
 
-A full-stack simulated fraud detection platform built with a Python Flask backend and a React frontend. The system generates realistic customer and transaction data, scores every transaction for fraud risk in real time, and surfaces the results through a live analytics dashboard where an analyst can inspect and action flagged transactions.
+A full-stack fraud detection platform built using Python Flask, PostgreSQL, and React. The platform simulates realistic banking customers and transaction activity, applies rule-based fraud detection to score transactions in real time, and presents the results through an interactive analytics dashboard. Analysts can investigate suspicious activity, review customer profiles and historical transactions, and approve or block flagged transactions directly from the interface.
 
 ---
 
@@ -10,7 +10,7 @@ A full-stack simulated fraud detection platform built with a Python Flask backen
 
 ![Dashboard](./frontend/vite-project/src/assets/Main-UI.png)
 
-### Slide Window UI
+#### Slide Window UI
 
 ![Dashboard](./frontend/vite-project/src/assets/Slide-window-UI.png)
 
