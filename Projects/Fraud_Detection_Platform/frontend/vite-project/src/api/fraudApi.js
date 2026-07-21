@@ -59,3 +59,13 @@ export async function getTransactionAlerts(transactionId) {
     const res = await fetch(`${API}/api/transactions/${transactionId}/alerts`)
     return res.json()
 }
+
+export async function approveTransaction(id) {
+    const res = await fetch(`${API}/api/transactions/${id}/approve`, {method: "POST"})
+    return res.json()
+}
+
+export async function blockTransaction(id) {
+    const res = await fetch(`${API}/api/transactions/${id}/block`, {method: "POST"})
+    return res.json()
+}
