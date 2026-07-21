@@ -12,7 +12,7 @@ A full-stack fraud detection platform built using Python Flask, PostgreSQL, and 
 
 #### Slide Window UI
 
-![Dashboard](./frontend/vite-project/src/assets/Slide-window-UI.png)
+![Dashboard](./frontend/vite-project/src/assets/Slide-panel-UI.png)
 
 ---
 
