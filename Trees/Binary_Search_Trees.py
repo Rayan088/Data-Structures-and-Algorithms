@@ -17,8 +17,8 @@ class Node:
         return str(self.value)
     
 class BinarySearchTree:
-    def __init__(self, value):
-        self.value = value
+    def __init__(self):
+        self.root = None
     
     #Method declaring value
 
@@ -43,10 +43,6 @@ class BinarySearchTree:
                 self.insert_recursive(node.right, value) #Go right again
     
     #Method to decide where new node goes
-
-root = Node(5)
-root.left = Node(3)
-root.right = Node(7)
 
 bst = BinarySearchTree()
 bst.insert(2)
