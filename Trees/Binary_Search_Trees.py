@@ -45,6 +45,9 @@ class BinarySearchTree:
     #Method to decide where new node goes
 
 bst = BinarySearchTree()
+bst.insert(5)
+bst.insert(3)
+bst.insert(7)
 bst.insert(2)
 bst.insert(6)
 bst.insert(9)
